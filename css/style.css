@@ -149,7 +149,8 @@ h5 {
 .header {
   height: 100vh;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
+  max-width: 180rem;
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -166,7 +167,6 @@ h5 {
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5rem;
 }
 
 .header_title {
@@ -189,6 +189,7 @@ h5 {
 .header_img {
   flex-grow: 1;
   width: 40%;
+  max-height: 75vh;
   flex: 1;
   order: 2;
   z-index: -2;
@@ -301,9 +302,9 @@ h4 {
   display: block;
   content: '';
   position: absolute;
-  top: -12rem;
+  top: -4rem;
   left: 0;
-  height: 110%;
+  height: 100%;
   width: 100%;
   z-index: -1;
   opacity: 1;
@@ -577,6 +578,13 @@ img {
   font-size: 1.6rem;
   color: #eee;
   text-decoration: none;
+}
+
+.footer_social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .footer_social svg {
