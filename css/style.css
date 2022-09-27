@@ -369,40 +369,54 @@ h4 {
   font-size: 1.5rem;
 }
 
-.about_header {
+.about_header,
+.projects h5 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.skills_list {
-  width: 80%;
+.skills_list,
+.codeused {
+  width: 100%;
 }
 
-.skills_list ul li img {
+.skills_list ul li img,
+.codeused ul li img {
   height: 22px;
   vertical-align: middle;
   padding-right: 0.3rem;
 }
 
-.skills_list ul {
+.skills_list ul,
+.codeused ul {
   margin-top: 1rem;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
 }
 
-.skills_list ul li {
+.skills_list ul li,
+.codeused ul li {
   padding: 5px 22px;
   font-size: 1.8rem;
   text-align: center;
   background-color: var(--color-secondary-opacity);
-  border-radius: 20px;
+  border-radius: 25px;
   margin: 5px;
   transition: all 0.5s;
 }
 
-.skills_list ul li:hover {
+.skills_list ul li:hover,
+.codeused ul li:hover {
   background-color: var(--color-secondary);
+}
+
+.codeused ul li img {
+  height: 15px;
+}
+
+.codeused ul li {
+  font-size: 1.2rem;
 }
 
 /* GENERAL ELEMENTS */
@@ -441,25 +455,27 @@ p {
   color: #dddddd;
 }
 
-/* This is BAD for accessibility! Don't do in the real world! */
-button:focus {
-  outline: none;
-}
-
 img {
-  transition: filter 0.5s;
+  transition: all 0.5s;
+  opacity: 1;
 }
 
 .lazy-img {
   filter: blur(20px);
 }
 
-/* FEATURES */
-
 /* CURRENT WORK */
-.current_work {
-  max-width: 80rem;
-  margin: 2rem auto;
+.projects_img {
+  width: 100%;
+}
+
+.projects_img:hover {
+  opacity: 0.8;
+}
+
+.box {
+  width: 48%;
+  margin-bottom: 2%;
 }
 
 /* PROJECTS */
@@ -467,10 +483,16 @@ img {
   max-width: 80rem;
   margin: 2rem auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-content: flex-start;
   align-items: flex-start;
+  font-size: 1.5rem;
+  gap: 20px;
+}
+.projects p {
+  margin: 2rem 0;
 }
 
 .projects_header {
@@ -501,16 +523,77 @@ img {
   text-align: center;
 }
 
+/* BUTTONS */
 .button_center {
   display: block;
   text-align: center;
+}
+
+.viewproject,
+.viewcode {
+  display: inline-block;
+  border-radius: 45px;
+  background-color: var(--color-primary);
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  padding: 15px 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  text-transform: uppercase;
+}
+
+.viewproject:hover {
+  background-color: var(--color-secondary);
+}
+
+.viewproject span,
+.viewcode span,
+.emailme span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-family: 'Nunito', sans-serif;
+}
+
+.viewproject span:after,
+.viewcode span:after,
+.emailme span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.viewproject:hover span,
+.viewcode:hover span,
+.emailme:hover span {
+  padding-right: 25px;
+}
+
+.viewproject:hover span:after,
+.viewcode:hover span:after,
+.emailme:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.viewcode {
+  background-color: rgba(34, 34, 34, 0);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .emailme {
   display: inline-block;
   border-radius: 45px;
   background-color: #222222;
-  /* background-image: var(--gradient-dark); */
   border: none;
   color: #ffffff;
   text-align: center;
@@ -524,35 +607,8 @@ img {
 }
 
 .emailme:hover {
-  /* background-image: var(--gradient-dark-var); */
   background-color: #464034;
   box-shadow: #0000004a 0px 0px 1px;
-}
-
-.emailme span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-  font-family: 'Nunito', sans-serif;
-}
-
-.emailme span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.emailme:hover span {
-  padding-right: 25px;
-}
-
-.emailme:hover span:after {
-  opacity: 1;
-  right: 0;
 }
 
 /* FOOTER */
