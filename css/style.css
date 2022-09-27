@@ -168,6 +168,7 @@ h5 {
   flex-wrap: nowrap;
   width: 100%;
   max-width: 120rem;
+  height: 80%;
   align-content: center;
   justify-content: space-between;
   align-items: center;
@@ -694,7 +695,6 @@ img {
   .header_container {
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 10rem;
   }
 
   h1 {
