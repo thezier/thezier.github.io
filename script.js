@@ -7,6 +7,8 @@ const tabsContainer = document.querySelector('.projects_tab-container');
 const tabsContent = document.querySelectorAll('.projects_content');
 const section1 = document.querySelector('#section--1');
 const allSections = document.querySelectorAll('.section');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav_links');
 
 /// Nav
 document.querySelector('.nav_links').addEventListener('click', function (e) {
@@ -18,6 +20,19 @@ document.querySelector('.nav_links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+/// Mobile Nav
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav_link').forEach(nav =>
+  nav.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  })
+);
 
 // Menu fade animation
 const handleHover = function (e) {
