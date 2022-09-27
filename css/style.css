@@ -730,7 +730,13 @@ img {
   .section_description {
     font-size: 3rem;
   }
+
   .section_header {
     font-size: 1.4rem;
+  }
+
+  .box {
+    width: 100%;
+    margin-bottom: 2%;
   }
 }
