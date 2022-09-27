@@ -10,6 +10,8 @@ const allSections = document.querySelectorAll('.section');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav_links');
 
+const mediaQuery = window.matchMedia('(min-width: 1081px)');
+
 /// Nav
 document.querySelector('.nav_links').addEventListener('click', function (e) {
   e.preventDefault();
@@ -36,7 +38,7 @@ document.querySelectorAll('.nav_link').forEach(nav =>
 
 // Menu fade animation
 const handleHover = function (e) {
-  if (e.target.classList.contains('nav_link')) {
+  if (e.target.classList.contains('nav_link') && mediaQuery.matches) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav_link');
     const logo = link.closest('.nav').querySelector('.nav_logo');
