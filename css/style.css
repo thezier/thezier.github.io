@@ -85,6 +85,10 @@ h5 {
   z-index: 100;
 }
 
+.hamburger {
+  display: none;
+}
+
 /* nav and stickly class at the same time */
 .nav.sticky {
   position: fixed;
@@ -149,7 +153,8 @@ h5 {
 .header {
   height: 100vh;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
+  max-width: 180rem;
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -166,7 +171,6 @@ h5 {
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5rem;
 }
 
 .header_title {
@@ -189,6 +193,7 @@ h5 {
 .header_img {
   flex-grow: 1;
   width: 40%;
+  max-height: 75vh;
   flex: 1;
   order: 2;
   z-index: -2;
@@ -301,9 +306,9 @@ h4 {
   display: block;
   content: '';
   position: absolute;
-  top: -12rem;
+  top: -4rem;
   left: 0;
-  height: 110%;
+  height: 100%;
   width: 100%;
   z-index: -1;
   opacity: 1;
@@ -635,8 +640,16 @@ img {
   text-decoration: none;
 }
 
+.footer_social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 35rem;
+  margin: auto;
+}
+
 .footer_social svg {
-  margin: 0 2rem;
   transition: all 0.5s;
   opacity: 0.8;
 }
@@ -666,12 +679,13 @@ img {
     width: 100%;
   }
   .nav {
+    height: 5.5rem;
     text-align: center;
     justify-content: center;
   }
   .nav_logo a {
     text-align: center;
-    font-size: 4rem;
+    font-size: 2rem;
   }
   .nav_links {
     display: none;
@@ -683,11 +697,19 @@ img {
     padding-bottom: 10rem;
   }
 
+  h1 {
+    font-size: 3rem;
+  }
+  .header_sub {
+    font-size: 2rem;
+  }
+
   #section--1::before {
     top: -6rem;
   }
 
   .header_title {
+    padding: 4rem 0;
   }
 
   .header_main,
@@ -703,5 +725,12 @@ img {
   h2,
   h3 {
     text-align: center;
+  }
+
+  .section_description {
+    font-size: 3rem;
+  }
+  .section_header {
+    font-size: 1.4rem;
   }
 }
