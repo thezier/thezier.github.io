@@ -435,11 +435,11 @@ h4 {
 }
 
 .codeused ul li img {
-  height: 15px;
+  height: 11px;
 }
 
 .codeused ul li {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /* GENERAL ELEMENTS */
@@ -502,6 +502,7 @@ img {
 }
 
 /* PROJECTS */
+
 .projects {
   max-width: 80rem;
   margin: 2rem auto;
@@ -514,8 +515,22 @@ img {
   font-size: 1.5rem;
   gap: 20px;
 }
+
+.projectboxlrg {
+  width: 60%;
+  margin-bottom: 2%;
+}
+.projectboxsml {
+  width: 36%;
+  margin-bottom: 2%;
+}
+
+.projects .section_header {
+  width: 100%;
+}
+
 .projects p {
-  margin: 2rem 0;
+  margin: 0 0 3rem 0;
 }
 
 .projects_header {
@@ -560,9 +575,9 @@ img {
   border: none;
   color: #ffffff;
   text-align: center;
-  font-size: 18px;
-  padding: 15px 20px;
-  width: 200px;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  width: 180px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
