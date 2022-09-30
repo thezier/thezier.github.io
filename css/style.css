@@ -507,7 +507,6 @@ img {
   max-width: 80rem;
   margin: 2rem auto;
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: flex-start;
