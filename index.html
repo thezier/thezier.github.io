@@ -118,9 +118,9 @@
         <div class="about_section">
           <h5 class="about_header">Goals</h5>
           <p>
-            I always enjoy learning new things. The world of development is constantly
-            changing and it's exciting to grow and work towards new goals. Here
-            are some things I'm currently working on:
+            I always enjoy learning new things. The world of development is
+            constantly changing and it's exciting to grow and work towards new
+            goals. Here are some things I'm currently working on:
           </p>
           <div class="skills_list">
             <ul>
@@ -411,10 +411,48 @@
         </div>
 
         <script>
-          GitHubCalendar('.calendar', 'thezier', {
-            responsive: true,
-            tooltips: true,
+          const CalendarGraph = require('github-calendar-graph');
+
+          // get contribution graph
+          CalendarGraph.fetch('GITHUB ACCOUNT').then(data => {
+            console.log(data); // => string of HTML DOM
           });
+
+          // get contribution count
+          CalendarGraph.fetch('GITHUB ACCOUNT', true).then(data => {
+            console.log(data); // => { 'DATE': 'CONTRIBUTION COUNT' }
+            /*
+     {
+       '2018-07-01': 3,
+       '2018-07-02': 1,
+       '2018-07-03': 9,
+       ...
+     }
+   */
+          });
+
+          // get contribution data including count and color
+          CalendarGraph.fetch('GITHUB ACCOUNT', true, true).then(data => {
+            console.log(data); // => { 'DATE': { count: 'CONTRIBUTION COUNT', color: 'COLOR FILLED' } }
+            /*
+     {
+       '2018-07-01': {
+         count: 3,
+         color: '#196127'
+       },
+       '2018-07-02': {
+         count: 0,
+         color: '#ebedf0'
+       },
+       ...
+     }
+   */
+          });
+
+          // GitHubCalendar('.calendar', 'thezier', {
+          //   responsive: true,
+          //   tooltips: true,
+          // });
         </script>
       </div>
     </section>
