@@ -481,10 +481,13 @@ p {
 img {
   transition: all 0.5s;
   opacity: 1;
+  filter: blur(0px);
+  transition: all 0.5s;
 }
 
 .lazy-img {
   filter: blur(20px);
+  transform: translate3d(0, 0, 0);
 }
 
 /* CURRENT WORK */
