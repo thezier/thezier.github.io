@@ -335,7 +335,7 @@ h4 {
 }
 
 .github_title {
-  max-width: 80rem;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -709,7 +709,17 @@ img {
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1125px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  .header_sub {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 970px) {
   .header {
     width: 100%;
   }
@@ -781,6 +791,7 @@ img {
   h1 {
     font-size: 3rem;
   }
+
   .header_sub {
     font-size: 2rem;
   }
@@ -802,7 +813,8 @@ img {
     max-width: 50%;
     transform: translateX(-1rem);
   }
-
+}
+@media (max-width: 750px) {
   h2,
   h3 {
     text-align: center;
