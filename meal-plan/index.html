@@ -477,6 +477,18 @@
   .rs-step.protected h4{ color:var(--beef); }
   .rs-step.finish h4{ font-family:var(--font-display); font-weight:400; font-size:1rem; }
 
+  /* ---------- crew roles ---------- */
+  .role-key{ display:flex; gap:1.4rem; flex-wrap:wrap; margin:0 0 1.2rem; font-size:0.85rem; color:var(--ink-soft); }
+  .role-key div{ display:flex; gap:0.5rem; align-items:baseline; }
+  .who{
+    font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:0.12rem 0.4rem; border-radius:3px; flex-shrink:0;
+  }
+  .r-heat{ background:var(--beef-wash); color:var(--beef); }
+  .r-line{ background:var(--sage-wash); color:var(--sage); }
+  .r-both{ background:var(--honey-wash); color:var(--honey-ink); }
+  .rs-body h4 .who{ margin-right:0.5rem; vertical-align:0.12em; }
+
   /* ---------- callouts ---------- */
   .callout{
     border:1px solid var(--line); border-left:3px solid var(--honey);
@@ -620,6 +632,7 @@
       <a href="#portions">Gram Reference</a>
       <a href="#shopping">Shopping List</a>
       <a href="#onramp">Start Here</a>
+      <a href="#stall">If It Stalls</a>
       <a href="#tips">Quick Tips</a>
     </div>
     <div class="nav-goals">
@@ -971,6 +984,12 @@
         <h2>Prep Sessions</h2>
         <p class="note">One long Sunday cook is what kept stalling, and not for lack of discipline &mdash; portioning always landed at the tail end of a session that had already run long, in a wrecked kitchen, when you were done. Two changes fix it. <b>Split the week into two sessions</b>, so nothing is a marathon and nothing sits past four days. And <b>schedule the portioning inside the oven's passive window</b>, where you're stuck waiting anyway, instead of after everything else is finished.</p>
       </div>
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="solo" role="tab" aria-selected="true">One of you</button>
+        <button class="tab-btn" data-tab="together" role="tab" aria-selected="false">Both of you</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="solo">
       <div class="session">
         <div class="session-head">
           <div><span class="eyebrow">Session 01 &middot; Sunday</span><h3>Builds Monday through Thursday</h3></div>
@@ -1077,6 +1096,126 @@
             <h4>Thursday through Saturday are handled.</h4>
           </div></div>
         </div>
+      </div>
+
+      </div>
+
+      <div class="tab-panel" data-panel="together">
+      <p class="note" style="margin-bottom:1.2rem;">Two people, two standing roles. Don't trade them week to week &mdash; you get faster at the one you own. <b>Heat</b> keeps the stove and the oven; <b>Line</b> keeps the counter, the scale and the containers. Sunday drops from 2 h 18 to about <b>1 h 42</b>, and the kitchen is already clean when you finish, because the reset moves into the baking window.</p>
+
+      <div class="role-key">
+        <div><span class="who r-heat">Heat</span> rice, beef, the bake, the sear</div>
+        <div><span class="who r-line">Line</span> salad, sauces, containers, portioning</div>
+        <div><span class="who r-both">Both</span> together, at the same bench</div>
+      </div>
+
+      <div class="session">
+        <div class="session-head">
+          <div><span class="eyebrow">Session 01 &middot; Sunday &middot; two-up</span><h3>Builds Monday through Thursday</h3></div>
+          <div class="session-meta"><span class="n mono">1 h 42</span><span class="lbl">wall clock &middot; ~80 min each</span></div>
+        </div>
+        <div class="runsheet">
+          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Set the stations<span class="dur mono">6 min</span></h4>
+            <p>Two pairs of hands clear both counters, pull all 14 containers with lids off in two rows, and get the scale out and tared. Range oven to 350&deg;F, half sheet lined.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:06</span><div class="rs-body">
+            <h4><span class="who r-heat">Heat</span>Rice on, pans out<span class="dur mono">4 min</span></h4>
+            <p>5 cups dry started first &mdash; it has to be ready before the portioning block at 0:46.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:10</span><div class="rs-body">
+            <h4><span class="who r-heat">Heat</span>Ground beef, 9&frac12; lb across two pans<span class="dur mono">30 min</span></h4>
+            <p>Two pans instead of two sequential loads &mdash; that's five minutes off on its own. Salt only, don't drain.</p>
+          </div></div>
+          <div class="rs-step nested"><span class="clock mono">0:10</span><div class="rs-body">
+            <h4><span class="who r-line">Line</span>Salad for the week<span class="dur mono">15 min</span></h4>
+            <p>Wash, spin, shred, into the tub with a paper towel. Runs entirely inside Heat's beef window.</p>
+          </div></div>
+          <div class="rs-step nested"><span class="clock mono">0:25</span><div class="rs-body">
+            <h4><span class="who r-line">Line</span>Sauces, honey, then set the line<span class="dur mono">15 min</span></h4>
+            <p>Both squeeze bottles plus honey, and calibrate the honey bottle on the scale. Then lay out the eight lunch boxes in Mike-row and Janna-row so the portioning block starts the second the rice is ready.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:40</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Mix the egg bake<span class="dur mono">6 min</span></h4>
+            <p>Line cracks and whisks 28 eggs while Heat weighs 640 g of the just-cooked beef and melts 72 g butter. Combine, onto the parchment, into the oven.</p>
+          </div></div>
+          <div class="rs-step passive"><span class="clock mono">0:46</span><div class="rs-body">
+            <h4>Oven running &mdash; 28 minutes<span class="dur mono">passive</span></h4>
+            <p>Everything left fits inside this window and the cooling that follows:</p>
+          </div></div>
+          <div class="rs-step protected"><span class="clock mono">0:46</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Fill eight lunch boxes, two stations<span class="dur mono">13 min</span></h4>
+            <p>Heat takes Mike's four, Line takes Janna's four. Each person runs their own beef pass then rice pass, taring between. Halving this block is the single biggest gain of working two-up.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:59</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Reset the kitchen<span class="dur mono">12 min</span></h4>
+            <p>Dishes, counters, scale away &mdash; all of it while the bake is still in the oven. Solo this lands at the very end, when nobody wants to do it. That's the difference.</p>
+          </div></div>
+          <div class="rs-step passive"><span class="clock mono">1:14</span><div class="rs-body">
+            <h4>Bake out, cooling &mdash; 20 minutes<span class="dur mono">nothing to do</span></h4>
+            <p>Genuinely idle. Clean kitchen, boxes in the fridge, twenty minutes of nothing. If it feels like you've forgotten something, you haven't &mdash; that's the system working.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">1:34</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Weigh the slab, cut eight portions<span class="dur mono">8 min</span></h4>
+            <p>Line weighs and reads the lookup table out loud; Heat cuts and stacks with parchment between. Two people make this much less fiddly than it sounds.</p>
+          </div></div>
+          <div class="rs-step finish"><span class="clock mono">1:42</span><div class="rs-body">
+            <h4>Done, and the kitchen is already clean.</h4>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="session-head">
+          <div><span class="eyebrow">Session 02 &middot; Wednesday &middot; two-up</span><h3>Builds Friday through Sunday</h3></div>
+          <div class="session-meta"><span class="n mono">1 h 26</span><span class="lbl">wall clock &middot; dinner included</span></div>
+        </div>
+        <div class="runsheet">
+          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Stations, rice on<span class="dur mono">4 min</span></h4>
+            <p>3&frac12; cups dry on, six boxes out, oven to 350&deg;F.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:04</span><div class="rs-body">
+            <h4><span class="who r-heat">Heat</span>Ground beef, 5&frac12; lb<span class="dur mono">25 min</span></h4>
+          </div></div>
+          <div class="rs-step nested"><span class="clock mono">0:04</span><div class="rs-body">
+            <h4><span class="who r-line">Line</span>Boxes washed, salad topped up, line set<span class="dur mono">14 min</span></h4>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:29</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Mix the bake<span class="dur mono">5 min</span></h4>
+            <p>21 eggs, 480 g beef, 54 g butter. Into the oven.</p>
+          </div></div>
+          <div class="rs-step passive"><span class="clock mono">0:34</span><div class="rs-body">
+            <h4>Oven running &mdash; 25 minutes<span class="dur mono">passive</span></h4>
+            <p><b>This is the whole point of working two-up on a Wednesday.</b> Solo, dinner and the boxes compete for the same twenty minutes. Split, they don't.</p>
+          </div></div>
+          <div class="rs-step nested"><span class="clock mono">0:34</span><div class="rs-body">
+            <h4><span class="who r-heat">Heat</span>Sear tonight's flap steak<span class="dur mono">8 min</span></h4>
+            <p>207 g Mike, 180 g Janna. Rest it while Line finishes the boxes.</p>
+          </div></div>
+          <div class="rs-step protected"><span class="clock mono">0:34</span><div class="rs-body">
+            <h4><span class="who r-line">Line</span>Fill six lunch boxes<span class="dur mono">12 min</span></h4>
+            <p>250 g &times;3 and 210 g &times;3 beef, then 190 g and 130 g rice. Lids, fridge.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:46</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Weigh dinner onto plates, eat<span class="dur mono">~20 min</span></h4>
+            <p>Rice and vinaigrette weighed at the table's edge, as always. The bake finishes and cools while you eat.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">1:06</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Reset the kitchen<span class="dur mono">10 min</span></h4>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">1:19</span><div class="rs-body">
+            <h4><span class="who r-both">Both</span>Cut three breakfasts each<span class="dur mono">7 min</span></h4>
+          </div></div>
+          <div class="rs-step finish"><span class="clock mono">1:26</span><div class="rs-body">
+            <h4>Thursday through Saturday are handled.</h4>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><b>If only one of you is there, use the solo sheet.</b> Don't try to run the two-up timings alone &mdash; the portioning block is sized for two stations and you'll end up doing exactly what has always gone wrong: leaving the boxes until last.</p>
+      </div>
       </div>
 
       <h3 style="margin-top:2rem;font-size:1.05rem;">What each session cooks</h3>
@@ -1367,10 +1506,61 @@
         <div class="ramp-row"><span class="wk">Week 1</span><div><b>Breakfast only.</b><span class="d">One egg bake Sunday, one Wednesday. Lunch and dinner exactly as you were already eating them &mdash; genuinely, no changes, no guilt. The only goal is seven consecutive mornings that just happen &mdash; no cooking, no decisions, one honey weighing. That is the streak we have never had.</span></div></div>
         <div class="ramp-row"><span class="wk">Week 2</span><div><b>Add the lunch boxes.</b><span class="d">Now run the full Sunday and Wednesday sessions. Dinner still unstructured. This is the week you find out how long portioning actually takes in this kitchen &mdash; write the real number down.</span></div></div>
         <div class="ramp-row"><span class="wk">Week 3</span><div><b>Add dinner and the swap table.</b><span class="d">The full plan. By now the sessions are routine and dinner is the only decision left in the day.</span></div></div>
-        <div class="ramp-row"><span class="wk">Week 4+</span><div><b>Adjust the numbers, not the system.</b><span class="d">Weigh in weekly, same day, same conditions. If the scale isn't moving after three honest weeks, change the macro targets &mdash; not the system that is finally running.</span></div></div>
+        <div class="ramp-row"><span class="wk">Week 4+</span><div><b>Adjust the numbers, not the system.</b><span class="d">Weigh in weekly, same day, same conditions. If the scale goes flat for three honest weeks, drop one rice tier &mdash; see <a href="#stall">If the scale stalls</a>. Never change the system that is finally running.</span></div></div>
       </div>
 
-      <h3 style="margin-top:2rem;font-size:1.05rem;">When a day goes sideways</h3>
+
+      <h3 style="margin-top:2.4rem;font-size:1.05rem;" id="starting">What to actually expect</h3>
+      <p class="note" style="margin-top:0.4rem;">Starting weights, recorded 2026-09-01: <b>Mike 185 lb</b> (goal 165, 20 to lose) and <b>Janna 168 lb</b> (goal 135, 33 to lose). Both of you are in a real deficit at these numbers &mdash; roughly 275 kcal/day for Mike and 385 for Janna. The plan works from here. But it decelerates, and this is the table that decides whether you quit in week 4.</p>
+
+      <div class="table-scroll" style="margin-top:1rem;">
+        <table class="ledger">
+          <thead><tr><th>If you execute it</th><th>Mike</th><th>lost</th><th>Janna</th><th>lost</th></tr></thead>
+          <tbody>
+            <tr><td>Starting</td><td class="amt">185.0</td><td class="amt">&mdash;</td><td class="amt">168.0</td><td class="amt">&mdash;</td></tr>
+            <tr class="totals-row"><td>4 weeks <span class="alt">the danger point</span></td><td class="amt">182.9</td><td class="amt">2.1 lb</td><td class="amt">165.0</td><td class="amt">3.0 lb</td></tr>
+            <tr><td>12 weeks</td><td class="amt">179.4</td><td class="amt">5.6 lb</td><td class="amt">160.1</td><td class="amt">7.9 lb</td></tr>
+            <tr><td>26 weeks</td><td class="amt">175.2</td><td class="amt">9.8 lb</td><td class="amt">153.9</td><td class="amt">14.1 lb</td></tr>
+            <tr><td>52 weeks</td><td class="amt">171.0</td><td class="amt">14.0 lb</td><td class="amt">147.5</td><td class="amt">20.5 lb</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <p><b>Two pounds in a month is the plan working, not failing.</b> That is the whole reason this table is on the page. A month of perfect adherence buys about two pounds for Mike and three for Janna &mdash; and week three or four is exactly when the habit is most fragile and the temptation to call it useless is highest. It isn't useless. It is a 0.5 lb-per-week plan, by design, because the targets were built from goal weight rather than a crash deficit.</p>
+        <p><b>Janna will lose faster than Mike for most of the first year.</b> She's further from her goal, so her deficit is larger. That is arithmetic, not effort &mdash; don't read it as anything else.</p>
+      </div>
+
+      <div class="callout">
+        <p><b>These are projections from estimated metabolic rates, not measurements.</b> They assume roughly 16 kcal/lb for Mike and 15 for Janna. Your real numbers could be several percent either way, which over a year is the difference between landing on goal and stalling five pounds short. Nobody can know it in advance &mdash; which is exactly what the weekly weigh-in and the tiers below are for. They're the correction for a number that can only be discovered by living it.</p>
+      </div>
+
+      <h3 style="margin-top:2.4rem;font-size:1.05rem;" id="stall">If the scale stalls</h3>
+      <p class="note" style="margin-top:0.4rem;">Three consecutive weeks with no downward movement, weighed the same day under the same conditions. Then, and only then, drop <b>one</b> tier. Rice is the only thing that moves &mdash; protein stays for training, fat stays because it's the point of the diet. Everything else on this page is unchanged.</p>
+
+      <div class="table-scroll" style="margin-top:1rem;">
+        <table class="ledger">
+          <thead><tr><th>Tier</th><th>Mike &mdash; rice lunch / dinner</th><th>Mike day</th><th>Janna &mdash; rice lunch / dinner</th><th>Janna day</th></tr></thead>
+          <tbody>
+            <tr class="totals-row"><td><b>Start</b> <span class="alt">everywhere else on this page</span></td><td class="amt">190 / 215 g</td><td class="amt">2,691<br><span class="alt">180/145/166</span></td><td class="amt">130 / 130 g</td><td class="amt">2,135<br><span class="alt">148/118/120</span></td></tr>
+            <tr><td>Cut 1</td><td class="amt">150 / 175 g</td><td class="amt">2,590<br><span class="alt">178/145/143</span></td><td class="amt">105 / 105 g</td><td class="amt">2,072<br><span class="alt">147/118/106</span></td></tr>
+            <tr><td>Cut 2</td><td class="amt">115 / 135 g</td><td class="amt">2,496<br><span class="alt">176/145/122</span></td><td class="amt">80 / 80 g</td><td class="amt">2,010<br><span class="alt">145/118/92</span></td></tr>
+            <tr><td>Cut 3 <span class="alt">floor</span></td><td class="amt">75 / 95 g</td><td class="amt">2,396<br><span class="alt">174/145/100</span></td><td class="amt">55 / 55 g</td><td class="amt">1,947<br><span class="alt">144/118/78</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <p><b>Protein and fat barely move across the whole range</b> &mdash; Mike 180&rarr;174 g protein and 145 g fat at every tier, Janna 148&rarr;144 and 118 flat. That's the design. You are only ever removing rice.</p>
+        <p><b>One tier is worth about 100 kcal/day for Mike and 63 for Janna</b> &mdash; roughly 0.2 and 0.13 lb/week of extra loss. Small on purpose. A tier is a nudge, not a crash.</p>
+        <p><b>Only two numbers change in the kitchen:</b> the rice figure in the lunch-box portioning block, and the rice figure at dinner. Nothing about the egg bake, the sessions, the shopping list or the swap table moves. Write the current tier on the fridge so the person running the session doesn't have to remember it.</p>
+      </div>
+
+      <div class="callout warn">
+        <p><b>Two tiers down and still flat after three more weeks? Stop cutting.</b> At that point the food is not the problem &mdash; it's adherence drifting somewhere unweighed, or the starting estimate being off. Go back and check the honey, the sauce pours and the dinner meat for a week before touching rice again. Cutting a third time on bad data is how these plans die, and Cut 3 is a floor, not a step on the way to somewhere lower.</p>
+      </div>
+
+      <h3 style="margin-top:2.4rem;font-size:1.05rem;">When a day goes sideways</h3>
       <p class="note" style="margin-top:0.4rem;">It will. The plan has to survive it, or the first bad Tuesday takes the whole month with it.</p>
       <div class="recovery">
         <div class="rec-row"><span class="w">You skip breakfast entirely</span><span class="d">Eat the lunch box at lunch anyway. One missed meal is a 750-calorie day off target, not a failed week. Do not make it up at dinner &mdash; that is how the swap table stops meaning anything.</span></div>
@@ -1439,11 +1629,12 @@
     tabButtons.forEach(function(btn){
       btn.addEventListener('click', function(){
         var target = btn.getAttribute('data-tab');
-        document.querySelectorAll('.tab-btn').forEach(function(b){
+        var scope = btn.closest('section') || document;
+        scope.querySelectorAll('.tab-btn').forEach(function(b){
           b.classList.toggle('active', b === btn);
           b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
         });
-        document.querySelectorAll('.tab-panel').forEach(function(p){
+        scope.querySelectorAll('.tab-panel').forEach(function(p){
           p.classList.toggle('active', p.getAttribute('data-panel') === target);
         });
       });
