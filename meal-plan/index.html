@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Janna + Mike — Meal Prep Ledger</title>
-<meta name="description" content="Janna + Mike's animal-based weekly meal prep ledger — macros, batch cook, sauces, daily templates, and a 7-day protein calendar.">
+<meta name="description" content="Janna + Mike's animal-based meal plan — three repeatable meals a day, every portion weighed in grams, plus batch cook, sauces and shopping list.">
 <style>
   :root{
     --paper: #F1ECDD;
@@ -243,6 +243,7 @@
   }
   .ledger tr:last-child td{ border-bottom: none; }
   .ledger .amt{ font-family: var(--font-mono); white-space: nowrap; }
+  .ledger .amt .alt{ color: var(--ink-soft); font-size: 0.82em; }
   .table-scroll{ overflow-x: auto; }
 
   /* ---------- sauces ---------- */
@@ -279,19 +280,6 @@
   .totals-row td{ font-weight:700; }
   .totals-row .amt{ color: var(--ink); }
 
-  .opt-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-  .opt-col h4{
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--ink-soft);
-    margin: 0 0 0.6rem;
-  }
-  .opt-col ul{ margin:0; padding-left: 1.1rem; font-size: 0.86rem; }
-  .opt-col li{ margin-bottom: 0.5rem; }
-  .opt-col li b{ font-family: var(--font-mono); font-size: 0.78rem; }
-
   /* ---------- calendar / day detail ---------- */
   .swatch{
     display:inline-flex;
@@ -320,52 +308,96 @@
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
   }
-  .legend{ display:flex; flex-wrap:wrap; gap: 1rem; margin-bottom: 1.4rem; font-size: 0.8rem; color: var(--ink-soft); }
-
-  .week-list{ display:flex; flex-direction:column; gap:0.6rem; }
-  .day-detail{
-    border: 1px solid var(--line);
-    border-radius: 6px;
+  /* ---------- scale rules ---------- */
+  .scale-rules{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(215px,1fr));
+    gap: 0.9rem 1.4rem; margin-bottom: 1.6rem;
+    padding: 1.1rem 1.25rem;
     background: var(--paper-raised);
+    border: 1px solid var(--line); border-radius: 12px;
+  }
+  .rule-item{ display:flex; gap:0.7rem; align-items:flex-start; }
+  .rule-item .k{ font-size:0.72rem; color: var(--honey); flex-shrink:0; padding-top:0.15rem; }
+  .rule-item p{ font-size:0.84rem; color: var(--ink-soft); }
+  .rule-item p b{ color: var(--ink); }
+
+  /* ---------- weigh-out meal cards ---------- */
+  .meal-stack{ display:flex; flex-direction:column; gap:1rem; }
+  .meal-card{
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.15rem 1.25rem 0.6rem;
     box-shadow: var(--shadow);
-    overflow: hidden;
   }
-  .day-detail summary{
-    list-style: none;
-    cursor: pointer;
-    padding: 0.9rem 1.15rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
+  .meal-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+  .meal-head .eyebrow{ color: var(--honey); }
+  .meal-head h3{ font-size: 1.14rem; margin-top: 0.15rem; }
+  .meal-macro{ display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0; }
+  .meal-macro .mono{ font-size: 0.95rem; font-weight:600; }
+  .meal-macro .lbl{
+    font-family: var(--font-mono); font-size:0.62rem; letter-spacing:0.09em;
+    text-transform:uppercase; color: var(--ink-soft); margin-top:0.2rem;
   }
-  .day-detail summary::-webkit-details-marker{ display:none; }
-  .day-detail summary .dow{
-    font-family: var(--font-display); font-size: 1.08rem;
-    width: 3.4rem; flex-shrink: 0;
-  }
-  .day-detail summary .note{
-    font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-soft);
-    width: 100%; order: 3; margin-top: -0.3rem;
-  }
-  .day-detail summary .chips{ display:flex; gap:1rem; flex-wrap:wrap; flex:1; align-items:center; }
-  .day-detail summary .chevron{
-    font-family: var(--font-mono); color: var(--ink-soft);
-    transition: transform .15s ease; flex-shrink:0;
-  }
-  .day-detail[open] summary .chevron{ transform: rotate(90deg); }
-  .day-detail .panel{
-    padding: 0.3rem 1.15rem 1.3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+  .meal-sub{ font-size:0.84rem; color: var(--ink-soft); margin-top:0.5rem; max-width:64ch; }
+  table.weigh{ margin-top: 0.9rem; }
+  table.weigh td{
     border-top: 1px solid var(--line);
+    padding: 0.62rem 0.5rem 0.62rem 0;
+    vertical-align: baseline;
   }
-  .who-block h4{
-    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
-    letter-spacing: 0.07em; color: var(--honey); margin: 0.9rem 0 0.55rem;
+  table.weigh tr:first-child td{ border-top: none; }
+  table.weigh td:last-child{ padding-right: 0; }
+  table.weigh .item{ font-size: 0.92rem; width: 40%; }
+  table.weigh .g{
+    font-size: 1.32rem; font-weight: 700; color: var(--ink);
+    white-space: nowrap; text-align: right; width: 5.4rem; padding-right: 1rem;
   }
-  .who-block:first-child h4{ margin-top: 0.8rem; }
+  table.weigh .g span{ font-size: 0.78rem; font-weight: 400; color: var(--ink-soft); margin-left: 0.12rem; }
+  table.weigh .hint{ font-size: 0.8rem; color: var(--ink-soft); }
+  table.weigh .amt{
+    font-size: 0.78rem; color: var(--ink-soft);
+    text-align: right; white-space: nowrap; width: 6.2rem;
+  }
+
+  /* ---------- day total ---------- */
+  .day-total{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap: wrap; gap: 1.2rem;
+    background: var(--ink); color: var(--paper);
+    border-radius: 14px; padding: 1.1rem 1.35rem;
+  }
+  .day-total .dt-lead .eyebrow{ color: var(--honey); }
+  .day-total .dt-lead h3{ font-size: 1.14rem; color: var(--paper); margin-top:0.15rem; }
+  .dt-nums{ display:flex; gap: 1.9rem; flex-wrap: wrap; }
+  .dt-cell{ display:flex; flex-direction:column; gap:0.12rem; }
+  .dt-cell .n{ font-size: 1.32rem; font-weight: 700; line-height:1.1; }
+  .dt-cell .l{
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing:0.09em;
+    text-transform: uppercase; opacity: 0.62;
+  }
+  .dt-cell .t{ font-size: 0.68rem; opacity: 0.62; }
+
+  /* ---------- swap table ---------- */
+  .swap-table td:first-child{ min-width: 190px; }
+  .swap-table .cut-note{
+    display:block; font-size:0.76rem; color: var(--ink-soft); margin-top:0.3rem;
+  }
+  .swap-table .amt{ white-space: normal; }
+
+  /* ---------- week strip ---------- */
+  .week-strip{ display:grid; grid-template-columns: repeat(7, 1fr); gap: 0.6rem; }
+  .daycell{
+    background: var(--paper-raised); border:1px solid var(--line); border-radius: 11px;
+    padding: 0.85rem 0.75rem; display:flex; flex-direction:column; gap:0.35rem; min-width:0;
+  }
+  .daycell.fresh{ border-color: var(--ink); }
+  .daycell .dow{
+    font-family: var(--font-mono); font-size:0.68rem; letter-spacing:0.09em;
+    text-transform:uppercase; color: var(--honey);
+  }
+  .daycell .cut{ font-size:0.92rem; font-weight:600; line-height:1.25; }
+  .daycell .tag{ font-family: var(--font-mono); font-size:0.66rem; color: var(--ink-soft); line-height:1.35; }
 
   /* ---------- shopping list ---------- */
   .shop-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.2rem; }
@@ -424,14 +456,40 @@
     .nav-links{ flex-direction:row; }
     .nav-goals{ display:none; }
     main{ padding: 2rem 1.25rem 4rem; }
-    .macro-grid, .sauce-grid, .opt-grid{ grid-template-columns: 1fr; }
+    .macro-grid, .sauce-grid{ grid-template-columns: 1fr; }
     .shop-grid{ grid-template-columns: 1fr 1fr; }
+    .week-strip{ grid-template-columns: repeat(3, 1fr); }
+    table.weigh .hint{ display:none; }
+    table.weigh .item{ width: auto; }
   }
+  /* swap table collapses to per-person lines on a phone */
+  @media (max-width: 760px){
+    .swap-table thead{ display:none; }
+    .swap-table tbody, .swap-table tr{ display:block; }
+    .swap-table tr{ padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .swap-table tr:last-child{ border-bottom: none; }
+    .swap-table td{ display:block; border:none; padding:0; }
+    .swap-table td:first-child{ min-width:0; }
+    .swap-table td:nth-child(2), .swap-table td:nth-child(4){ margin-top:0.6rem; }
+    .swap-table td:nth-child(2)::before{ content:"Mike"; }
+    .swap-table td:nth-child(4)::before{ content:"Janna"; }
+    .swap-table td:nth-child(2)::before, .swap-table td:nth-child(4)::before{
+      display:inline-block; width:4.3rem;
+      font-family: var(--font-mono); font-size:0.7rem;
+      text-transform:uppercase; letter-spacing:0.07em; color: var(--honey);
+    }
+    .swap-table td:nth-child(3), .swap-table td:nth-child(5){
+      padding-left: 4.3rem; font-size: 0.84rem; color: var(--ink-soft);
+    }
+  }
+
   @media (max-width: 520px){
     .shop-grid{ grid-template-columns: 1fr; }
     .macro-body{ flex-direction: column; align-items: flex-start; }
-    .day-detail summary .chips{ order: 2; width: 100%; }
-    .day-detail summary .chevron{ order: 1; margin-left: auto; }
+    .week-strip{ grid-template-columns: 1fr 1fr; }
+    .dt-nums{ gap: 1.1rem; }
+    table.weigh .g{ font-size: 1.15rem; width: 4.6rem; padding-right: 0.7rem; }
+    table.weigh .amt{ display:none; }
   }
 </style>
 </head>
@@ -440,17 +498,18 @@
 <div class="shell">
   <nav class="nav">
     <div class="nav-mast">
-      <span class="eyebrow">Animal-Based · Weekly Ledger</span>
+      <span class="eyebrow">Animal-Based · Weighed Daily</span>
       <h1>Janna + Mike</h1>
-      <span class="sub">Meal prep guide, batch cook &amp; macros</span>
+      <span class="sub">Three repeatable meals, portioned in grams</span>
     </div>
     <div class="nav-links">
       <a href="#macros">Macro Targets</a>
+      <a href="#weigh">Three Meals, Weighed</a>
+      <a href="#swaps">Dinner Swaps</a>
+      <a href="#week">The Week</a>
       <a href="#batch">Sunday Batch</a>
       <a href="#sauces">Sauces</a>
-      <a href="#templates">Daily Templates</a>
-      <a href="#calendar">7-Day Calendar</a>
-      <a href="#portions">Portion Guide</a>
+      <a href="#portions">Gram Reference</a>
       <a href="#shopping">Shopping List</a>
       <a href="#tips">Quick Tips</a>
     </div>
@@ -532,24 +591,228 @@
 
     <hr class="rule">
 
-    <section id="batch">
+    <section id="weigh">
       <div class="section-head">
-        <h2>Sunday Batch Cook</h2>
-        <p class="note">Do this once. Mini top-up Wednesday: fresh rice + fresh flap steak — flap steak doesn't reheat as well, so it's cooked fresh instead of batched.</p>
+        <h2>Three Meals, Weighed</h2>
+        <p class="note">The same three meals every day — no deciding, no rotating templates. Every number below is <b>grams on the scale</b>, and every meat weight is <b>cooked weight</b>, because that's what actually goes in the Tupperware. Weigh it once, and the day lands on target without any arithmetic.</p>
+      </div>
+
+      <div class="scale-rules">
+        <div class="rule-item"><span class="k mono">01</span><p><b>Tare the container.</b> Tupperware on the scale, press tare, then add food. The lid stays off.</p></div>
+        <div class="rule-item"><span class="k mono">02</span><p><b>Cooked weight, always.</b> Meat and rice are weighed after cooking, out of the pan, not raw.</p></div>
+        <div class="rule-item"><span class="k mono">03</span><p><b>Sauce goes on the scale too.</b> Pour the vinaigrette straight into the cup on the scale — it carries real fat, so eyeballing it is what drifts.</p></div>
+        <div class="rule-item"><span class="k mono">04</span><p><b>Close enough is close enough.</b> Within 5 g is on target. Don't chase the last gram.</p></div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="mike" role="tab" aria-selected="true">Mike</button>
+        <button class="tab-btn" data-tab="janna" role="tab" aria-selected="false">Janna</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="mike">
+        <div class="meal-stack">
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Breakfast</span><h3>Eggs, beef, banana</h3></div>
+            <div class="meal-macro"><span class="mono">46 / 43 / 45</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Six minutes on the gas stovetop. Same thing every single morning.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Large eggs</td><td class="g mono">176<span>g</span></td><td class="hint">4 large, out of the shell</td><td class="amt mono">22 / 17 / 1</td></tr>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">90<span>g</span></td><td class="hint">one scoop from the Sunday tub</td><td class="amt mono">22 / 18 / 0</td></tr>
+            <tr><td class="item">Butter</td><td class="g mono">10<span>g</span></td><td class="hint">to cook the eggs in</td><td class="amt mono">0.1 / 8 / 0</td></tr>
+            <tr><td class="item">Banana, peeled</td><td class="g mono">118<span>g</span></td><td class="hint">1 medium</td><td class="amt mono">1 / 0.4 / 27</td></tr>
+            <tr><td class="item">Raw honey</td><td class="g mono">20<span>g</span></td><td class="hint">about 1 tbsp</td><td class="amt mono">0.1 / 0 / 16</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Lunch box</span><h3>Beef, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">69 / 51 / 56</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Weighed into the Tupperware on Sunday. No dressing — the 80/20 fat is the sauce.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">250<span>g</span></td><td class="hint">pack 5 boxes Sunday</td><td class="amt mono">62 / 50 / 0</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">190<span>g</span></td><td class="hint">packed warm, lid on cold</td><td class="amt mono">5 / 0.6 / 53</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">separate container, stays crisp</td><td class="amt mono">1 / 0.3 / 3</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Dinner</span><h3>Tonight's meat, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">65 / 51 / 65</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Meat grams come from the swap table below. Flap steak shown — the default fresh night.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Flap steak, seared</td><td class="g mono">207<span>g</span></td><td class="hint">or swap — see table below</td><td class="amt mono">58 / 29 / 0</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">215<span>g</span></td><td class="hint">fresh batch Sun + Wed</td><td class="amt mono">6 / 0.6 / 60</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">the house salad</td><td class="amt mono">1 / 0.3 / 3</td></tr>
+            <tr><td class="item">Mustard vinaigrette</td><td class="g mono">32<span>g</span></td><td class="hint">poured onto the scale</td><td class="amt mono">0 / 21 / 1</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="day-total">
+          <div class="dt-lead"><span class="eyebrow">Day total</span><h3>Mike</h3></div>
+          <div class="dt-nums">
+            <div class="dt-cell"><span class="n mono">180g</span><span class="l">protein</span><span class="t mono">target 180</span></div>
+            <div class="dt-cell"><span class="n mono">145g</span><span class="l">fat</span><span class="t mono">target 145</span></div>
+            <div class="dt-cell"><span class="n mono">166g</span><span class="l">carbs</span><span class="t mono">target 165</span></div>
+            <div class="dt-cell"><span class="n mono">2,691</span><span class="l">kcal</span><span class="t mono">target 2,685</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="janna">
+        <div class="meal-stack">
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Breakfast</span><h3>Eggs, beef, banana</h3></div>
+            <div class="meal-macro"><span class="mono">36 / 33 / 40</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Same shell as Mike's, scaled to her frame — not a smaller version of his plan.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Large eggs</td><td class="g mono">132<span>g</span></td><td class="hint">3 large, out of the shell</td><td class="amt mono">17 / 13 / 0.9</td></tr>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">70<span>g</span></td><td class="hint">one scoop from the Sunday tub</td><td class="amt mono">18 / 14 / 0</td></tr>
+            <tr><td class="item">Butter</td><td class="g mono">8<span>g</span></td><td class="hint">to cook the eggs in</td><td class="amt mono">0.1 / 6 / 0</td></tr>
+            <tr><td class="item">Banana, peeled</td><td class="g mono">118<span>g</span></td><td class="hint">1 medium</td><td class="amt mono">1 / 0.4 / 27</td></tr>
+            <tr><td class="item">Raw honey</td><td class="g mono">15<span>g</span></td><td class="hint">about 2 tsp</td><td class="amt mono">0 / 0 / 12</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Lunch box</span><h3>Beef, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">57 / 43 / 40</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Weighed into the Tupperware on Sunday. No dressing — the 80/20 fat is the sauce.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">210<span>g</span></td><td class="hint">pack 5 boxes Sunday</td><td class="amt mono">52 / 42 / 0</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">130<span>g</span></td><td class="hint">packed warm, lid on cold</td><td class="amt mono">4 / 0.4 / 36</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">separate container, stays crisp</td><td class="amt mono">1 / 0.3 / 3</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Dinner</span><h3>Tonight's meat, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">55 / 42 / 41</span><span class="lbl">P / F / C</span></div>
+          </div>
+          <p class="meal-sub">Meat grams come from the swap table below. Flap steak shown — the default fresh night.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Flap steak, seared</td><td class="g mono">180<span>g</span></td><td class="hint">or swap — see table below</td><td class="amt mono">50 / 25 / 0</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">130<span>g</span></td><td class="hint">fresh batch Sun + Wed</td><td class="amt mono">4 / 0.4 / 36</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">the house salad</td><td class="amt mono">1 / 0.3 / 3</td></tr>
+            <tr><td class="item">Mustard vinaigrette</td><td class="g mono">24<span>g</span></td><td class="hint">poured onto the scale</td><td class="amt mono">0 / 16 / 1</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="day-total">
+          <div class="dt-lead"><span class="eyebrow">Day total</span><h3>Janna</h3></div>
+          <div class="dt-nums">
+            <div class="dt-cell"><span class="n mono">148g</span><span class="l">protein</span><span class="t mono">target 148</span></div>
+            <div class="dt-cell"><span class="n mono">118g</span><span class="l">fat</span><span class="t mono">target 118</span></div>
+            <div class="dt-cell"><span class="n mono">120g</span><span class="l">carbs</span><span class="t mono">target 120</span></div>
+            <div class="dt-cell"><span class="n mono">2,135</span><span class="l">kcal</span><span class="t mono">target 2,134</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section id="swaps">
+      <div class="section-head">
+        <h2>Dinner Protein Swaps</h2>
+        <p class="note">Breakfast and the lunch box never change. Dinner is the one slot that moves — and only two numbers move with it: how much meat, and how much sauce. Leaner cuts need more sauce to carry the fat; 80/20 ground beef needs almost none.</p>
       </div>
       <div class="table-scroll">
-        <table class="ledger">
-          <thead><tr><th>Item</th><th>Appliance</th><th>Amount</th><th>Notes</th></tr></thead>
+        <table class="ledger swap-table">
+          <thead>
+            <tr>
+              <th>Tonight's meat</th>
+              <th>Mike — meat</th>
+              <th>Mike — sauce</th>
+              <th>Janna — meat</th>
+              <th>Janna — sauce</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Tri-tip</td><td>Oven, then sear on stovetop</td><td class="amt">3–4 lbs</td><td>Low roast to temp, hard sear in cast iron to finish, slice after resting</td></tr>
-            <tr><td>Ground beef 80/20</td><td>Gas stovetop</td><td class="amt">4–5 lbs</td><td>Salt only, brown in batches</td></tr>
-            <tr><td>Chicken breast</td><td>Air fryer, 375°F</td><td class="amt">3–4 lbs</td><td>15–18 min, slice after resting</td></tr>
-            <tr><td>White rice</td><td>Rice cooker or Instant Pot</td><td class="amt">4–5 cups dry</td><td>Whichever's free — good in fridge 5 days</td></tr>
-            <tr><td>Romaine + cabbage</td><td>Wash / shred ahead</td><td class="amt">—</td><td>Store with paper towel in Tupperware, stays crisp ~5 days</td></tr>
-            <tr><td>Flap steak <span class="fresh-badge">fresh</span></td><td>Stovetop or air fryer</td><td class="amt">Mon / Wed / Sat</td><td>High heat sear, ~3–4 min per side</td></tr>
+            <tr>
+              <td><span class="swatch fs">Flap steak</span><span class="cut-note">seared fresh, Mon / Wed / Sat</span></td>
+              <td class="amt">207 g</td><td class="amt">32 g vinaigrette</td>
+              <td class="amt">180 g</td><td class="amt">24 g vinaigrette</td>
+            </tr>
+            <tr>
+              <td><span class="swatch tt">Tri-tip</span><span class="cut-note">reheated from the Sunday roast</span></td>
+              <td class="amt">200 g</td><td class="amt">39 g vinaigrette</td>
+              <td class="amt">174 g</td><td class="amt">31 g vinaigrette</td>
+            </tr>
+            <tr>
+              <td><span class="swatch gb">Ground beef 80/20</span><span class="cut-note">the fallback — always in the fridge</span></td>
+              <td class="amt">232 g</td><td class="amt">none needed</td>
+              <td class="amt">202 g</td><td class="amt">none needed</td>
+            </tr>
+            <tr>
+              <td><span class="swatch cb">Chicken breast</span><span class="cut-note">air fryer, 375&deg;F &middot; also drop rice</span></td>
+              <td class="amt">187 g</td><td class="amt">41 g garlic-honey butter<br>+ 29 g vinaigrette</td>
+              <td class="amt">163 g</td><td class="amt">34 g garlic-honey butter<br>+ 24 g vinaigrette</td>
+            </tr>
           </tbody>
         </table>
       </div>
+      <p class="note" style="margin-top:1rem;">Rice and salad stay at the dinner amounts on the card — <b>215 g rice for Mike, 130 g for Janna</b>, 100 g salad each — with one exception: on chicken nights the garlic-honey butter brings its own honey, so drop the rice to <b>180 g / 100 g</b> to stay on carbs. Chicken is the least efficient cut here — it takes about 70 g of added fat to reach the same place a flap steak reaches on 32 g, which is why it's a once-a-week slot, not a staple.</p>
+    </section>
+
+    <hr class="rule">
+
+    <section id="week">
+      <div class="section-head">
+        <h2>The Week</h2>
+        <p class="note">This is the whole calendar now. Breakfast and lunch are identical seven days a week — the only thing this strip tells you is which meat to pull for dinner, and which nights get cooked fresh.</p>
+      </div>
+      <div class="week-strip">
+        <div class="daycell fresh"><span class="dow">Mon</span><span class="cut">Flap steak</span><span class="tag">fresh sear</span></div>
+        <div class="daycell"><span class="dow">Tue</span><span class="cut">Tri-tip</span><span class="tag">reheat</span></div>
+        <div class="daycell fresh"><span class="dow">Wed</span><span class="cut">Flap steak</span><span class="tag">fresh sear &middot; rice top-up</span></div>
+        <div class="daycell"><span class="dow">Thu</span><span class="cut">Tri-tip</span><span class="tag">reheat</span></div>
+        <div class="daycell fresh"><span class="dow">Fri</span><span class="cut">Chicken</span><span class="tag">air fryer &middot; less rice</span></div>
+        <div class="daycell fresh"><span class="dow">Sat</span><span class="cut">Flap steak</span><span class="tag">fresh sear</span></div>
+        <div class="daycell"><span class="dow">Sun</span><span class="cut">Ground beef</span><span class="tag">prep day &middot; simple</span></div>
+      </div>
+      <p class="note" style="margin-top:1.1rem;">If a night goes sideways, ground beef is always the answer — 232 g for Mike, 202 g for Janna, no sauce, and the day still lands. That's the whole point of keeping a tub of it in the fridge.</p>
+    </section>
+
+    <hr class="rule">
+
+    <section id="batch">
+      <div class="section-head">
+        <h2>Sunday Batch Cook</h2>
+        <p class="note">One session. The amounts below are what the week actually eats at the gram portions above — raw weights to buy, cooked weights to end up with. Mini top-up Wednesday: a fresh rice batch, nothing else.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="ledger">
+          <thead><tr><th>Item</th><th>Appliance</th><th>Buy (raw)</th><th>Yields (cooked)</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Ground beef 80/20</td><td>Gas stovetop</td><td class="amt">15 lb<br><span class="alt">6,800 g</span></td><td class="amt">~4,800 g</td><td>The workhorse — breakfast and every lunch box. Salt only, brown in batches, don't drain the fat</td></tr>
+            <tr><td>Tri-tip</td><td>Oven, then sear on stovetop</td><td class="amt">2.5 lb<br><span class="alt">1,150 g</span></td><td class="amt">~750 g</td><td>Tue + Thu dinners. Low roast to temp, hard sear in cast iron, slice after resting</td></tr>
+            <tr><td>White rice</td><td>Rice cooker or Instant Pot</td><td class="amt">8 cups dry<br><span class="alt">1,550 g</span></td><td class="amt">~4,650 g</td><td>Split it: 5 cups Sunday, 3 cups Wednesday. Good in the fridge 5 days</td></tr>
+            <tr><td>Romaine + cabbage</td><td>Wash / shred ahead</td><td class="amt">6 lb<br><span class="alt">2,800 g</span></td><td class="amt">~2,800 g</td><td>100 g per person per meal &times; 4 meals a day. Paper towel in the Tupperware, stays crisp ~5 days</td></tr>
+            <tr><td>Sauces</td><td>Blender or whisk</td><td class="amt">1 batch each</td><td class="amt">300 g / 140 g</td><td>Vinaigrette and garlic-honey butter — recipes and gram weights below</td></tr>
+            <tr><td>Flap steak <span class="fresh-badge">fresh</span></td><td>Stovetop or air fryer</td><td class="amt">3.5 lb<br><span class="alt">1,600 g</span></td><td class="amt">~1,160 g</td><td>Mon / Wed / Sat — cooked that night, not batched. High heat sear ~3&ndash;4 min per side</td></tr>
+            <tr><td>Chicken breast <span class="fresh-badge">fresh</span></td><td>Air fryer, 375&deg;F</td><td class="amt">1 lb<br><span class="alt">450 g</span></td><td class="amt">~350 g</td><td>Friday only. 15&ndash;18 min, slice after resting</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:1rem;">Then <b>portion straight into the Tupperware while it's still on the counter</b> — 5 lunch boxes each, weighed, lids on, in the fridge. The whole plan lives or dies on this step: if the boxes are built, the week runs itself; if they aren't, you're weighing at 6 a.m. and you won't.</p>
     </section>
 
     <hr class="rule">
@@ -563,423 +826,70 @@
         <div class="sauce-card">
           <span class="num">01</span>
           <h3>Garlic-Honey Butter</h3>
-          <p>Melted butter + raw honey + pinch salt + minced garlic.</p>
-          <div class="use">Drizzle on meat</div>
+          <p><b>100 g melted butter + 40 g raw honey</b> + pinch salt + minced garlic. Makes 140 g.</p>
+          <div class="use">Chicken nights &middot; 58% fat</div>
         </div>
         <div class="sauce-card">
           <span class="num">02</span>
           <h3>Raw Milk Ranch-Style</h3>
           <p>A2 half &amp; half + melted butter + salt + garlic powder, whisked.</p>
-          <div class="use">Salad / slaw dressing</div>
+          <div class="use">Backup dressing &middot; not in the gram math</div>
         </div>
         <div class="sauce-card">
           <span class="num">03</span>
           <h3>Maple-Butter</h3>
           <p>Melted butter + maple syrup + pinch salt.</p>
-          <div class="use">Steak or fruit side</div>
+          <div class="use">Treat &middot; not in the gram math</div>
         </div>
         <div class="sauce-card">
           <span class="num">04</span>
           <h3>Mustard Vinaigrette</h3>
-          <p>Olive oil + balsamic vinegar + French mustard + garlic + salt + pepper, whisked.</p>
-          <div class="use">The house salad dressing</div>
+          <p><b>200 g olive oil + 65 g balsamic + 20 g French mustard</b> + 15 g water, garlic, salt, pepper. Makes 300 g.</p>
+          <div class="use">The house dressing &middot; 67% fat</div>
         </div>
       </div>
-      <p class="note" style="margin-top:1rem;">The vinaigrette carries real fat (the olive oil), so it's now doing part of the job the meat-sauces used to do alone — that's why the pours below are smaller than before. Mike: 2 tbsp on the salad. Janna: 1.5 tbsp. On the fattiest nights (flap steak, ground beef dinner) it drops to 1 tbsp each, since the meat's already rich enough.</p>
-    </section>
-
-    <hr class="rule">
-
-    <section id="templates">
-      <div class="section-head">
-        <h2>Daily Meal Templates</h2>
-        <p class="note">Amounts tuned to hit each person's macro targets. Both totals run ~10g protein under target — close enough given real-world measuring.</p>
-      </div>
-
-      <div class="tabs" role="tablist">
-        <button class="tab-btn active" data-tab="mike" role="tab" aria-selected="true">Mike</button>
-        <button class="tab-btn" data-tab="janna" role="tab" aria-selected="false">Janna</button>
-      </div>
-
-      <div class="tab-panel active" data-panel="mike">
-        <div class="table-scroll">
-          <table class="ledger">
-            <thead><tr><th>Meal</th><th>Amounts</th><th>P / F / C</th></tr></thead>
-            <tbody>
-              <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated meat + 1 banana + 1 tbsp raw honey, cooked in butter</td><td class="amt">47 / 36 / 46</td></tr>
-              <tr><td>Lunch</td><td>7 oz meat + 1 cup rice + salad w/ 2 tbsp mustard vinaigrette</td><td class="amt">53 / 56 / 47</td></tr>
-              <tr><td>Dinner</td><td>9 oz meat + 1.5 cups rice + salad w/ 1 tbsp mustard vinaigrette</td><td class="amt">70 / 56 / 69</td></tr>
-              <tr class="totals-row"><td>Day total</td><td>target 180 / 145 / 165</td><td class="amt">170 / 148 / 162</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="janna">
-        <div class="table-scroll">
-          <table class="ledger">
-            <thead><tr><th>Meal</th><th>Amounts</th><th>P / F / C</th></tr></thead>
-            <tbody>
-              <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated meat + 1 banana + 2 tbsp a2 half &amp; half</td><td class="amt">37 / 31 / 30</td></tr>
-              <tr><td>Lunch</td><td>6 oz meat + 1 cup rice + salad w/ 1½ tbsp mustard vinaigrette</td><td class="amt">46 / 46 / 47</td></tr>
-              <tr><td>Dinner</td><td>7 oz meat + 1 cup rice + salad w/ 1 tbsp mustard vinaigrette</td><td class="amt">53 / 46 / 46</td></tr>
-              <tr class="totals-row"><td>Day total</td><td>target 148 / 118 / 120</td><td class="amt">136 / 123 / 123</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <p class="note" style="margin-top:0.9rem;">These are the baseline shapes. The mustard vinaigrette now carries a good share of the fat at lunch and dinner, so ground beef nights need no extra sauce at all — leaner cuts like chicken and tri-tip still get a pour of garlic-honey butter on top. See exact amounts per protein in the day-by-day detail below.</p>
-
-      <div class="opt-grid">
-        <div class="opt-col">
-          <h4>Breakfast options</h4>
-          <ul>
-            <li><b>A</b> — Scrambled eggs + reheated meat in butter — hot, ~5 min</li>
-            <li><b>B</b> — A2 whole milk yogurt (Mike) or coconut yogurt (Janna) + raw honey + banana</li>
-            <li><b>C</b> — Raw milk + raw honey + banana, blended — 30 sec, drink on the way out</li>
-            <li><b>D</b> — Reheated meat + 2 fried eggs in butter — good on strength days</li>
-            <li><b>E</b> — Reheated meat + raw cabbage slaw with ranch sauce — no cooking</li>
-          </ul>
-        </div>
-        <div class="opt-col">
-          <h4>Lunch options</h4>
-          <ul>
-            <li><b>A</b> — Ground beef + rice, salad with mustard vinaigrette — no extra sauce needed</li>
-            <li><b>B</b> — Tri-tip slices + rice + a little garlic-honey butter, salad with mustard vinaigrette</li>
-            <li><b>C</b> — Chicken breast + rice + garlic-honey butter, salad with mustard vinaigrette</li>
-          </ul>
-        </div>
-        <div class="opt-col">
-          <h4>Dinner</h4>
-          <ul>
-            <li><b>Fresh nights</b> (Mon/Wed/Sat) — flap steak, seared fresh + rice + salad w/ vinaigrette, no extra sauce</li>
-            <li><b>Batch nights</b> — tri-tip or chicken reheated + rice + garlic-honey butter + salad w/ vinaigrette; ground beef needs no extra sauce</li>
-            <li><b>Sunday</b> — light: ground beef + rice, prep day</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <hr class="rule">
-
-    <section id="calendar">
-      <div class="section-head">
-        <h2>7-Day Calendar</h2>
-        <p class="note">Click a day to open the full breakdown — amounts, which sauce, and the macros it lands on for each of you. Sauce size flexes with how lean that day's protein is; leaner meat gets a bigger pour.</p>
-      </div>
-      <div class="legend">
-        <span class="swatch gb">Ground beef</span>
-        <span class="swatch tt">Tri-tip</span>
-        <span class="swatch cb">Chicken breast</span>
-        <span class="swatch fs">Flap steak</span>
-        <span class="fresh-badge">fresh = cooked that day, not batched</span>
-      </div>
-
-      <div class="week-list">
-
-        <details class="day-detail" open>
-          <summary>
-            <span class="dow">Mon</span>
-            <span class="chips">
-              <span class="swatch gb">Ground beef</span>
-              <span class="swatch tt">Tri-tip</span>
-              <span class="swatch fs">Flap steak</span>
-              <span class="fresh-badge">fresh</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated ground beef + 1 banana</td><td>1 tbsp raw honey</td><td class="amt">46/35/46</td></tr>
-                  <tr><td>Lunch</td><td>6 oz tri-tip + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">52/55/51</td></tr>
-                  <tr><td>Dinner</td><td>9.5 oz flap steak, fresh sear + 1.5 cups rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">70/59/69</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">168/149/166</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated ground beef + 1 banana</td><td>2 tbsp a2 half &amp; half</td><td class="amt">37/31/30</td></tr>
-                  <tr><td>Lunch</td><td>5.5 oz tri-tip + 1 cup rice + salad</td><td>Garlic-honey butter, 1½ tbsp + mustard vinaigrette, 1½ tbsp</td><td class="amt">48/44/50</td></tr>
-                  <tr><td>Dinner</td><td>7 oz flap steak, fresh sear + 1 cup rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">53/46/46</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">138/121/126</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Tue</span>
-            <span class="chips">
-              <span class="swatch cb">Chicken breast</span>
-              <span class="swatch gb">Ground beef</span>
-              <span class="swatch tt">Tri-tip</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 2.5 oz reheated chicken + 1 banana</td><td>1 tbsp raw honey + 1 tbsp butter (chicken's lean, needs it)</td><td class="amt">45/35/46</td></tr>
-                  <tr><td>Lunch</td><td>7 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 2 tbsp — no extra sauce needed</td><td class="amt">53/56/47</td></tr>
-                  <tr><td>Dinner</td><td>8 oz tri-tip + 1.5 cups rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">71/60/74</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">169/151/167</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2 oz reheated chicken + 1 banana</td><td>2 tbsp a2 half &amp; half + 1 tbsp butter</td><td class="amt">37/31/30</td></tr>
-                  <tr><td>Lunch</td><td>6 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 1½ tbsp — no extra sauce needed</td><td class="amt">46/46/47</td></tr>
-                  <tr><td>Dinner</td><td>6 oz tri-tip + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 1½ tbsp</td><td class="amt">52/50/51</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">135/127/128</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Wed</span>
-            <span class="chips">
-              <span class="swatch tt">Tri-tip</span>
-              <span class="swatch cb">Chicken breast</span>
-              <span class="swatch fs">Flap steak</span>
-              <span class="fresh-badge">fresh · top-up</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated tri-tip + 1 banana</td><td>1 tbsp raw honey + 1 tbsp butter</td><td class="amt">47/38/46</td></tr>
-                  <tr><td>Lunch</td><td>6 oz chicken + 1 cup rice + salad</td><td>Garlic-honey butter, 2½ tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">56/55/51</td></tr>
-                  <tr><td>Dinner</td><td>9.5 oz flap steak, fresh sear (top-up night) + 1.5 cups rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">70/59/69</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">173/152/166</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated tri-tip + 1 banana</td><td>2 tbsp a2 half &amp; half + 2 tsp butter</td><td class="amt">38/33/30</td></tr>
-                  <tr><td>Lunch</td><td>5 oz chicken + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 1½ tbsp</td><td class="amt">48/43/51</td></tr>
-                  <tr><td>Dinner</td><td>7 oz flap steak, fresh sear + 1 cup rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">53/46/46</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">139/122/127</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Thu</span>
-            <span class="chips">
-              <span class="swatch gb">Ground beef</span>
-              <span class="swatch tt">Tri-tip</span>
-              <span class="swatch gb">Ground beef</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated ground beef + 1 banana</td><td>1 tbsp raw honey</td><td class="amt">46/35/46</td></tr>
-                  <tr><td>Lunch</td><td>6 oz tri-tip + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">52/55/51</td></tr>
-                  <tr><td>Dinner</td><td>9 oz ground beef + 1.5 cups rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">70/56/69</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">168/146/166</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated ground beef + 1 banana</td><td>2 tbsp a2 half &amp; half</td><td class="amt">37/31/30</td></tr>
-                  <tr><td>Lunch</td><td>5.5 oz tri-tip + 1 cup rice + salad</td><td>Garlic-honey butter, 1½ tbsp + mustard vinaigrette, 1½ tbsp</td><td class="amt">48/44/50</td></tr>
-                  <tr><td>Dinner</td><td>7 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">53/46/46</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">138/121/126</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Fri</span>
-            <span class="chips">
-              <span class="swatch cb">Chicken breast</span>
-              <span class="swatch gb">Ground beef</span>
-              <span class="swatch cb">Chicken breast</span>
-              <span class="fresh-badge">fresh</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 2.5 oz reheated chicken + 1 banana</td><td>1 tbsp raw honey + 1 tbsp butter</td><td class="amt">45/35/46</td></tr>
-                  <tr><td>Lunch</td><td>7 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 2 tbsp — no extra sauce needed</td><td class="amt">53/56/47</td></tr>
-                  <tr><td>Dinner</td><td>7 oz chicken, fresh + 1.5 cups rice + salad</td><td>Garlic-honey butter, 2½ tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">67/56/74</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">165/147/167</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2 oz reheated chicken + 1 banana</td><td>2 tbsp a2 half &amp; half + 1 tbsp butter</td><td class="amt">37/31/30</td></tr>
-                  <tr><td>Lunch</td><td>6 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 1½ tbsp — no extra sauce needed</td><td class="amt">46/46/47</td></tr>
-                  <tr><td>Dinner</td><td>5.5 oz chicken, fresh + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">52/44/51</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">135/121/128</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Sat</span>
-            <span class="chips">
-              <span class="swatch tt">Tri-tip</span>
-              <span class="swatch cb">Chicken breast</span>
-              <span class="swatch fs">Flap steak</span>
-              <span class="fresh-badge">fresh</span>
-            </span>
-            <span class="chevron mono">›</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated tri-tip + 1 banana</td><td>1 tbsp raw honey + 1 tbsp butter</td><td class="amt">47/38/46</td></tr>
-                  <tr><td>Lunch</td><td>6 oz chicken + 1 cup rice + salad</td><td>Garlic-honey butter, 2½ tbsp + mustard vinaigrette, 2 tbsp</td><td class="amt">56/55/51</td></tr>
-                  <tr><td>Dinner</td><td>9.5 oz flap steak, fresh sear + 1.5 cups rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">70/59/69</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 180/145/165</td><td class="amt">173/152/166</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated tri-tip + 1 banana</td><td>2 tbsp a2 half &amp; half + 2 tsp butter</td><td class="amt">38/33/30</td></tr>
-                  <tr><td>Lunch</td><td>5 oz chicken + 1 cup rice + salad</td><td>Garlic-honey butter, 2 tbsp + mustard vinaigrette, 1½ tbsp</td><td class="amt">48/43/51</td></tr>
-                  <tr><td>Dinner</td><td>7 oz flap steak, fresh sear + 1 cup rice + salad</td><td>Mustard vinaigrette, 1 tbsp — no extra sauce needed</td><td class="amt">53/46/46</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">target 148/118/120</td><td class="amt">139/122/127</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="day-detail">
-          <summary>
-            <span class="dow">Sun</span>
-            <span class="chips">
-              <span class="swatch gb">Ground beef</span>
-              <span class="swatch">Leftovers, mix &amp; match</span>
-              <span class="swatch gb">Ground beef, light</span>
-            </span>
-            <span class="chevron mono">›</span>
-            <span class="note">Light / prep day — intentionally under target, this is the rest day</span>
-          </summary>
-          <div class="panel">
-            <div class="who-block">
-              <h4>Mike</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>4 eggs + 3 oz reheated ground beef + 1 banana</td><td>1 tbsp raw honey</td><td class="amt">46/35/46</td></tr>
-                  <tr><td>Lunch</td><td>~6 oz whatever's left + ¾ cup rice + salad</td><td>Mustard vinaigrette, whatever's left</td><td class="amt">~50/45/46</td></tr>
-                  <tr><td>Dinner</td><td>6 oz ground beef + 1 cup rice + salad</td><td>Mustard vinaigrette, 1 tbsp</td><td class="amt">~46/41/46</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">lighter by design</td><td class="amt">~142/121/138</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-            <div class="who-block">
-              <h4>Janna</h4>
-              <div class="table-scroll"><table class="ledger">
-                <thead><tr><th>Meal</th><th>Items &amp; amounts</th><th>Sauce</th><th>P/F/C</th></tr></thead>
-                <tbody>
-                  <tr><td>Breakfast</td><td>3 eggs + 2.5 oz reheated ground beef + 1 banana</td><td>2 tbsp a2 half &amp; half</td><td class="amt">37/31/30</td></tr>
-                  <tr><td>Lunch</td><td>~4 oz whatever's left + ½ cup rice + salad</td><td>Mustard vinaigrette, whatever's left</td><td class="amt">~33/25/28</td></tr>
-                  <tr><td>Dinner</td><td>5 oz ground beef + ¾ cup rice + salad</td><td>Mustard vinaigrette, 2 tsp</td><td class="amt">~38/32/34</td></tr>
-                  <tr class="totals-row"><td>Day total</td><td colspan="2">lighter by design</td><td class="amt">~108/88/92</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </div>
-        </details>
-
-      </div>
+      <p class="note" style="margin-top:1rem;">The two batch recipes are written in grams on purpose: the sauce is a real part of the fat target, not a garnish, so the ratio has to be fixed for the weighed pours to mean anything. Whisk them exactly as written, keep each in its own squeeze bottle, and every gram poured onto the scale lands where the plan says. <b>Vinaigrette: 6.7 g fat per 10 g poured. Garlic-honey butter: 5.8 g fat and 2.3 g carbs per 10 g.</b></p>
     </section>
 
     <hr class="rule">
 
     <section id="portions">
       <div class="section-head">
-        <h2>Portion &amp; Protein Reference</h2>
+        <h2>Gram Reference</h2>
+        <p class="note">What every ingredient is worth, per 100 g, at the state you'll actually weigh it in. This is the table the whole plan is calculated from — if you swap something in, this is where you check whether it fits.</p>
       </div>
       <div class="table-scroll">
         <table class="ledger">
-          <thead><tr><th>Per meal</th><th>Mike (165 lb)</th><th>Janna (135 lb)</th></tr></thead>
+          <thead><tr><th>Per 100 g</th><th>Protein</th><th>Fat</th><th>Carbs</th><th>kcal</th></tr></thead>
           <tbody>
-            <tr><td>Meat / protein</td><td class="amt">6–9 oz</td><td class="amt">5–7 oz</td></tr>
-            <tr><td>Eggs (if using)</td><td class="amt">3–4</td><td class="amt">2–3</td></tr>
-            <tr><td>White rice</td><td class="amt">1–1½ cups cooked</td><td class="amt">¾–1 cup cooked</td></tr>
-            <tr><td>Butter per meal</td><td class="amt">1–2 tbsp</td><td class="amt">1 tbsp</td></tr>
-            <tr><td>Fruit serving</td><td class="amt">1 cup or 1 banana</td><td class="amt">1 cup or 1 banana</td></tr>
+            <tr><td>Ground beef 80/20, cooked, undrained</td><td class="amt">25 g</td><td class="amt">20 g</td><td class="amt">0 g</td><td class="amt">280</td></tr>
+            <tr><td>Tri-tip, roasted</td><td class="amt">29 g</td><td class="amt">12 g</td><td class="amt">0 g</td><td class="amt">224</td></tr>
+            <tr><td>Flap steak, seared</td><td class="amt">28 g</td><td class="amt">14 g</td><td class="amt">0 g</td><td class="amt">238</td></tr>
+            <tr><td>Chicken breast, cooked</td><td class="amt">31 g</td><td class="amt">3.6 g</td><td class="amt">0 g</td><td class="amt">157</td></tr>
+            <tr><td>White rice, cooked</td><td class="amt">2.7 g</td><td class="amt">0.3 g</td><td class="amt">28 g</td><td class="amt">130</td></tr>
+            <tr><td>Whole eggs, shelled</td><td class="amt">12.6 g</td><td class="amt">9.5 g</td><td class="amt">0.7 g</td><td class="amt">143</td></tr>
+            <tr><td>Butter</td><td class="amt">0.9 g</td><td class="amt">81 g</td><td class="amt">0.1 g</td><td class="amt">717</td></tr>
+            <tr><td>Raw honey</td><td class="amt">0.3 g</td><td class="amt">0 g</td><td class="amt">82 g</td><td class="amt">304</td></tr>
+            <tr><td>Banana, peeled</td><td class="amt">1.1 g</td><td class="amt">0.3 g</td><td class="amt">22.8 g</td><td class="amt">89</td></tr>
+            <tr><td>Romaine + cabbage</td><td class="amt">1.2 g</td><td class="amt">0.3 g</td><td class="amt">3.3 g</td><td class="amt">17</td></tr>
+            <tr><td>Mustard vinaigrette (house batch)</td><td class="amt">0 g</td><td class="amt">66.7 g</td><td class="amt">4 g</td><td class="amt">616</td></tr>
+            <tr><td>Garlic-honey butter (house batch)</td><td class="amt">0.6 g</td><td class="amt">57.9 g</td><td class="amt">23.4 g</td><td class="amt">616</td></tr>
           </tbody>
         </table>
       </div>
       <div class="table-scroll" style="margin-top:1.25rem;">
         <table class="ledger">
-          <thead><tr><th></th><th>Mike (165 lb)</th><th>Janna (135 lb)</th></tr></thead>
+          <thead><tr><th>Handy conversions</th><th>Mike (165 lb)</th><th>Janna (135 lb)</th></tr></thead>
           <tbody>
-            <tr><td>Meat per day</td><td class="amt">~1.6 lb (26 oz)</td><td class="amt">~1.35 lb (22 oz)</td></tr>
-            <tr><td>Meat per week</td><td class="amt">~11 lb</td><td class="amt">~9.5 lb</td></tr>
-            <tr class="totals-row"><td>Combined / week</td><td colspan="2" class="amt">~20–21 lb total meat</td></tr>
+            <tr><td>Meat per day, cooked</td><td class="amt">~550 g (19 oz)</td><td class="amt">~460 g (16 oz)</td></tr>
+            <tr><td>Rice per day, cooked</td><td class="amt">405 g</td><td class="amt">260 g</td></tr>
+            <tr><td>Salad per day</td><td class="amt">200 g</td><td class="amt">200 g</td></tr>
+            <tr><td>Eggs per day</td><td class="amt">4 large (176 g)</td><td class="amt">3 large (132 g)</td></tr>
+            <tr class="totals-row"><td>Combined meat / week, raw</td><td colspan="2" class="amt">~22 lb</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="note" style="margin-top:1rem;">One large egg is about 50 g in the shell and 44 g out of it &mdash; the plan uses shelled weight, so 4 eggs = 176 g. One tablespoon: butter 14 g, honey 21 g, olive oil 13.5 g. A cup of cooked rice is roughly 185 g. Cooked meat runs about 72&ndash;75% of its raw weight, which is why the shopping list is heavier than the portions.</p>
     </section>
 
     <hr class="rule">
@@ -987,52 +897,60 @@
     <section id="shopping">
       <div class="section-head">
         <h2>Weekly Shopping List</h2>
+        <p class="note">Sized to the exact gram portions on the card &mdash; two people, seven days, no guessing. Buy this and the week is fully covered.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-col">
           <h4>Proteins</h4>
           <ul>
-            <li>Ground beef (80/20) — 4–5 lbs</li>
-            <li>Chicken breast — 3–4 lbs</li>
-            <li>Tri-tip — 3–4 lbs</li>
-            <li>Flap steak — 3–4 lbs</li>
-            <li>Eggs — 2.5–3 dozen</li>
+            <li>Ground beef (80/20) &mdash; 6,800 g (15 lb)</li>
+            <li>Flap steak &mdash; 1,600 g (3.5 lb)</li>
+            <li>Tri-tip &mdash; 1,150 g (2.5 lb)</li>
+            <li>Chicken breast &mdash; 450 g (1 lb)</li>
+            <li>Eggs &mdash; 49 large (4 dozen)</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Produce &amp; Carbs</h4>
           <ul>
-            <li>White rice — large bag</li>
-            <li>Romaine — 2–3 heads</li>
-            <li>Cabbage — 1 head</li>
-            <li>Bananas — 2 bunches</li>
-            <li>Raw honey — 1 jar</li>
-            <li>Maple syrup — 1 bottle</li>
+            <li>White rice &mdash; 1,550 g dry (8 cups)</li>
+            <li>Romaine + cabbage &mdash; 2,800 g total (3 heads + 1 cabbage)</li>
+            <li>Bananas &mdash; 14 (~1,650 g peeled)</li>
+            <li>Raw honey &mdash; 285 g used/week</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Dairy &amp; Fat</h4>
           <ul>
-            <li>Butter — 2 lbs</li>
-            <li>Raw milk — as needed</li>
-            <li>A2 half &amp; half — as needed</li>
+            <li>Butter &mdash; 230 g used/week</li>
+            <li>Olive oil &mdash; 250 g used/week</li>
+            <li>A2 half &amp; half &mdash; as needed</li>
             <li>A2 whole milk yogurt (Mike)</li>
             <li>Coconut yogurt (Janna)</li>
-            <li>Olive oil — for vinaigrette</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Pantry</h4>
           <ul>
-            <li>French / Dijon mustard — 1 jar</li>
-            <li>Balsamic vinegar — 1 bottle</li>
-            <li>Garlic — 1 bulb</li>
+            <li>French / Dijon mustard &mdash; 25 g used/week</li>
+            <li>Balsamic vinegar &mdash; 80 g used/week</li>
+            <li>Garlic &mdash; 1 bulb</li>
+            <li>Maple syrup &mdash; 1 bottle</li>
+          </ul>
+        </div>
+        <div class="shop-col">
+          <h4>Gear</h4>
+          <ul>
+            <li>Digital kitchen scale (0.1 g, tare button)</li>
+            <li>10 lunch Tupperware &mdash; 5 each</li>
+            <li>10 small salad containers</li>
+            <li>2 squeeze bottles for the sauces</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Supplements</h4>
           <ul>
-            <li>Heart &amp; Soil Beef Organs — 2–3 caps/day each, check supply</li>
+            <li>Heart &amp; Soil Beef Organs &mdash; 2&ndash;3 caps/day each, check supply</li>
           </ul>
         </div>
       </div>
@@ -1043,16 +961,20 @@
     <section id="tips">
       <div class="section-head">
         <h2>Quick Tips</h2>
+        <p class="note">The plan didn't fail before because it was wrong &mdash; it failed because it asked for a decision at every meal. These are the habits that keep it from asking.</p>
       </div>
       <div class="tips">
-        <div class="tip"><span class="mark">—</span><p><b>80/20 ground beef only</b> — the fat is the point, don't drain it.</p></div>
-        <div class="tip"><span class="mark">—</span><p><b>Salt is all you need</b> — keeps prep fast and flavor clean.</p></div>
-        <div class="tip"><span class="mark">—</span><p><b>Flap steak always fresh</b> — doesn't reheat as well, worth the extra pan time.</p></div>
-        <div class="tip"><span class="mark">—</span><p><b>Yogurt + banana + honey</b> — grab-and-go for early opener exits; add reheated meat alongside for protein.</p></div>
-        <div class="tip"><span class="mark">—</span><p><b>Wednesday top-up</b> — fresh rice batch + fresh flap steak keeps everything fresh through the week.</p></div>
-        <div class="tip"><span class="mark">—</span><p><b>Heart &amp; Soil supplements</b> cover organ nutrition — no liver cooking needed.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Build the boxes Sunday or the week doesn't happen.</b> Ten containers, weighed, lids on. Weighing at 6 a.m. is the version that gets skipped.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Breakfast never changes.</b> Four eggs, a scoop of beef, a banana, honey &mdash; there is nothing to decide before coffee.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Lunch never changes either.</b> The only thing that moves all week is which meat goes on the dinner plate.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>80/20 ground beef only</b> &mdash; the fat is the point, don't drain it. The gram math assumes the fat stays in the pan with the meat.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Weigh the sauce.</b> It is 20&ndash;30% of the day's fat. A free-hand pour is the single biggest source of drift in this whole plan.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Ground beef is always the answer</b> to a night that fell apart &mdash; 232 g / 202 g, no sauce, done.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Flap steak stays fresh</b> &mdash; it doesn't reheat well, and it's a 7-minute sear. Wednesday's only top-up is rice.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Heart &amp; Soil supplements</b> cover organ nutrition &mdash; no liver cooking needed.</p></div>
+        <div class="tip flag"><span class="mark">!</span><p>Chicken is the worst fit for these macros &mdash; it needs about 70 g of added fat to land where a flap steak lands on 32 g. It's kept as a once-a-week slot for variety, not as a staple.</p></div>
         <div class="tip flag"><span class="mark">!</span><p>Romaine/cabbage salad is technically a "minimize" item under the strict animal-based hierarchy (plant defense compounds), but it's well-tolerated and kept in by preference.</p></div>
-        <div class="tip flag"><span class="mark">!</span><p>French mustard is technically a seed too, same category as the cabbage above — a teaspoon or two whisked into a batch of dressing is a small enough amount that it's not worth stressing over.</p></div>
+        <div class="tip flag"><span class="mark">!</span><p>These gram figures are standard reference values, not lab numbers for your specific beef &mdash; fat content varies batch to batch. They're accurate enough to hold a target within a few percent, which is all a body composition goal needs.</p></div>
       </div>
     </section>
 
