@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Janna + Mike — Meal Prep Ledger</title>
-<meta name="description" content="Janna + Mike's animal-based meal plan — three repeatable meals a day, every portion weighed in grams, plus the prep-day run sheets, egg bake, reheating and shopping list.">
+<title>The Thezier Family — Meal Prep Ledger</title>
+<meta name="description" content="The Thezier family's animal-based meal plan — three repeatable meals a day for five people, every adult portion weighed in grams, plus the Sunday run sheet, egg bake, reheating and shopping list.">
 <style>
   :root{
     --paper: #F1ECDD;
@@ -203,7 +203,7 @@
     padding: 1.25rem 1.35rem 1.3rem;
     box-shadow: var(--shadow);
   }
-  .macro-card .who{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 1.1rem; }
+  .macro-card .who{ display:flex; align-items:baseline; justify-content:space-between; gap:0.7rem; margin-bottom: 1.1rem; }
   .macro-card .who h3{ font-size: 1.15rem; }
   .macro-card .who span{ font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-soft); }
   .macro-body{ display:flex; align-items:center; gap: 1.4rem; }
@@ -617,7 +617,7 @@
   <nav class="nav">
     <div class="nav-mast">
       <span class="eyebrow">Animal-Based · Weighed Daily</span>
-      <h1>Janna + Mike</h1>
+      <h1>The Thezier Family</h1>
       <span class="sub">Three repeatable meals, portioned in grams</span>
     </div>
     <div class="nav-links">
@@ -626,7 +626,7 @@
       <a href="#swaps">Dinner Swaps</a>
       <a href="#week">The Week</a>
       <a href="#eggbake">The Egg Bake</a>
-      <a href="#prep">Prep Sessions</a>
+      <a href="#prep">The Session</a>
       <a href="#sauces">Sauces</a>
       <a href="#daily">The Daily Loop</a>
       <a href="#portions">Gram Reference</a>
@@ -649,7 +649,7 @@
     <section id="macros">
       <div class="section-head">
         <h2>Daily Macro Targets</h2>
-        <p class="note">Per lb of goal body weight: protein 1–1.2g, fat 0.8–1g, carbs 0.7–1.2g — upper end used since training runs 6 days a week. Each ring is that person's own day, whole — hover or focus a slice for the number. Both land at nearly the same split: about a quarter protein, half fat, a quarter carbs.</p>
+        <p class="note">Per lb of <b>goal</b> body weight: protein 1&ndash;1.2g, fat 0.8&ndash;1g, carbs 0.7&ndash;1.2g &mdash; upper end used since training runs 6 days a week. Each ring is that person's own day, whole; hover or focus a slice for the number. Mike and Janna land at nearly the same split: about a quarter protein, half fat, a quarter carbs. <b>These two are the only people on this page who are weighed and logged</b> &mdash; the kids' numbers further down are built on a different basis entirely.</p>
       </div>
       <div class="macro-grid">
         <div class="macro-card">
@@ -707,8 +707,104 @@
               <div class="row"><span class="dot" style="background:var(--chart-carb)"></span><span class="name">Carbs</span><span class="g">120g</span><span class="p">22%</span></div>
             </div>
           </div>
-          <div class="kcal-note">Same ratio as Mike, scaled to a smaller frame — not a smaller version of his plan.</div>
+          <div class="kcal-note">Same ratio as Mike, scaled to a smaller frame &mdash; not a smaller version of his plan.</div>
         </div>
+      </div>
+
+      <h3 style="margin-top:2.6rem;font-size:1.05rem;" id="kids">The kids &mdash; a different question</h3>
+      <p class="note" style="margin-top:0.4rem;">Mike and Janna's numbers come from a <b>goal</b> weight, because the point is to arrive somewhere else. Jameson, Calvin and Amelia are growing, so theirs come from the <b>estimated energy requirement</b> equations instead &mdash; the standard DRI formulas for children, at the 50th percentile for each age and an &ldquo;active&rdquo; activity level. Redo them if a real height and weight lands far off the median.</p>
+      <p class="note" style="margin-top:0.6rem;"><b>Their split is deliberately not the adults'.</b> A 49%-fat day is a fat-loss design; the pediatric ranges want more carbohydrate and less fat, so the kids get proportionally <b>more rice and less beef</b> from the same three foods. The rings below show it: Mike sits at 49% fat, Jameson at 38%.</p>
+      <div class="macro-grid">
+        <div class="macro-card">
+          <div class="who"><h3>Jameson</h3><span>12 years &middot; est. 2,430 kcal/day</span></div>
+          <div class="macro-body">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 132 132" aria-hidden="true">
+                <circle cx="66" cy="66" r="58" stroke="var(--line)" stroke-width="16" fill="none"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-protein)"
+                  stroke-dasharray="83.39 364.42" stroke-dashoffset="0"
+                  tabindex="0" role="img" aria-label="Protein, 117 grams, 23 percent of calories"
+                  data-label="Protein" data-g="117g" data-pct="23%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-fat)"
+                  stroke-dasharray="139.96 364.42" stroke-dashoffset="-83.39"
+                  tabindex="0" role="img" aria-label="Fat, 87 grams, 38 percent of calories"
+                  data-label="Fat" data-g="87g" data-pct="38%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-carb)"
+                  stroke-dasharray="141.08 364.42" stroke-dashoffset="-223.35"
+                  tabindex="0" role="img" aria-label="Carbs, 197 grams, 39 percent of calories"
+                  data-label="Carbs" data-g="197g" data-pct="39%"></circle>
+              </svg>
+              <div class="donut-center"><span class="pct">38%</span><span class="lbl">fat</span></div>
+            </div>
+            <div class="macro-legend">
+              <div class="row"><span class="dot" style="background:var(--chart-protein)"></span><span class="name">Protein</span><span class="g">117g</span><span class="p">23%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-fat)"></span><span class="name">Fat</span><span class="g">87g</span><span class="p">38%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-carb)"></span><span class="name">Carbs</span><span class="g">197g</span><span class="p">39%</span></div>
+            </div>
+          </div>
+          <div class="kcal-note">The three weighed meals come to <b>2,029 kcal</b> &mdash; about 84% of his day. The rest is snacks, and snacks are not weighed.</div>
+        </div>
+        <div class="macro-card">
+          <div class="who"><h3>Calvin</h3><span>11 years &middot; est. 2,280 kcal/day</span></div>
+          <div class="macro-body">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 132 132" aria-hidden="true">
+                <circle cx="66" cy="66" r="58" stroke="var(--line)" stroke-width="16" fill="none"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-protein)"
+                  stroke-dasharray="83.63 364.42" stroke-dashoffset="0"
+                  tabindex="0" role="img" aria-label="Protein, 110 grams, 23 percent of calories"
+                  data-label="Protein" data-g="110g" data-pct="23%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-fat)"
+                  stroke-dasharray="140.83 364.42" stroke-dashoffset="-83.63"
+                  tabindex="0" role="img" aria-label="Fat, 82 grams, 39 percent of calories"
+                  data-label="Fat" data-g="82g" data-pct="39%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-carb)"
+                  stroke-dasharray="139.97 364.42" stroke-dashoffset="-224.46"
+                  tabindex="0" role="img" aria-label="Carbs, 184 grams, 38 percent of calories"
+                  data-label="Carbs" data-g="184g" data-pct="38%"></circle>
+              </svg>
+              <div class="donut-center"><span class="pct">39%</span><span class="lbl">fat</span></div>
+            </div>
+            <div class="macro-legend">
+              <div class="row"><span class="dot" style="background:var(--chart-protein)"></span><span class="name">Protein</span><span class="g">110g</span><span class="p">23%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-fat)"></span><span class="name">Fat</span><span class="g">82g</span><span class="p">39%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-carb)"></span><span class="name">Carbs</span><span class="g">184g</span><span class="p">38%</span></div>
+            </div>
+          </div>
+          <div class="kcal-note">Three meals, <b>1,902 kcal</b>. Eleven and twelve are right before the growth spurt &mdash; when he starts clearing the plate and asking for more, feed him rather than re-running the equation.</div>
+        </div>
+        <div class="macro-card">
+          <div class="who"><h3>Amelia</h3><span>7 years &middot; est. 1,730 kcal/day</span></div>
+          <div class="macro-body">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 132 132" aria-hidden="true">
+                <circle cx="66" cy="66" r="58" stroke="var(--line)" stroke-width="16" fill="none"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-protein)"
+                  stroke-dasharray="80.88 364.42" stroke-dashoffset="0"
+                  tabindex="0" role="img" aria-label="Protein, 80 grams, 22 percent of calories"
+                  data-label="Protein" data-g="80g" data-pct="22%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-fat)"
+                  stroke-dasharray="135.86 364.42" stroke-dashoffset="-80.88"
+                  tabindex="0" role="img" aria-label="Fat, 60 grams, 37 percent of calories"
+                  data-label="Fat" data-g="60g" data-pct="37%"></circle>
+                <circle class="arc" cx="66" cy="66" r="58" stroke="var(--chart-carb)"
+                  stroke-dasharray="147.69 364.42" stroke-dashoffset="-216.74"
+                  tabindex="0" role="img" aria-label="Carbs, 146 grams, 41 percent of calories"
+                  data-label="Carbs" data-g="146g" data-pct="41%"></circle>
+              </svg>
+              <div class="donut-center"><span class="pct">37%</span><span class="lbl">fat</span></div>
+            </div>
+            <div class="macro-legend">
+              <div class="row"><span class="dot" style="background:var(--chart-protein)"></span><span class="name">Protein</span><span class="g">80g</span><span class="p">22%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-fat)"></span><span class="name">Fat</span><span class="g">60g</span><span class="p">37%</span></div>
+              <div class="row"><span class="dot" style="background:var(--chart-carb)"></span><span class="name">Carbs</span><span class="g">146g</span><span class="p">41%</span></div>
+            </div>
+          </div>
+          <div class="kcal-note">Three meals, <b>1,435 kcal</b>. The most carb-forward day of the five, which is what a seven-year-old should have.</div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:1.4rem;">
+        <p><b>Do not weigh the kids and do not log them.</b> Every kid number on this page exists for the person doing the shopping and building the plates &mdash; it is an instruction to the cook, not a target for the child. Serve the portion and let them eat more or less; appetite regulates better than a scale at 7, 11 and 12.</p>
       </div>
     </section>
 
@@ -731,6 +827,9 @@
       <div class="tabs" role="tablist">
         <button class="tab-btn active" data-tab="mike" role="tab" aria-selected="true">Mike</button>
         <button class="tab-btn" data-tab="janna" role="tab" aria-selected="false">Janna</button>
+        <button class="tab-btn" data-tab="jameson" role="tab" aria-selected="false">Jameson</button>
+        <button class="tab-btn" data-tab="calvin" role="tab" aria-selected="false">Calvin</button>
+        <button class="tab-btn" data-tab="amelia" role="tab" aria-selected="false">Amelia</button>
       </div>
 
       <div class="tab-panel active" data-panel="mike">
@@ -750,7 +849,7 @@
             <tr><td class="item">Raw honey</td><td class="g mono">20<span>g</span></td><td class="hint">about 1 tbsp, from the squeeze bottle</td><td class="amt mono">0.1 / 0 / 16</td></tr>
           </tbody>
           </table>
-          <p class="meal-foot">The first three rows arrive as <b>one pre-cut portion &mdash; about 248 g of egg bake</b>, weighed on prep day. See <a href="#eggbake">The Egg Bake</a>. Morning is: tray into the Wonder Oven, a banana, and <b>20 g of honey on the scale</b> &mdash; the one weighing left, and worth it at 82% carbs.</p>
+          <p class="meal-foot">The first three rows arrive as <b>one pre-cut portion &mdash; about 248 g of egg bake</b>, weighed on prep day. See <a href="#eggbake">The Egg Bake</a>. Morning is: tray into the Wonder Oven &mdash; <b>all five portions on it at once</b> &mdash; a banana, and <b>20 g of honey on the scale</b>, the one weighing left and worth it at 82% carbs. Nobody else at the table is weighed.</p>
         </div>
         <div class="meal-card">
           <div class="meal-head">
@@ -760,7 +859,7 @@
           <p class="meal-sub">Weighed into the Tupperware on prep day. No dressing — the 80/20 fat is the sauce.</p>
           <table class="weigh">
           <tbody>
-            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">250<span>g</span></td><td class="hint">4 boxes Sunday, 3 Wednesday</td><td class="amt mono">62 / 50 / 0</td></tr>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">250<span>g</span></td><td class="hint">five boxes, all built Sunday</td><td class="amt mono">62 / 50 / 0</td></tr>
             <tr><td class="item">White rice, cooked</td><td class="g mono">190<span>g</span></td><td class="hint">packed warm, lid on cold</td><td class="amt mono">5 / 0.6 / 53</td></tr>
             <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">separate container, stays crisp</td><td class="amt mono">1 / 0.3 / 3</td></tr>
           </tbody>
@@ -775,7 +874,7 @@
           <table class="weigh">
           <tbody>
             <tr><td class="item">Flap steak, seared</td><td class="g mono">207<span>g</span></td><td class="hint">or swap — see table below</td><td class="amt mono">58 / 29 / 0</td></tr>
-            <tr><td class="item">White rice, cooked</td><td class="g mono">215<span>g</span></td><td class="hint">fresh batch Sun + Wed</td><td class="amt mono">6 / 0.6 / 60</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">215<span>g</span></td><td class="hint">cooked fresh at dinner, not from Sunday</td><td class="amt mono">6 / 0.6 / 60</td></tr>
             <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">the house salad</td><td class="amt mono">1 / 0.3 / 3</td></tr>
             <tr><td class="item">Mustard vinaigrette</td><td class="g mono">32<span>g</span></td><td class="hint">poured onto the scale</td><td class="amt mono">0 / 21 / 1</td></tr>
           </tbody>
@@ -819,7 +918,7 @@
           <p class="meal-sub">Weighed into the Tupperware on prep day. No dressing — the 80/20 fat is the sauce.</p>
           <table class="weigh">
           <tbody>
-            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">210<span>g</span></td><td class="hint">4 boxes Sunday, 3 Wednesday</td><td class="amt mono">52 / 42 / 0</td></tr>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">210<span>g</span></td><td class="hint">five boxes, all built Sunday</td><td class="amt mono">52 / 42 / 0</td></tr>
             <tr><td class="item">White rice, cooked</td><td class="g mono">130<span>g</span></td><td class="hint">packed warm, lid on cold</td><td class="amt mono">4 / 0.4 / 36</td></tr>
             <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">separate container, stays crisp</td><td class="amt mono">1 / 0.3 / 3</td></tr>
           </tbody>
@@ -834,7 +933,7 @@
           <table class="weigh">
           <tbody>
             <tr><td class="item">Flap steak, seared</td><td class="g mono">180<span>g</span></td><td class="hint">or swap — see table below</td><td class="amt mono">50 / 25 / 0</td></tr>
-            <tr><td class="item">White rice, cooked</td><td class="g mono">130<span>g</span></td><td class="hint">fresh batch Sun + Wed</td><td class="amt mono">4 / 0.4 / 36</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">130<span>g</span></td><td class="hint">cooked fresh at dinner, not from Sunday</td><td class="amt mono">4 / 0.4 / 36</td></tr>
             <tr><td class="item">Romaine + cabbage</td><td class="g mono">100<span>g</span></td><td class="hint">the house salad</td><td class="amt mono">1 / 0.3 / 3</td></tr>
             <tr><td class="item">Mustard vinaigrette</td><td class="g mono">24<span>g</span></td><td class="hint">poured onto the scale</td><td class="amt mono">0 / 16 / 1</td></tr>
           </tbody>
@@ -847,6 +946,189 @@
             <div class="dt-cell"><span class="n mono">118g</span><span class="l">fat</span><span class="t mono">target 118</span></div>
             <div class="dt-cell"><span class="n mono">120g</span><span class="l">carbs</span><span class="t mono">target 120</span></div>
             <div class="dt-cell"><span class="n mono">2,135</span><span class="l">kcal</span><span class="t mono">target 2,134</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="jameson">
+        <div class="meal-stack">
+        <div class="callout" style="margin-bottom:1.2rem;">
+          <p><b>Nothing on this card is weighed at the table.</b> He is twelve and about to grow; an estimate that is 10% off matters less than him eating when he is hungry. The grams are here so the right amount gets cooked and the right amount gets served &mdash; that is all they are for.</p>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Breakfast</span><h3>Egg bake, banana, milk</h3></div>
+            <div class="meal-macro"><span class="mono">606</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cut from the same slab as the adults on prep day, then reheated with theirs. Milk and fruit are added at the table.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Egg bake, baked</td><td class="g mono">150<span>g</span></td><td class="hint">one pre-cut piece &mdash; see <a href="#eggbake">The Egg Bake</a></td></tr>
+            <tr><td class="item">Banana, peeled</td><td class="g mono">118<span>g</span></td><td class="hint">eyeballed, never weighed</td></tr>
+            <tr><td class="item">Raw honey</td><td class="g mono">15<span>g</span></td><td class="hint">a squeeze from the bottle</td></tr>
+            <tr><td class="item">Whole milk</td><td class="g mono">200<span>ml</span></td><td class="hint">a glass &mdash; the kids' carbohydrate, not the adults'</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Lunch box</span><h3>Beef, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">645</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Packed on prep day alongside the adults'. Eaten cold at school &mdash; rice and beef are fine cold, the egg bake is not.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">120<span>g</span></td><td class="hint">less beef than an adult box, on purpose</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">230<span>g</span></td><td class="hint"><b>more rice than an adult box</b> &mdash; growing bodies want the carbohydrate</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">60<span>g</span></td><td class="hint">from the tub, a handful</td></tr>
+            <tr><td class="item">A piece of fruit</td><td class="g mono">&mdash;</td><td class="hint">not in the gram math, and that is fine</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Dinner</span><h3>Tonight's meat, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">779</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cooked fresh with everyone else. Flap steak shown &mdash; the meat grams move with the <a href="#swaps">swap table</a>, nothing else does.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Flap steak, seared</td><td class="g mono">130<span>g</span></td><td class="hint">served by eye off the swap table</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">280<span>g</span></td><td class="hint">cooked fresh at dinner, not from Sunday</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">75<span>g</span></td><td class="hint">the house salad</td></tr>
+            <tr><td class="item">Mustard vinaigrette</td><td class="g mono">15<span>g</span></td><td class="hint">a light pour, not a weighed one</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="day-total">
+          <div class="dt-lead"><span class="eyebrow">Three meals</span><h3>Jameson</h3></div>
+          <div class="dt-nums">
+            <div class="dt-cell"><span class="n mono">2,029</span><span class="l">kcal, weighed</span><span class="t mono">of ~2,430 est.</span></div>
+            <div class="dt-cell"><span class="n mono">401</span><span class="l">kcal, snacks</span><span class="t mono">not weighed</span></div>
+            <div class="dt-cell"><span class="n mono">12</span><span class="l">years old</span><span class="t mono">50th pctile</span></div>
+            <div class="dt-cell"><span class="n mono">84%</span><span class="l">from 3 meals</span><span class="t mono">rest is snacks</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="calvin">
+        <div class="meal-stack">
+        <div class="callout" style="margin-bottom:1.2rem;">
+          <p><b>Nothing on this card is weighed at the table.</b> Eleven, and on the same curve as his brother about a year behind. The grams are here so the right amount gets cooked and the right amount gets served &mdash; that is all they are for.</p>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Breakfast</span><h3>Egg bake, banana, milk</h3></div>
+            <div class="meal-macro"><span class="mono">574</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cut from the same slab as the adults on prep day, then reheated with theirs. Milk and fruit are added at the table.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Egg bake, baked</td><td class="g mono">140<span>g</span></td><td class="hint">one pre-cut piece &mdash; see <a href="#eggbake">The Egg Bake</a></td></tr>
+            <tr><td class="item">Banana, peeled</td><td class="g mono">118<span>g</span></td><td class="hint">eyeballed, never weighed</td></tr>
+            <tr><td class="item">Raw honey</td><td class="g mono">12<span>g</span></td><td class="hint">a squeeze from the bottle</td></tr>
+            <tr><td class="item">Whole milk</td><td class="g mono">200<span>ml</span></td><td class="hint">a glass &mdash; the kids' carbohydrate, not the adults'</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Lunch box</span><h3>Beef, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">605</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Packed on prep day alongside the adults'. Eaten cold at school &mdash; rice and beef are fine cold, the egg bake is not.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">115<span>g</span></td><td class="hint">less beef than an adult box, on purpose</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">210<span>g</span></td><td class="hint"><b>more rice than an adult box</b> &mdash; growing bodies want the carbohydrate</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">60<span>g</span></td><td class="hint">from the tub, a handful</td></tr>
+            <tr><td class="item">A piece of fruit</td><td class="g mono">&mdash;</td><td class="hint">not in the gram math, and that is fine</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Dinner</span><h3>Tonight's meat, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">723</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cooked fresh with everyone else. Flap steak shown &mdash; the meat grams move with the <a href="#swaps">swap table</a>, nothing else does.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Flap steak, seared</td><td class="g mono">120<span>g</span></td><td class="hint">served by eye off the swap table</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">260<span>g</span></td><td class="hint">cooked fresh at dinner, not from Sunday</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">75<span>g</span></td><td class="hint">the house salad</td></tr>
+            <tr><td class="item">Mustard vinaigrette</td><td class="g mono">14<span>g</span></td><td class="hint">a light pour, not a weighed one</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="day-total">
+          <div class="dt-lead"><span class="eyebrow">Three meals</span><h3>Calvin</h3></div>
+          <div class="dt-nums">
+            <div class="dt-cell"><span class="n mono">1,902</span><span class="l">kcal, weighed</span><span class="t mono">of ~2,280 est.</span></div>
+            <div class="dt-cell"><span class="n mono">378</span><span class="l">kcal, snacks</span><span class="t mono">not weighed</span></div>
+            <div class="dt-cell"><span class="n mono">11</span><span class="l">years old</span><span class="t mono">50th pctile</span></div>
+            <div class="dt-cell"><span class="n mono">84%</span><span class="l">from 3 meals</span><span class="t mono">rest is snacks</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="amelia">
+        <div class="meal-stack">
+        <div class="callout" style="margin-bottom:1.2rem;">
+          <p><b>Nothing on this card is weighed at the table.</b> Seven years old. A food scale has no place anywhere near her plate. The grams are here so the right amount gets cooked and the right amount gets served &mdash; that is all they are for.</p>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Breakfast</span><h3>Egg bake, banana, milk</h3></div>
+            <div class="meal-macro"><span class="mono">429</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cut from the same slab as the adults on prep day, then reheated with theirs. Milk and fruit are added at the table.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Egg bake, baked</td><td class="g mono">105<span>g</span></td><td class="hint">one pre-cut piece &mdash; see <a href="#eggbake">The Egg Bake</a></td></tr>
+            <tr><td class="item">Banana, peeled</td><td class="g mono">90<span>g</span></td><td class="hint">eyeballed, never weighed</td></tr>
+            <tr><td class="item">Raw honey</td><td class="g mono">8<span>g</span></td><td class="hint">a squeeze from the bottle</td></tr>
+            <tr><td class="item">Whole milk</td><td class="g mono">150<span>ml</span></td><td class="hint">a glass &mdash; the kids' carbohydrate, not the adults'</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Lunch box</span><h3>Beef, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">453</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Packed on prep day alongside the adults'. Eaten cold at school &mdash; rice and beef are fine cold, the egg bake is not.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Ground beef 80/20, cooked</td><td class="g mono">85<span>g</span></td><td class="hint">less beef than an adult box, on purpose</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">160<span>g</span></td><td class="hint"><b>more rice than an adult box</b> &mdash; growing bodies want the carbohydrate</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">40<span>g</span></td><td class="hint">from the tub, a handful</td></tr>
+            <tr><td class="item">A piece of fruit</td><td class="g mono">&mdash;</td><td class="hint">not in the gram math, and that is fine</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <div class="meal-head">
+            <div><span class="eyebrow">Dinner</span><h3>Tonight's meat, rice, salad</h3></div>
+            <div class="meal-macro"><span class="mono">553</span><span class="lbl">kcal</span></div>
+          </div>
+          <p class="meal-sub">Cooked fresh with everyone else. Flap steak shown &mdash; the meat grams move with the <a href="#swaps">swap table</a>, nothing else does.</p>
+          <table class="weigh">
+          <tbody>
+            <tr><td class="item">Flap steak, seared</td><td class="g mono">80<span>g</span></td><td class="hint">served by eye off the swap table</td></tr>
+            <tr><td class="item">White rice, cooked</td><td class="g mono">225<span>g</span></td><td class="hint">cooked fresh at dinner, not from Sunday</td></tr>
+            <tr><td class="item">Romaine + cabbage</td><td class="g mono">50<span>g</span></td><td class="hint">the house salad</td></tr>
+            <tr><td class="item">Mustard vinaigrette</td><td class="g mono">10<span>g</span></td><td class="hint">a light pour, not a weighed one</td></tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="day-total">
+          <div class="dt-lead"><span class="eyebrow">Three meals</span><h3>Amelia</h3></div>
+          <div class="dt-nums">
+            <div class="dt-cell"><span class="n mono">1,435</span><span class="l">kcal, weighed</span><span class="t mono">of ~1,730 est.</span></div>
+            <div class="dt-cell"><span class="n mono">295</span><span class="l">kcal, snacks</span><span class="t mono">not weighed</span></div>
+            <div class="dt-cell"><span class="n mono">7</span><span class="l">years old</span><span class="t mono">50th pctile</span></div>
+            <div class="dt-cell"><span class="n mono">84%</span><span class="l">from 3 meals</span><span class="t mono">rest is snacks</span></div>
           </div>
         </div>
         </div>
@@ -865,37 +1147,51 @@
           <thead>
             <tr>
               <th>Tonight's meat</th>
-              <th>Mike — meat</th>
-              <th>Mike — sauce</th>
-              <th>Janna — meat</th>
-              <th>Janna — sauce</th>
+              <th>Mike <span class="alt">weighed</span></th>
+              <th>Janna <span class="alt">weighed</span></th>
+              <th>Jameson <span class="alt">by eye</span></th>
+              <th>Calvin <span class="alt">by eye</span></th>
+              <th>Amelia <span class="alt">by eye</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="swatch fs">Flap steak</span><span class="cut-note">seared fresh, Mon / Wed / Sat</span></td>
-              <td class="amt">207 g</td><td class="amt">32 g vinaigrette</td>
-              <td class="amt">180 g</td><td class="amt">24 g vinaigrette</td>
+              <td><span class="swatch fs">Flap steak</span><span class="cut-note">seared fresh, Mon / Wed</span></td>
+              <td class="amt">207 g<br><span class="alt">32 g vinaigrette</span></td>
+              <td class="amt">180 g<br><span class="alt">24 g vinaigrette</span></td>
+              <td class="amt">130 g<br><span class="alt">15 g vinaigrette</span></td>
+              <td class="amt">120 g<br><span class="alt">14 g vinaigrette</span></td>
+              <td class="amt">80 g<br><span class="alt">10 g vinaigrette</span></td>
             </tr>
             <tr>
               <td><span class="swatch tt">Tri-tip</span><span class="cut-note">reheated from the Sunday roast</span></td>
-              <td class="amt">200 g</td><td class="amt">39 g vinaigrette</td>
-              <td class="amt">174 g</td><td class="amt">31 g vinaigrette</td>
+              <td class="amt">200 g<br><span class="alt">39 g vinaigrette</span></td>
+              <td class="amt">174 g<br><span class="alt">31 g vinaigrette</span></td>
+              <td class="amt">125 g<br><span class="alt">15 g vinaigrette</span></td>
+              <td class="amt">115 g<br><span class="alt">14 g vinaigrette</span></td>
+              <td class="amt">78 g<br><span class="alt">10 g vinaigrette</span></td>
             </tr>
             <tr>
-              <td><span class="swatch gb">Ground beef 80/20</span><span class="cut-note">the fallback — always in the fridge</span></td>
-              <td class="amt">232 g</td><td class="amt">none needed</td>
-              <td class="amt">202 g</td><td class="amt">none needed</td>
+              <td><span class="swatch gb">Ground beef 80/20</span><span class="cut-note">the fallback &mdash; always in the fridge</span></td>
+              <td class="amt">232 g<br><span class="alt">no sauce</span></td>
+              <td class="amt">202 g<br><span class="alt">no sauce</span></td>
+              <td class="amt">145 g<br><span class="alt">no sauce</span></td>
+              <td class="amt">135 g<br><span class="alt">no sauce</span></td>
+              <td class="amt">90 g<br><span class="alt">no sauce</span></td>
             </tr>
             <tr>
               <td><span class="swatch cb">Chicken breast</span><span class="cut-note">air fryer, 375&deg;F &middot; also drop rice</span></td>
-              <td class="amt">187 g</td><td class="amt">41 g garlic-honey butter<br>+ 29 g vinaigrette</td>
-              <td class="amt">163 g</td><td class="amt">34 g garlic-honey butter<br>+ 24 g vinaigrette</td>
+              <td class="amt">187 g<br><span class="alt">41 g garlic-honey butter + 29 g vinaigrette</span></td>
+              <td class="amt">163 g<br><span class="alt">34 g garlic-honey butter + 24 g vinaigrette</span></td>
+              <td class="amt">115 g<br><span class="alt">30 g garlic-honey butter</span></td>
+              <td class="amt">106 g<br><span class="alt">28 g garlic-honey butter</span></td>
+              <td class="amt">72 g<br><span class="alt">19 g garlic-honey butter</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="note" style="margin-top:1rem;">Rice and salad stay at the dinner amounts on the card — <b>215 g rice for Mike, 130 g for Janna</b>, 100 g salad each — with one exception: on chicken nights the garlic-honey butter brings its own honey, so drop the rice to <b>180 g / 100 g</b> to stay on carbs. Chicken is the least efficient cut here — it takes about 70 g of added fat to reach the same place a flap steak reaches on 32 g, which is why it's a once-a-week slot, not a staple.</p>
+      <p class="note" style="margin-top:1rem;">Rice and salad do not move with the meat. Dinner rice is <b>215 &middot; 130 &middot; 280 &middot; 260 &middot; 225 g</b> and salad is <b>100 &middot; 100 &middot; 75 &middot; 75 &middot; 50 g</b>, in that order, every night but one: on <b>chicken nights the garlic-honey butter brings its own honey</b>, so rice comes down to <b>180 &middot; 100 &middot; 240 &middot; 220 &middot; 190 g</b>. Chicken is the least efficient cut here &mdash; about 70 g of added fat to reach where a flap steak reaches on 32 g &mdash; which is why it is a once-a-week slot and not a staple.</p>
+      <p class="note" style="margin-top:0.8rem;"><b>Only the first two columns meet a scale.</b> Weighing five plates is nine extra weighings a night and it is the fastest way to make a family dinner feel like an audit. You already bought the right amount of meat &mdash; that is what the kids' grams were for.</p>
     </section>
 
     <hr class="rule">
@@ -903,18 +1199,21 @@
     <section id="week">
       <div class="section-head">
         <h2>The Week</h2>
-        <p class="note">Breakfast and lunch are identical seven days a week, so this strip only tells you which meat to pull for dinner &mdash; and which two nights are prep sessions. <b>Sunday builds Mon&ndash;Thu, Wednesday builds Fri&ndash;Sun.</b> Nothing sits in the fridge longer than four days.</p>
+        <p class="note">Breakfast and lunch are identical <b>Monday through Friday</b>, so this strip only tells you which meat to pull for dinner &mdash; and which day is the session. <b>One Sunday cook builds Monday through Friday.</b> Nothing sits in the fridge longer than four days, because Friday's boxes go to the freezer on Sunday and come down Thursday night.</p>
       </div>
       <div class="week-strip">
         <div class="daycell fresh"><span class="dow">Mon</span><span class="cut">Flap steak</span><span class="tag">fresh sear</span></div>
         <div class="daycell"><span class="dow">Tue</span><span class="cut">Tri-tip</span><span class="tag">reheat</span></div>
-        <div class="daycell fresh prep"><span class="dow">Wed</span><span class="cut">Flap steak <span class="prep-badge">prep</span></span><span class="tag">fresh sear &middot; top-up session</span></div>
-        <div class="daycell"><span class="dow">Thu</span><span class="cut">Tri-tip</span><span class="tag">reheat</span></div>
+        <div class="daycell fresh"><span class="dow">Wed</span><span class="cut">Flap steak</span><span class="tag">fresh sear</span></div>
+        <div class="daycell"><span class="dow">Thu</span><span class="cut">Tri-tip</span><span class="tag">reheat &middot; move Friday down</span></div>
         <div class="daycell fresh"><span class="dow">Fri</span><span class="cut">Chicken</span><span class="tag">air fryer &middot; less rice</span></div>
-        <div class="daycell fresh"><span class="dow">Sat</span><span class="cut">Flap steak</span><span class="tag">fresh sear</span></div>
-        <div class="daycell prep"><span class="dow">Sun</span><span class="cut">Ground beef <span class="prep-badge">prep</span></span><span class="tag">main session &middot; simple dinner</span></div>
+        <div class="daycell"><span class="dow">Sat</span><span class="cut">Off the grid</span><span class="tag">eat, log roughly</span></div>
+        <div class="daycell prep"><span class="dow">Sun</span><span class="cut">Ground beef <span class="prep-badge">prep</span></span><span class="tag">the session &middot; simple dinner</span></div>
       </div>
-      <p class="note" style="margin-top:1.1rem;">If a night goes sideways, ground beef is always the answer — 232 g for Mike, 202 g for Janna, no sauce, and the day still lands. That's the whole point of keeping a tub of it in the fridge.</p>
+      <div class="callout" style="margin-top:1.2rem;">
+        <p><b>Saturday and Sunday are off the grid on purpose.</b> Wedding days, church and family are exactly where a seven-day plan breaks, and two guaranteed failures a week is what makes the other five feel pointless. Eat the fallback, log it roughly, and let five clean weekdays be the whole target.</p>
+      </div>
+      <p class="note" style="margin-top:1.1rem;">If a night goes sideways, ground beef is always the answer &mdash; 232 &middot; 202 &middot; 145 &middot; 135 &middot; 90 g, no sauce, and the day still lands. That is the whole point of keeping a tub of it in the fridge.</p>
     </section>
 
 
@@ -923,57 +1222,47 @@
     <section id="eggbake">
       <div class="section-head">
         <h2>The Egg Bake</h2>
-        <p class="note">Breakfast used to ask for five weighings per person before coffee &mdash; ten across the two of you, at 6 a.m., before a workout or a shift. Same eggs, same beef, same butter, same macros: just cooked as one slab on prep day and cut to weight. The ratio is <b>154 egg : 80 beef : 9 butter</b>, identical in both sessions &mdash; one recipe, two sizes.</p>
+        <p class="note">Breakfast used to ask for five weighings per person before coffee. Across five people that would be twenty-five, at 6 a.m., before a workout, a shift and a school run. Same eggs, same beef, same butter, same macros &mdash; cooked as one bake on prep day and cut to weight. The ratio is <b>154 egg : 80 beef : 9 butter</b> and it has never changed; only the size has.</p>
       </div>
 
       <div class="table-scroll">
         <table class="ledger">
-          <thead><tr><th>Ingredient</th><th>Sunday <span class="alt">4 + 4</span></th><th>Wednesday <span class="alt">3 + 3</span></th><th>Notes</th></tr></thead>
+          <thead><tr><th>Ingredient</th><th>One Sunday bake <span class="alt">25 portions</span></th><th>Notes</th></tr></thead>
           <tbody>
-            <tr><td>Large eggs, shelled</td><td class="amt">1,232 g<br><span class="alt">28 eggs</span></td><td class="amt">924 g<br><span class="alt">21 eggs</span></td><td>49 a week &mdash; exactly the number already on the shopping list</td></tr>
-            <tr><td>Ground beef 80/20, cooked</td><td class="amt">640 g</td><td class="amt">480 g</td><td>Weighed straight out of that session's pan, undrained</td></tr>
-            <tr><td>Butter, melted</td><td class="amt">72 g</td><td class="amt">54 g</td><td>Into the mix, not the pan &mdash; that's where the macros assume it</td></tr>
-            <tr class="totals-row"><td>Raw mix total</td><td class="amt">1,944 g</td><td class="amt">1,458 g</td><td>Write it on the pan with tape &mdash; you need it to cut the portions</td></tr>
+            <tr><td>Large eggs, shelled</td><td class="amt">2,929 g<br><span class="alt">67 eggs</span></td><td>Six dozen covers it with five to spare. Crack into a pitcher first &mdash; one bad egg should not cost you sixty-seven.</td></tr>
+            <tr><td>Ground beef 80/20, cooked</td><td class="amt">1,522 g</td><td>Weighed straight out of that morning's pan, undrained</td></tr>
+            <tr><td>Butter, melted</td><td class="amt">171 g</td><td>Into the mix, not the pan &mdash; that is where the macros assume it</td></tr>
+            <tr class="totals-row"><td>Raw mix total</td><td class="amt">4,622 g<br><span class="alt">2,311 g per pan</span></td><td><b>Two half sheets</b>, two racks. One pan at this volume would be an inch and a half deep and raw in the middle.</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="callout">
-        <p><b>Method.</b> Crack each egg into a cup first, then into the bowl &mdash; one bad egg shouldn't cost you twenty-eight. Whisk, fold in the weighed cooked beef and the melted butter, salt and garlic powder to taste. Pour onto a <b>parchment-lined half sheet pan</b> (13&times;18), about &frac34; inch deep. <b>350&deg;F for 26&ndash;30 minutes.</b></p>
-        <p><b>Pull it early.</b> An overbaked egg bake weeps water in the fridge and turns rubbery by Wednesday. Underdone-looking in the center is correct &mdash; carryover heat finishes it on the counter. The parchment is what lets you lift the whole slab out to weigh it.</p>
-        <p><b>Range oven, not the Wonder Oven</b> &mdash; a 13&times;18 half sheet won't fit a countertop unit. The Wonder Oven's job is the other end of the week; see <a href="#daily">The Daily Loop</a>.</p>
+        <p><b>Method.</b> Whisk, fold in the weighed cooked beef and the melted butter, salt and garlic powder to taste. Divide evenly between <b>two parchment-lined half sheet pans</b> (13&times;18), about &frac34; inch deep each. <b>350&deg;F for 36 minutes, on two racks, swapping them at 18</b> &mdash; a home oven is never even top to bottom, and an unswapped pair gives you one weeping pan and one rubbery one.</p>
+        <p><b>Pull it early.</b> An overbaked egg bake weeps water in the fridge and turns rubbery by Wednesday. Underdone-looking in the center is correct &mdash; carryover finishes it on the counter. The parchment is what lets you lift each slab out to weigh it.</p>
+        <p><b>Range oven, not the Wonder Oven</b> &mdash; a 13&times;18 half sheet will not fit a countertop unit, let alone two. The Wonder Oven's job is the other end of the week; see <a href="#daily">The Daily Loop</a>.</p>
       </div>
 
-      <h3 style="margin-top:2rem;font-size:1.05rem;">Cutting the slab &mdash; no arithmetic required</h3>
-      <p class="note" style="margin-top:0.4rem;">The bake loses water in the oven, so a fixed gram cut would drift week to week. Instead: weigh the cooled slab (tare the parchment first), find that weight below, read off the two portion sizes. Round to the nearest row &mdash; rule 04 covers the gap.</p>
+      <h3 style="margin-top:2rem;font-size:1.05rem;">Cutting the slabs &mdash; no arithmetic required</h3>
+      <p class="note" style="margin-top:0.4rem;">The bake loses water in the oven, so a fixed gram cut would drift week to week. Instead: <b>weigh both cooled slabs together</b> (tare the parchment first), find that weight below, and read off five portion sizes. Each person gets five pieces &mdash; one per weekday. Round to the nearest row; rule 04 covers the gap.</p>
+      <p class="note" style="margin-top:0.6rem;">Each portion is a fixed <b>share</b> of whatever the bake actually weighed &mdash; Mike 29.8%, Janna 22.7%, Jameson 18.0%, Calvin 16.8%, Amelia 12.6% &mdash; which is why shrinkage cannot push anyone off their macros.</p>
 
       <div class="table-scroll" style="margin-top:1rem;">
         <table class="ledger">
-          <thead><tr><th>Sunday slab weighs</th><th>Mike &times; 4</th><th>Janna &times; 4</th></tr></thead>
+          <thead><tr><th>Both slabs weigh</th><th>Mike &times; 5</th><th>Janna &times; 5</th><th>Jameson &times; 5</th><th>Calvin &times; 5</th><th>Amelia &times; 5</th></tr></thead>
           <tbody>
-            <tr><td class="amt">1,650 g</td><td class="amt">234 g</td><td class="amt">178 g</td></tr>
-            <tr><td class="amt">1,700 g</td><td class="amt">241 g</td><td class="amt">184 g</td></tr>
-            <tr class="totals-row"><td class="amt">1,750 g <span class="alt">likely</span></td><td class="amt">248 g</td><td class="amt">189 g</td></tr>
-            <tr><td class="amt">1,800 g</td><td class="amt">256 g</td><td class="amt">194 g</td></tr>
-            <tr><td class="amt">1,850 g</td><td class="amt">263 g</td><td class="amt">200 g</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="table-scroll" style="margin-top:1rem;">
-        <table class="ledger">
-          <thead><tr><th>Wednesday slab weighs</th><th>Mike &times; 3</th><th>Janna &times; 3</th></tr></thead>
-          <tbody>
-            <tr><td class="amt">1,250 g</td><td class="amt">237 g</td><td class="amt">180 g</td></tr>
-            <tr class="totals-row"><td class="amt">1,300 g <span class="alt">likely</span></td><td class="amt">246 g</td><td class="amt">187 g</td></tr>
-            <tr><td class="amt">1,350 g</td><td class="amt">256 g</td><td class="amt">194 g</td></tr>
-            <tr><td class="amt">1,400 g</td><td class="amt">265 g</td><td class="amt">202 g</td></tr>
+            <tr><td class="amt">3,950 g</td><td class="amt">235 g</td><td class="amt">179 g</td><td class="amt">142 g</td><td class="amt">133 g</td><td class="amt">100 g</td></tr>
+            <tr><td class="amt">4,050 g</td><td class="amt">241 g</td><td class="amt">184 g</td><td class="amt">146 g</td><td class="amt">136 g</td><td class="amt">102 g</td></tr>
+            <tr class="totals-row"><td class="amt">4,150 g <span class="alt">likely</span></td><td class="amt">247 g</td><td class="amt">189 g</td><td class="amt">150 g</td><td class="amt">140 g</td><td class="amt">105 g</td></tr>
+            <tr><td class="amt">4,250 g</td><td class="amt">253 g</td><td class="amt">193 g</td><td class="amt">153 g</td><td class="amt">143 g</td><td class="amt">107 g</td></tr>
+            <tr><td class="amt">4,350 g</td><td class="amt">259 g</td><td class="amt">198 g</td><td class="amt">157 g</td><td class="amt">146 g</td><td class="amt">110 g</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="callout">
-        <p><b>Short on containers?</b> Stack all of Mike's portions in one container with a parchment square between each, and Janna's in another &mdash; two containers instead of eight. Every piece is already weighed, so the morning move is just lifting the top two onto the oven tray. That leaves all ten lunch boxes free for lunch.</p>
+        <p><b>Five containers, not twenty-five.</b> Stack each person's five pieces in one container with a parchment square between them. Every piece is already weighed, so the morning move is lifting five onto the oven tray. That leaves all twenty-five lunch boxes free for lunch.</p>
+        <p><b>Friday's piece off each stack goes to the freezer</b> on Sunday, with Friday's five lunch boxes, and comes down Thursday night. That one move is what lets a single session cover five days without anything sitting past four.</p>
       </div>
     </section>
 
@@ -981,266 +1270,143 @@
 
     <section id="prep">
       <div class="section-head">
-        <h2>Prep Sessions</h2>
-        <p class="note">One long Sunday cook is what kept stalling, and not for lack of discipline &mdash; portioning always landed at the tail end of a session that had already run long, in a wrecked kitchen, when you were done. Two changes fix it. <b>Split the week into two sessions</b>, so nothing is a marathon and nothing sits past four days. And <b>schedule the portioning inside the oven's passive window</b>, where you're stuck waiting anyway, instead of after everything else is finished.</p>
-      </div>
-      <div class="tabs" role="tablist">
-        <button class="tab-btn active" data-tab="solo" role="tab" aria-selected="true">One of you</button>
-        <button class="tab-btn" data-tab="together" role="tab" aria-selected="false">Both of you</button>
+        <h2>The Session</h2>
+        <p class="note">There used to be two &mdash; Sunday and Wednesday, about four hours a week between them &mdash; and across ten days they produced <b>zero</b> compliant days. The problem was never discipline. Four hours of kitchen work a week on two named days, with both adults present, is a second job with a fixed schedule. So it is <b>one Sunday session</b> now, and Friday's portions go to the freezer instead of getting a second cook.</p>
       </div>
 
-      <div class="tab-panel active" data-panel="solo">
+      <div class="callout" style="margin-bottom:1.6rem;">
+        <p><b>Feeding five costs about ten minutes more than feeding two.</b> The long poles &mdash; the beef, the rice, the oven &mdash; barely scale with headcount. What scales is the portioning, and that now happens <b>inside the baking window</b> rather than after it: the boxes start at 1:10, not when the bake comes out. That single move is what absorbs three more people.</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="together" role="tab" aria-selected="true">Both of you</button>
+        <button class="tab-btn" data-tab="solo" role="tab" aria-selected="false">One of you</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="together">
       <div class="session">
         <div class="session-head">
-          <div><span class="eyebrow">Session 01 &middot; Sunday</span><h3>Builds Monday through Thursday</h3></div>
-          <div class="session-meta"><span class="n mono">2 h 20</span><span class="lbl">wall clock &middot; ~90 min hands-on</span></div>
+          <div><span class="eyebrow">Sunday &middot; the whole family</span><h3>Builds Monday through Friday</h3></div>
+          <div class="session-meta"><span class="n mono">2 h 26</span><span class="lbl">wall clock &middot; ~70 min hands-on each</span></div>
         </div>
+        <p class="note" style="margin:0 0 1.2rem;">Two standing roles, and <b>do not swap them week to week</b>. <b>Heat</b> runs the rice, the beef and the bake. <b>Line</b> runs the salad, the sauces and the containers. The whole gain of working together is that neither of you is waiting on the other.</p>
         <div class="runsheet">
           <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
-            <h4>Set the stations<span class="dur mono">10 min</span></h4>
-            <p>The step everyone skips, and the reason sessions run ninety minutes long.</p>
+            <h4>Set the stations<span class="dur mono">8 min &middot; both</span></h4>
+            <p>The step everyone skips, and the reason sessions run long.</p>
             <ul>
-              <li>Clear both counters. Trash can pulled up to the counter.</li>
+              <li>Clear both counters. Trash pulled up to the counter.</li>
               <li>Scale out, tare tested, batteries confirmed.</li>
-              <li><b>Pull every container now</b> &mdash; 8 lunch boxes, 2 breakfast stackers, 1 salad tub, 3 squeeze bottles. Lids off, lined up in two rows: Mike's and Janna's.</li>
-              <li>Range oven to 350&deg;F. Half sheet pan lined with parchment.</li>
+              <li><b>Pull every container now</b> &mdash; 25 lunch boxes, 5 breakfast stackers, 1 salad tub, 3 squeeze bottles. Lids off, five rows, one per person.</li>
+              <li>Range oven to 350&deg;F. <b>Two</b> half sheet pans lined with parchment.</li>
             </ul>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:08</span><div class="rs-body">
+            <h4>Rice on<span class="dur mono">Line</span></h4>
+            <p><b>8 cups dry</b> &mdash; two cooker runs or one big Instant Pot batch. Longest passive item, so it goes first. This is the lunch-box rice only; dinner rice is cooked fresh each night.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:10</span><div class="rs-body">
+            <h4>Ground beef<span class="dur mono">~45 min &middot; Heat</span></h4>
+            <p><b>17 lb (7,700 g) raw 80/20</b> across <b>two pans at once</b> &mdash; one pan at this volume steams instead of browning. Salt only, <b>do not drain</b>. Yields about 5,400 g cooked: twenty-five lunch boxes and the egg bake.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:55</span><div class="rs-body">
+            <h4>Beef off, set the bake portion aside<span class="dur mono">Heat</span></h4>
+            <p>Weigh <b>1,520 g</b> into a bowl and let it cool for a couple of minutes. Straight from the pan it starts cooking the eggs in the bowl.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">0:58</span><div class="rs-body">
+            <h4>Mix the egg bake<span class="dur mono">12 min &middot; Heat</span></h4>
+            <p><b>67 eggs</b> cracked into a pitcher first &mdash; this is the slow part and it is worth doing properly. Whisk, fold in the 1,520 g of beef and <b>171 g</b> melted butter, salt and garlic powder. Divide between the two pans, <b>2,311 g each</b>.</p>
+          </div></div>
+          <div class="rs-step passive"><span class="clock mono">1:10</span><div class="rs-body">
+            <h4>Oven running &mdash; 36 minutes, two racks, swap at 18<span class="dur mono">passive</span></h4>
+            <p>Nobody stands there. This is where the session is won &mdash; two jobs run side by side inside it:</p>
+          </div></div>
+          <div class="rs-step nested"><span class="clock mono"></span><div class="rs-body">
+            <h4>Line &mdash; salad, both sauces, honey<span class="dur mono">30 min</span></h4>
+            <p>Wash, spin, shred romaine and cabbage into the big tub with a dry paper towel on top. <b>Do not weigh the salad into portions</b> &mdash; at 17 kcal per 100 g, thirty grams off costs five calories and twenty-five containers. Then vinaigrette into bottle one, garlic-honey butter into bottle two, raw honey into bottle three.</p>
+          </div></div>
+          <div class="rs-step protected"><span class="clock mono"></span><div class="rs-body">
+            <h4>Heat &mdash; start the lunch boxes<span class="dur mono">36 min</span></h4>
+            <p>Twenty-five open boxes in five rows. Work <b>down the line by ingredient</b>, never box by box &mdash; one tare, one number, twenty-five boxes. Going box by box is what turns forty minutes into ninety.</p>
+            <ul>
+              <li><b>Beef pass:</b> box on the scale, tare, then 250 &middot; 210 &middot; 120 &middot; 115 &middot; 85 g, five of each. <span class="alt">3,900 g total</span></li>
+              <li><b>Rice pass:</b> same box back on, <b>tare again</b>, then 190 &middot; 130 &middot; 230 &middot; 210 &middot; 160 g. <span class="alt">4,600 g total</span></li>
+              <li>Lids on. <b>Four to the fridge, Friday's one to the freezer</b>, for each person.</li>
+            </ul>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">1:46</span><div class="rs-body">
+            <h4>Bake out to cool &mdash; Line joins the boxes<span class="dur mono">10 min &middot; both</span></h4>
+            <p>Both slabs onto racks, still on their parchment. With two of you on the line the remaining boxes close fast.</p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">1:56</span><div class="rs-body">
+            <h4>Cut the breakfasts<span class="dur mono">18 min &middot; both</span></h4>
+            <p>Weigh <b>both slabs together</b>, read the table in <a href="#eggbake">The Egg Bake</a>, cut five at each person's weight. Parchment between, five stackers, into the fridge &mdash; and <b>Friday's piece off each stack into the freezer.</b></p>
+          </div></div>
+          <div class="rs-step"><span class="clock mono">2:14</span><div class="rs-body">
+            <h4>Reset<span class="dur mono">12 min &middot; both</span></h4>
+            <p>Dishes in, counters wiped, scale away clean. Leaving a wrecked kitchen is how next Sunday's session gets postponed.</p>
+          </div></div>
+          <div class="rs-step finish"><span class="clock mono">2:26</span><div class="rs-body">
+            <h4>Fridge holds 20 lunches and 20 breakfasts. Freezer holds Friday.</h4>
+            <p>One shelf per person if you have them. <b>Measure a shelf before Sunday</b> &mdash; twenty boxes plus five stackers is the most likely reason a good session ends badly at 2:20.</p>
+          </div></div>
+        </div>
+      </div>
+      </div>
+
+      <div class="tab-panel" data-panel="solo">
+      <div class="session">
+        <div class="session-head">
+          <div><span class="eyebrow">Sunday &middot; alone</span><h3>Builds Monday through Friday</h3></div>
+          <div class="session-meta"><span class="n mono">3 h 12</span><span class="lbl">wall clock &middot; ~2 h 20 hands-on</span></div>
+        </div>
+        <p class="note" style="margin:0 0 1.2rem;"><b>Do not run the two-up timings alone.</b> Nothing overlaps when there is one of you &mdash; the boxes cannot happen during the oven window, because somebody has to do the salad and the sauces too. If Sunday is a solo day, the honest options are this sheet or dropping to the egg bake only.</p>
+        <div class="runsheet">
+          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
+            <h4>Set the stations<span class="dur mono">12 min</span></h4>
+            <p>As above, and pull all 25 boxes and 5 stackers now. Two half sheets lined, oven to 350&deg;F.</p>
           </div></div>
           <div class="rs-step"><span class="clock mono">0:10</span><div class="rs-body">
             <h4>Rice on<span class="dur mono">5 min</span></h4>
-            <p>5 cups dry into the rice cooker or Instant Pot. Start it and walk away &mdash; longest passive item, so it goes first.</p>
+            <p>8 cups dry. Start it and walk away.</p>
           </div></div>
-          <div class="rs-step"><span class="clock mono">0:15</span><div class="rs-body">
-            <h4>Ground beef, batch one<span class="dur mono">35 min</span></h4>
-            <p><b>9&frac12; lb (4,300 g) raw 80/20</b> in the largest pan, two loads if it won't fit. Salt only, <b>don't drain</b>. Yields about 3,000 g cooked &mdash; four lunch boxes each, the egg bake, and tonight's dinner.</p>
+          <div class="rs-step"><span class="clock mono">0:12</span><div class="rs-body">
+            <h4>Ground beef<span class="dur mono">45 min</span></h4>
+            <p>17 lb raw 80/20 across two pans. Salt only, don't drain. Weigh <b>1,520 g</b> out at the end for the bake.</p>
           </div></div>
-          <div class="rs-step"><span class="clock mono">0:50</span><div class="rs-body">
-            <h4>Mix the egg bake<span class="dur mono">10 min</span></h4>
-            <p>28 eggs whisked, <b>640 g</b> of the beef you just cooked weighed in, <b>72 g</b> melted butter, salt and garlic powder. Onto the parchment, into the oven.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">1:00</span><div class="rs-body">
-            <h4>Oven running &mdash; 28 minutes<span class="dur mono">passive</span></h4>
-            <p>Don't stand there. Two jobs fit inside this window:</p>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono"></span><div class="rs-body">
-            <h4>Salad for the week<span class="dur mono">15 min</span></h4>
-            <p>Wash, spin dry, shred the romaine and cabbage. Into the big tub with a dry paper towel on top. <b>Don't weigh this into portions</b> &mdash; at 17 kcal per 100 g, being thirty grams off costs five calories and eight containers. A handful is fine.</p>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono"></span><div class="rs-body">
-            <h4>Both sauces, plus honey<span class="dur mono">12 min</span></h4>
-            <p>Mustard vinaigrette into bottle one, garlic-honey butter into bottle two, raw honey into bottle three. <b>Calibrate the honey bottle once while the scale is out</b> &mdash; squeeze onto it and learn what 20 g and 15 g feel like. Do that and the morning weighing becomes optional.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">1:28</span><div class="rs-body">
-            <h4>Bake out, cooling &mdash; 20 minutes<span class="dur mono">passive</span></h4>
-            <p>Onto a rack, still on its parchment. Meanwhile, the single most important block of the week:</p>
-          </div></div>
-          <div class="rs-step protected"><span class="clock mono"></span><div class="rs-body">
-            <h4>Fill the lunch boxes &mdash; protect this block<span class="dur mono">25 min</span></h4>
-            <p>Eight open boxes in a line, Mike's four then Janna's four. Work <b>down the line by ingredient</b>, not box by box &mdash; twice as fast, and you can't lose your place.</p>
-            <ul>
-              <li><b>Beef pass:</b> box on the scale, tare, 250 g (Mike &times;4) then 210 g (Janna &times;4).</li>
-              <li><b>Rice pass:</b> same box back on the scale, <b>tare again</b>, 190 g (Mike) then 130 g (Janna).</li>
-              <li>Lids on, straight to the fridge. Don't let them cool on the counter.</li>
-            </ul>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">1:53</span><div class="rs-body">
-            <h4>Cut the breakfasts<span class="dur mono">15 min</span></h4>
-            <p>Weigh the cooled slab, read the table in <a href="#eggbake">The Egg Bake</a>, cut four at Mike's weight and four at Janna's. Parchment between, into the stackers, into the fridge.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">2:08</span><div class="rs-body">
-            <h4>Reset<span class="dur mono">10 min</span></h4>
-            <p>Dishes in, counters wiped, scale away clean. Leaving a wrecked kitchen is how Wednesday's session gets postponed.</p>
-          </div></div>
-          <div class="rs-step finish"><span class="clock mono">2:18</span><div class="rs-body">
-            <h4>Fridge holds 8 lunches and 8 breakfasts.</h4>
-            <p>Mike's on the top shelf, Janna's on the second. That's the labeling system &mdash; nothing to write, nothing to read.</p>
-          </div></div>
-        </div>
-      </div>
-
-      <div class="session">
-        <div class="session-head">
-          <div><span class="eyebrow">Session 02 &middot; Wednesday</span><h3>Builds Friday through Sunday</h3></div>
-          <div class="session-meta"><span class="n mono">1 h 35</span><span class="lbl">wall clock &middot; ~55 min hands-on</span></div>
-        </div>
-        <div class="runsheet">
-          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
-            <h4>Stations, rice on<span class="dur mono">5 min</span></h4>
-            <p>Six lunch boxes washed and lined up, both breakfast stackers rinsed. <b>3&frac12; cups dry rice</b> on. Oven to 350&deg;F, sheet pan lined.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:05</span><div class="rs-body">
-            <h4>Ground beef, batch two<span class="dur mono">25 min</span></h4>
-            <p><b>5&frac12; lb (2,500 g) raw 80/20.</b> Salt only, undrained. Yields about 1,900 g &mdash; three lunch boxes each plus the smaller bake.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:30</span><div class="rs-body">
-            <h4>Mix the bake<span class="dur mono">8 min</span></h4>
-            <p>21 eggs, <b>480 g</b> beef, <b>54 g</b> melted butter. Onto the pan, into the oven.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">0:38</span><div class="rs-body">
-            <h4>Oven running &mdash; 25 minutes<span class="dur mono">passive</span></h4>
-            <p>Top up the salad tub, and sear tonight's flap steak &mdash; 207 g Mike, 180 g Janna. Seven-minute job, and the pan is already hot.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">1:03</span><div class="rs-body">
-            <h4>Cooling &mdash; 20 minutes<span class="dur mono">passive</span></h4>
-            <p>Eat dinner. Then, before you sit down for the night:</p>
-          </div></div>
-          <div class="rs-step protected"><span class="clock mono"></span><div class="rs-body">
-            <h4>Six lunch boxes, same line method<span class="dur mono">18 min</span></h4>
-            <p>Beef pass: 250 g &times;3 (Mike), 210 g &times;3 (Janna). Rice pass: 190 g and 130 g. Lids, fridge.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">1:23</span><div class="rs-body">
-            <h4>Cut three breakfasts each<span class="dur mono">12 min</span></h4>
-            <p>Weigh the slab, read the Wednesday table, stack with parchment.</p>
-          </div></div>
-          <div class="rs-step finish"><span class="clock mono">1:35</span><div class="rs-body">
-            <h4>Thursday through Saturday are handled.</h4>
-          </div></div>
-        </div>
-      </div>
-
-      </div>
-
-      <div class="tab-panel" data-panel="together">
-      <p class="note" style="margin-bottom:1.2rem;">Two people, two standing roles. Don't trade them week to week &mdash; you get faster at the one you own. <b>Heat</b> keeps the stove and the oven; <b>Line</b> keeps the counter, the scale and the containers. Sunday drops from 2 h 18 to about <b>1 h 42</b>, and the kitchen is already clean when you finish, because the reset moves into the baking window.</p>
-
-      <div class="role-key">
-        <div><span class="who r-heat">Heat</span> rice, beef, the bake, the sear</div>
-        <div><span class="who r-line">Line</span> salad, sauces, containers, portioning</div>
-        <div><span class="who r-both">Both</span> together, at the same bench</div>
-      </div>
-
-      <div class="session">
-        <div class="session-head">
-          <div><span class="eyebrow">Session 01 &middot; Sunday &middot; two-up</span><h3>Builds Monday through Thursday</h3></div>
-          <div class="session-meta"><span class="n mono">1 h 42</span><span class="lbl">wall clock &middot; ~80 min each</span></div>
-        </div>
-        <div class="runsheet">
-          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Set the stations<span class="dur mono">6 min</span></h4>
-            <p>Two pairs of hands clear both counters, pull all 14 containers with lids off in two rows, and get the scale out and tared. Range oven to 350&deg;F, half sheet lined.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:06</span><div class="rs-body">
-            <h4><span class="who r-heat">Heat</span>Rice on, pans out<span class="dur mono">4 min</span></h4>
-            <p>5 cups dry started first &mdash; it has to be ready before the portioning block at 0:46.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:10</span><div class="rs-body">
-            <h4><span class="who r-heat">Heat</span>Ground beef, 9&frac12; lb across two pans<span class="dur mono">30 min</span></h4>
-            <p>Two pans instead of two sequential loads &mdash; that's five minutes off on its own. Salt only, don't drain.</p>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono">0:10</span><div class="rs-body">
-            <h4><span class="who r-line">Line</span>Salad for the week<span class="dur mono">15 min</span></h4>
-            <p>Wash, spin, shred, into the tub with a paper towel. Runs entirely inside Heat's beef window.</p>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono">0:25</span><div class="rs-body">
-            <h4><span class="who r-line">Line</span>Sauces, honey, then set the line<span class="dur mono">15 min</span></h4>
-            <p>Both squeeze bottles plus honey, and calibrate the honey bottle on the scale. Then lay out the eight lunch boxes in Mike-row and Janna-row so the portioning block starts the second the rice is ready.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:40</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Mix the egg bake<span class="dur mono">6 min</span></h4>
-            <p>Line cracks and whisks 28 eggs while Heat weighs 640 g of the just-cooked beef and melts 72 g butter. Combine, onto the parchment, into the oven.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">0:46</span><div class="rs-body">
-            <h4>Oven running &mdash; 28 minutes<span class="dur mono">passive</span></h4>
-            <p>Everything left fits inside this window and the cooling that follows:</p>
-          </div></div>
-          <div class="rs-step protected"><span class="clock mono">0:46</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Fill eight lunch boxes, two stations<span class="dur mono">13 min</span></h4>
-            <p>Heat takes Mike's four, Line takes Janna's four. Each person runs their own beef pass then rice pass, taring between. Halving this block is the single biggest gain of working two-up.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:59</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Reset the kitchen<span class="dur mono">12 min</span></h4>
-            <p>Dishes, counters, scale away &mdash; all of it while the bake is still in the oven. Solo this lands at the very end, when nobody wants to do it. That's the difference.</p>
+          <div class="rs-step"><span class="clock mono">1:00</span><div class="rs-body">
+            <h4>Mix the egg bake<span class="dur mono">14 min</span></h4>
+            <p>67 eggs, the 1,520 g beef, 171 g melted butter. Two pans, 2,311 g each.</p>
           </div></div>
           <div class="rs-step passive"><span class="clock mono">1:14</span><div class="rs-body">
-            <h4>Bake out, cooling &mdash; 20 minutes<span class="dur mono">nothing to do</span></h4>
-            <p>Genuinely idle. Clean kitchen, boxes in the fridge, twenty minutes of nothing. If it feels like you've forgotten something, you haven't &mdash; that's the system working.</p>
+            <h4>Oven &mdash; 36 minutes, swap racks at 18<span class="dur mono">passive</span></h4>
+            <p>Salad, both sauces and the honey bottle fit inside this window. That is all that fits.</p>
           </div></div>
-          <div class="rs-step"><span class="clock mono">1:34</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Weigh the slab, cut eight portions<span class="dur mono">8 min</span></h4>
-            <p>Line weighs and reads the lookup table out loud; Heat cuts and stacks with parchment between. Two people make this much less fiddly than it sounds.</p>
+          <div class="rs-step protected"><span class="clock mono">1:50</span><div class="rs-body">
+            <h4>Fill the lunch boxes &mdash; protect this block<span class="dur mono">45 min</span></h4>
+            <p>Down the line by ingredient. Beef pass, then <b>tare again</b>, rice pass. Lids on, Friday's to the freezer.</p>
           </div></div>
-          <div class="rs-step finish"><span class="clock mono">1:42</span><div class="rs-body">
-            <h4>Done, and the kitchen is already clean.</h4>
+          <div class="rs-step"><span class="clock mono">2:35</span><div class="rs-body">
+            <h4>Cut the breakfasts<span class="dur mono">25 min</span></h4>
+            <p>Both slabs weighed together, five pieces each, five stackers, Friday's to the freezer.</p>
           </div></div>
-        </div>
-      </div>
-
-      <div class="session">
-        <div class="session-head">
-          <div><span class="eyebrow">Session 02 &middot; Wednesday &middot; two-up</span><h3>Builds Friday through Sunday</h3></div>
-          <div class="session-meta"><span class="n mono">1 h 26</span><span class="lbl">wall clock &middot; dinner included</span></div>
-        </div>
-        <div class="runsheet">
-          <div class="rs-step"><span class="clock mono">0:00</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Stations, rice on<span class="dur mono">4 min</span></h4>
-            <p>3&frac12; cups dry on, six boxes out, oven to 350&deg;F.</p>
+          <div class="rs-step"><span class="clock mono">3:00</span><div class="rs-body">
+            <h4>Reset<span class="dur mono">12 min</span></h4>
+            <p>Ends clean or next Sunday starts dirty.</p>
           </div></div>
-          <div class="rs-step"><span class="clock mono">0:04</span><div class="rs-body">
-            <h4><span class="who r-heat">Heat</span>Ground beef, 5&frac12; lb<span class="dur mono">25 min</span></h4>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono">0:04</span><div class="rs-body">
-            <h4><span class="who r-line">Line</span>Boxes washed, salad topped up, line set<span class="dur mono">14 min</span></h4>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:29</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Mix the bake<span class="dur mono">5 min</span></h4>
-            <p>21 eggs, 480 g beef, 54 g butter. Into the oven.</p>
-          </div></div>
-          <div class="rs-step passive"><span class="clock mono">0:34</span><div class="rs-body">
-            <h4>Oven running &mdash; 25 minutes<span class="dur mono">passive</span></h4>
-            <p><b>This is the whole point of working two-up on a Wednesday.</b> Solo, dinner and the boxes compete for the same twenty minutes. Split, they don't.</p>
-          </div></div>
-          <div class="rs-step nested"><span class="clock mono">0:34</span><div class="rs-body">
-            <h4><span class="who r-heat">Heat</span>Sear tonight's flap steak<span class="dur mono">8 min</span></h4>
-            <p>207 g Mike, 180 g Janna. Rest it while Line finishes the boxes.</p>
-          </div></div>
-          <div class="rs-step protected"><span class="clock mono">0:34</span><div class="rs-body">
-            <h4><span class="who r-line">Line</span>Fill six lunch boxes<span class="dur mono">12 min</span></h4>
-            <p>250 g &times;3 and 210 g &times;3 beef, then 190 g and 130 g rice. Lids, fridge.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">0:46</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Weigh dinner onto plates, eat<span class="dur mono">~20 min</span></h4>
-            <p>Rice and vinaigrette weighed at the table's edge, as always. The bake finishes and cools while you eat.</p>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">1:06</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Reset the kitchen<span class="dur mono">10 min</span></h4>
-          </div></div>
-          <div class="rs-step"><span class="clock mono">1:19</span><div class="rs-body">
-            <h4><span class="who r-both">Both</span>Cut three breakfasts each<span class="dur mono">7 min</span></h4>
-          </div></div>
-          <div class="rs-step finish"><span class="clock mono">1:26</span><div class="rs-body">
-            <h4>Thursday through Saturday are handled.</h4>
+          <div class="rs-step finish"><span class="clock mono">3:12</span><div class="rs-body">
+            <h4>Same result, fifty minutes longer.</h4>
+            <p>If that number is the reason it will not happen, run the egg bake alone &mdash; 25 breakfasts in about 55 minutes &mdash; and let lunch be whatever the day gives you. School mornings are the hardest meal to win, and that wins them.</p>
           </div></div>
         </div>
       </div>
-
-      <div class="callout">
-        <p><b>If only one of you is there, use the solo sheet.</b> Don't try to run the two-up timings alone &mdash; the portioning block is sized for two stations and you'll end up doing exactly what has always gone wrong: leaving the boxes until last.</p>
-      </div>
       </div>
 
-      <h3 style="margin-top:2rem;font-size:1.05rem;">What each session cooks</h3>
-      <p class="note" style="margin-top:0.4rem;">Weekly totals are unchanged from the single-session version &mdash; 15 lb of beef, 49 eggs. Only the rice moves, up half a cup.</p>
-      <div class="table-scroll">
-        <table class="ledger">
-          <thead><tr><th>Item</th><th>Appliance</th><th>Sunday</th><th>Wednesday</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Ground beef 80/20</td><td>Gas stovetop</td><td class="amt">9&frac12; lb<br><span class="alt">4,300 g raw</span></td><td class="amt">5&frac12; lb<br><span class="alt">2,500 g raw</span></td><td>15 lb a week, unchanged. Salt only, brown in batches, don't drain the fat</td></tr>
-            <tr><td>Egg bake</td><td>Range oven, half sheet</td><td class="amt">28 eggs<br><span class="alt">+640 g beef, 72 g butter</span></td><td class="amt">21 eggs<br><span class="alt">+480 g beef, 54 g butter</span></td><td>Every breakfast for the week &mdash; see <a href="#eggbake">The Egg Bake</a></td></tr>
-            <tr><td>White rice</td><td>Rice cooker or Instant Pot</td><td class="amt">5 cups dry</td><td class="amt">3&frac12; cups dry</td><td>8&frac12; cups a week, up half a cup from the old single batch. Good in the fridge 4&ndash;5 days</td></tr>
-            <tr><td>Romaine + cabbage</td><td>Wash / shred ahead</td><td class="amt">~3&frac12; lb</td><td class="amt">~2&frac12; lb</td><td>6 lb a week. One big tub &mdash; don't weigh it into portions</td></tr>
-            <tr><td>Tri-tip</td><td>Oven, then sear on stovetop</td><td class="amt">2.5 lb<br><span class="alt">1,150 g raw</span></td><td class="amt">&mdash;</td><td>Tue + Thu dinners. Low roast to temp, hard sear in cast iron, slice after resting</td></tr>
-            <tr><td>Sauces</td><td>Blender or whisk</td><td class="amt">1 batch each</td><td class="amt">top up if low</td><td>Vinaigrette and garlic-honey butter &mdash; recipes below. Third bottle holds raw honey</td></tr>
-            <tr><td>Flap steak <span class="fresh-badge">fresh</span></td><td>Stovetop or air fryer</td><td class="amt" colspan="2">3.5 lb / 1,600 g a week &mdash; cooked on the night</td><td>Mon / Wed / Sat, never batched. High heat sear ~3&ndash;4 min per side</td></tr>
-            <tr><td>Chicken breast <span class="fresh-badge">fresh</span></td><td>Air fryer, 375&deg;F</td><td class="amt" colspan="2">1 lb / 450 g &mdash; cooked on the night</td><td>Friday only. 15&ndash;18 min, slice after resting</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout warn">
-        <p><b>Cool fast, and mean it.</b> Cooked rice left to cool slowly is the most common source of food poisoning in meal prep &mdash; <i>Bacillus cereus</i> spores survive cooking and multiply in the warm middle of a big pot. Spread the rice out to drop its temperature, and get every sealed box into the fridge within an hour of packing.</p>
-      </div>
+      <h3 style="margin-top:2.4rem;font-size:1.05rem;">Thursday night &mdash; the only thing the week asks</h3>
+      <p class="note" style="margin-top:0.4rem;"><b>Move Friday's five boxes and five breakfasts from the freezer to the fridge.</b> Thirty seconds. Set it as a repeating phone alarm, not a list item. This one move is what replaced the entire second session &mdash; it is the reason there is no Wednesday cook on this page any more.</p>
     </section>
 
-    <hr class="rule">
+<hr class="rule">
 
     <section id="sauces">
       <div class="section-head">
@@ -1358,7 +1524,7 @@
           <ul>
             <li><label><input type="checkbox" data-k="p1"><span>All containers washed and dry</span></label></li>
             <li><label><input type="checkbox" data-k="p2"><span>Beef moved from freezer to fridge to thaw</span></label></li>
-            <li><label><input type="checkbox" data-k="p3"><span>Eggs counted <span class="qty">28 Sunday &middot; 21 Wednesday</span></span></label></li>
+            <li><label><input type="checkbox" data-k="p3"><span>Eggs counted <span class="qty">67 &mdash; six dozen</span></span></label></li>
             <li><label><input type="checkbox" data-k="p4"><span>Parchment, rice and butter confirmed in the house</span></label></li>
             <li><label><input type="checkbox" data-k="p6"><span>Honey bottle topped up and calibrated <span class="qty">know what 20 g / 15 g feels like</span></span></label></li>
             <li><label><input type="checkbox" data-k="p5"><span>Session on the calendar with a start time, not &ldquo;sometime Sunday&rdquo;</span></label></li>
@@ -1405,6 +1571,8 @@
             <tr><td>Butter</td><td class="amt">0.9 g</td><td class="amt">81 g</td><td class="amt">0.1 g</td><td class="amt">717</td></tr>
             <tr><td>Raw honey</td><td class="amt">0.3 g</td><td class="amt">0 g</td><td class="amt">82 g</td><td class="amt">304</td></tr>
             <tr><td>Banana, peeled</td><td class="amt">1.1 g</td><td class="amt">0.3 g</td><td class="amt">22.8 g</td><td class="amt">89</td></tr>
+            <tr><td>Whole milk <span class="alt">per 100 ml</span></td><td class="amt">3.2 g</td><td class="amt">3.3 g</td><td class="amt">4.8 g</td><td class="amt">61</td></tr>
+            <tr><td>Egg bake, baked <span class="alt">154:80:9, as cut</span></td><td class="amt">18.1 g</td><td class="amt">17.3 g</td><td class="amt">0.5 g</td><td class="amt">222</td></tr>
             <tr><td>Romaine + cabbage</td><td class="amt">1.2 g</td><td class="amt">0.3 g</td><td class="amt">3.3 g</td><td class="amt">17</td></tr>
             <tr><td>Mustard vinaigrette (house batch)</td><td class="amt">0 g</td><td class="amt">66.7 g</td><td class="amt">4 g</td><td class="amt">616</td></tr>
             <tr><td>Garlic-honey butter (house batch)</td><td class="amt">0.6 g</td><td class="amt">57.9 g</td><td class="amt">23.4 g</td><td class="amt">616</td></tr>
@@ -1431,36 +1599,37 @@
     <section id="shopping">
       <div class="section-head">
         <h2>Weekly Shopping List</h2>
-        <p class="note">Sized to the exact gram portions on the card &mdash; two people, seven days, no guessing. Buy this and the week is fully covered.</p>
+        <p class="note">Sized to the exact gram portions on the cards &mdash; <b>five people, Monday through Friday</b>, no guessing. Saturday and Sunday are off the grid and not in these numbers. Buy this and the five weekdays are fully covered.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-col">
           <h4>Proteins</h4>
           <ul>
-            <li>Ground beef (80/20) &mdash; 6,800 g (15 lb), split 9&frac12; + 5&frac12;</li>
-            <li>Flap steak &mdash; 1,600 g (3.5 lb)</li>
-            <li>Tri-tip &mdash; 1,150 g (2.5 lb)</li>
-            <li>Chicken breast &mdash; 450 g (1 lb)</li>
-            <li>Eggs &mdash; 49 large (4 dozen) &mdash; 28 Sunday, 21 Wednesday</li>
+            <li><b>Ground beef (80/20) &mdash; 17 lb</b> (7,700 g) &mdash; two pans at once</li>
+            <li>Flap steak &mdash; 4&frac12; lb (2,050 g) &mdash; Mon + Wed</li>
+            <li>Tri-tip &mdash; 4&frac34; lb (2,150 g) &mdash; Tue + Thu</li>
+            <li>Chicken breast &mdash; 1&frac34; lb (800 g) &mdash; Fri</li>
+            <li><b>Eggs &mdash; 67 large</b> (buy 6 dozen) &mdash; all in one bake</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Produce &amp; Carbs</h4>
           <ul>
-            <li>White rice &mdash; 1,650 g dry (8&frac12; cups)</li>
-            <li>Romaine + cabbage &mdash; 2,800 g total (3 heads + 1 cabbage)</li>
-            <li>Bananas &mdash; 14 (~1,650 g peeled)</li>
-            <li>Raw honey &mdash; 285 g used/week</li>
+            <li><b>White rice &mdash; 18 cups dry</b> (3,475 g, an 8 lb bag)<br><span class="alt">8 cups for the boxes, 10 cooked fresh at dinner</span></li>
+            <li>Romaine + cabbage &mdash; 8&frac12; lb (3,800 g)</li>
+            <li>Bananas &mdash; 30 &mdash; breakfast and snacks</li>
+            <li>Raw honey &mdash; 400 g used/week</li>
+            <li>Fruit for lunch boxes &mdash; 15 pieces, whatever they like</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Dairy &amp; Fat</h4>
           <ul>
-            <li>Butter &mdash; 230 g used/week</li>
-            <li>Olive oil &mdash; 250 g used/week</li>
+            <li><b>Whole milk &mdash; 1 gallon</b> &mdash; the kids' breakfast</li>
+            <li>Butter &mdash; 350 g used/week</li>
+            <li>Olive oil &mdash; 200 g used/week</li>
             <li>A2 half &amp; half &mdash; as needed</li>
-            <li>A2 whole milk yogurt (Mike)</li>
-            <li>Coconut yogurt (Janna)</li>
+            <li>A2 whole milk yogurt (Mike) &middot; coconut yogurt (Janna)</li>
           </ul>
         </div>
         <div class="shop-col">
@@ -1470,41 +1639,38 @@
             <li>Balsamic vinegar &mdash; 80 g used/week</li>
             <li>Garlic &mdash; 1 bulb</li>
             <li>Maple syrup &mdash; 1 bottle</li>
+            <li><b>Parchment paper</b> &mdash; the bake does not come out without it</li>
           </ul>
         </div>
         <div class="shop-col">
           <h4>Gear</h4>
           <ul>
             <li>Digital kitchen scale (0.1 g, tare button)</li>
-            <li>10 lunch Tupperware &mdash; 4 each Sunday, 3 each Wednesday</li>
-            <li>Half sheet pan, 13&times;18 rimmed &mdash; for the egg bake</li>
-            <li>Parchment paper &mdash; lines the pan, separates stacked portions</li>
-            <li>Aluminum foil &mdash; covers Mike's lunch in the Wonder Oven</li>
-            <li>3 squeeze bottles &mdash; 2 sauces + raw honey</li>
-            <li>1 large salad tub (the 10 small containers aren't needed)</li>
-            <li><i>Optional:</i> 2 small oven-safe dishes &mdash; bake breakfast straight into them, fridge to Wonder Oven to table</li>
-          </ul>
-        </div>
-        <div class="shop-col">
-          <h4>Supplements</h4>
-          <ul>
-            <li>Heart &amp; Soil Beef Organs &mdash; 2&ndash;3 caps/day each, check supply</li>
+            <li><b>25 lunch Tupperware</b> &mdash; five each. The old list said ten; count them Saturday, not Sunday.</li>
+            <li><b>5 tall containers</b> &mdash; one breakfast stack per person</li>
+            <li><b>Two</b> half sheet pans, 13&times;18 rimmed &mdash; the bake needs both</li>
+            <li>3 squeeze bottles &mdash; vinaigrette, garlic-honey butter, honey</li>
+            <li>Aluminum foil &mdash; covers a lunch box in the Wonder Oven</li>
           </ul>
         </div>
       </div>
+      <div class="callout" style="margin-top:1.4rem;">
+        <p><b>The bill went down, not up.</b> Adding three children and removing two days landed on less food than the old seven-day version bought for two adults &mdash; 17 lb of beef against 15, but four fewer cups of boxed rice, and no second session's worth of anything. Weekends are where the old plan was quietly spending money on food nobody ate on schedule.</p>
+      </div>
     </section>
-
 
     <hr class="rule">
 
     <section id="onramp">
       <div class="section-head">
         <h2>Start Here</h2>
-        <p class="note">Neither of us has strung a single compliant day together yet, so going straight to two people eating four prepped meals a day is a low-probability bet. Stage it instead &mdash; each week adds one thing, and each week is a real win on its own.</p>
+        <p class="note">Neither of us has strung a single compliant day together yet, so going straight to a five-person, twenty-five-box session is a low-probability bet. Stage it instead &mdash; each week adds one thing, and each week is a real win on its own.</p>
+        <p class="note" style="margin-top:0.8rem;"><b>And pick a tier every Saturday, out loud, with the calendar open.</b> <b>Full</b> is the 2h26 session above. <b>Half</b> is the egg bake alone &mdash; 25 breakfasts, about 55 minutes, lunch is whatever the day gives you. <b>Floor</b> is nothing prepped, which is a chosen tier and not a lapse. There is no such thing as a failed week; there is a week you picked the wrong tier for.</p>
+        <p class="note" style="margin-top:0.8rem;">Then <b>put the Sunday block on the calendar as a real event, with both of you on it.</b> This page already knew that unscheduled work does not happen &mdash; it is why the portioning moved inside the oven window &mdash; and then never once put the session itself on a calendar. That is the step that has never been taken.</p>
       </div>
       <div class="ramp">
-        <div class="ramp-row"><span class="wk">Week 1</span><div><b>Breakfast only.</b><span class="d">One egg bake Sunday, one Wednesday. Lunch and dinner exactly as you were already eating them &mdash; genuinely, no changes, no guilt. The only goal is seven consecutive mornings that just happen &mdash; no cooking, no decisions, one honey weighing. That is the streak we have never had.</span></div></div>
-        <div class="ramp-row"><span class="wk">Week 2</span><div><b>Add the lunch boxes.</b><span class="d">Now run the full Sunday and Wednesday sessions. Dinner still unstructured. This is the week you find out how long portioning actually takes in this kitchen &mdash; write the real number down.</span></div></div>
+        <div class="ramp-row"><span class="wk">Week 1</span><div><b>Breakfast only &mdash; the Half tier.</b><span class="d">One egg bake on Sunday, about 55 minutes, twenty-five portions. Lunch and dinner exactly as you were already eating them &mdash; genuinely, no changes, no guilt. The only goal is five consecutive school mornings that just happen: no cooking, no decisions, one honey weighing. That is the streak we have never had, and it is the hardest meal of the week to win.</span></div></div>
+        <div class="ramp-row"><span class="wk">Week 2</span><div><b>Add the lunch boxes &mdash; the Full tier.</b><span class="d">Now run the whole Sunday session, all twenty-five boxes. Dinner still unstructured. This is the week you find out how long the two passes actually take in this kitchen with five people's worth of containers on the counter &mdash; write the real number down and trust it over the one on this page.</span></div></div>
         <div class="ramp-row"><span class="wk">Week 3</span><div><b>Add dinner and the swap table.</b><span class="d">The full plan. By now the sessions are routine and dinner is the only decision left in the day.</span></div></div>
         <div class="ramp-row"><span class="wk">Week 4+</span><div><b>Adjust the numbers, not the system.</b><span class="d">Weigh in weekly, same day, same conditions. If the scale goes flat for three honest weeks, drop one rice tier &mdash; see <a href="#stall">If the scale stalls</a>. Never change the system that is finally running.</span></div></div>
       </div>
@@ -1566,7 +1732,7 @@
         <div class="rec-row"><span class="w">You skip breakfast entirely</span><span class="d">Eat the lunch box at lunch anyway. One missed meal is a 750-calorie day off target, not a failed week. Do not make it up at dinner &mdash; that is how the swap table stops meaning anything.</span></div>
         <div class="rec-row"><span class="w">You're out and the box is at home</span><span class="d">Nearest steak or burger patty, no bun, no fries. Log it roughly. Move on.</span></div>
         <div class="rec-row"><span class="w">Dinner plans change</span><span class="d">Ground beef fallback &mdash; 232 g Mike, 202 g Janna, no sauce. The day still lands.</span></div>
-        <div class="rec-row"><span class="w">The Sunday session doesn't happen</span><span class="d">Do not skip ahead to Wednesday. Run a half session Monday night: beef and rice only, four boxes each, no egg bake, fresh eggs that week. Half the system beats none of it.</span></div>
+        <div class="rec-row"><span class="w">The Sunday session doesn't happen</span><span class="d">Drop to the <b>Half tier</b> on Monday night &mdash; the egg bake only, about 55 minutes, and lunch is whatever the day gives you. Do not try to rescue the full session midweek; that is the move that used to end the whole thing. Half the system beats none of it.</span></div>
         <div class="rec-row"><span class="w">A Thursday box smells off</span><span class="d">Bin it. Four days is the ceiling and it isn't worth testing. Ground beef fallback for that meal.</span></div>
         <div class="rec-row"><span class="w">One of you is out, the other isn't</span><span class="d">Keep going alone. This is two independent stacks of boxes that happen to get built in the same session &mdash; it does not need both of you compliant to work for either of you.</span></div>
       </div>
@@ -1577,7 +1743,8 @@
     <section id="tips">
       <div class="section-head">
         <h2>Quick Tips</h2>
-        <p class="note">The plan didn't fail before because it was wrong &mdash; it failed because it asked for ten weighings before coffee and left the portioning to whatever energy was left at the end. These are the habits that keep it from asking.</p>
+        <p class="note">The plan didn't fail before because it was wrong. First it asked for ten weighings before coffee. Then, once that was fixed, it asked for four hours a week across two named days with both adults present &mdash; and produced zero compliant days in ten. These are the habits that keep it from asking.</p>
+        <p class="note" style="margin-top:0.8rem;"><b>The one that matters most: logging is the floor, and prep is a dial.</b> Four saved foods is thirty seconds a day, but you could only tap them if the boxes existed &mdash; so one blown Sunday cost the prep <i>and</i> the part that was already free, and nothing ever accumulated. Log every day at every tier, including the ones where nothing was prepped.</p>
       </div>
       <div class="tips">
         <div class="tip"><span class="mark">&mdash;</span><p><b>Build the boxes inside the oven window or they don't get built.</b> Portioning at the end of a long cook is the step that has never happened. Do it while the egg bake is baking and cooling &mdash; you're stuck waiting anyway.</p></div>
@@ -1586,7 +1753,7 @@
         <div class="tip"><span class="mark">&mdash;</span><p><b>80/20 ground beef only</b> &mdash; the fat is the point, don't drain it. The gram math assumes the fat stays in the pan with the meat.</p></div>
         <div class="tip"><span class="mark">&mdash;</span><p><b>Weigh the sauce.</b> It is 20&ndash;30% of the day's fat. A free-hand pour is the single biggest source of drift in this whole plan.</p></div>
         <div class="tip"><span class="mark">&mdash;</span><p><b>Ground beef is always the answer</b> to a night that fell apart &mdash; 232 g / 202 g, no sauce, done.</p></div>
-        <div class="tip"><span class="mark">&mdash;</span><p><b>Flap steak stays fresh</b> &mdash; it doesn't reheat well, and it's a 7-minute sear. On Wednesday it cooks inside the oven's passive window, so dinner lands with the prep.</p></div>
+        <div class="tip"><span class="mark">&mdash;</span><p><b>Flap steak stays fresh</b> &mdash; it doesn't reheat well, and it's a 7-minute sear. Monday and Wednesday, cooked with everyone at the table, while the night's rice sits passive in the cooker.</p></div>
         <div class="tip"><span class="mark">&mdash;</span><p><b>Heart &amp; Soil supplements</b> cover organ nutrition &mdash; no liver cooking needed.</p></div>
         <div class="tip"><span class="mark">&mdash;</span><p><b>No microwave, so order matters.</b> The Wonder Oven is the long pole in the morning &mdash; start it first, then do everything else. And nothing plastic ever goes in the shop's TurboChef.</p></div>
         <div class="tip"><span class="mark">&mdash;</span><p><b>Don't start at 100%.</b> Week one is breakfast only. See <a href="#onramp">Start Here</a> &mdash; a seven-morning streak is worth more than a perfect week that collapses on Tuesday.</p></div>
