@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Guides</title>
+<meta name="description" content="Turning a podcast teardown of photography packages into three investment guides — MTP branding, MTP family sessions, and Pilgrimage Media branding and progress sessions.">
+<style>
+  :root{
+    --paper: #EFEDE8;
+    --paper-raised: #FAF9F6;
+    --ink: #24262B;
+    --ink-soft: #62666F;
+    --line: rgba(36,38,43,0.14);
+    --brass: #A07417;
+    --brass-wash: rgba(160,116,23,0.10);
+    --brass-ink: #6A4C0C;
+    --mtp: #3F5E72;
+    --mtp-wash: rgba(63,94,114,0.10);
+    --pilg: #5C6B4A;
+    --pilg-wash: rgba(92,107,74,0.11);
+    --flag: #8C3D2E;
+    --flag-wash: rgba(140,61,46,0.09);
+    --shadow: 0 1px 2px rgba(36,38,43,0.06), 0 6px 20px -8px rgba(36,38,43,0.18);
+    --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+    --font-body: -apple-system, "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #17191D;
+      --paper-raised: #1F2229;
+      --ink: #E7E4DC;
+      --ink-soft: #A3A7B0;
+      --line: rgba(231,228,220,0.14);
+      --brass: #D6A340;
+      --brass-wash: rgba(214,163,64,0.13);
+      --brass-ink: #17191D;
+      --mtp: #7FA8C4;
+      --mtp-wash: rgba(127,168,196,0.13);
+      --pilg: #9DB185;
+      --pilg-wash: rgba(157,177,133,0.13);
+      --flag: #D4826E;
+      --flag-wash: rgba(212,130,110,0.12);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -10px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #17191D;
+    --paper-raised: #1F2229;
+    --ink: #E7E4DC;
+    --ink-soft: #A3A7B0;
+    --line: rgba(231,228,220,0.14);
+    --brass: #D6A340;
+    --brass-wash: rgba(214,163,64,0.13);
+    --brass-ink: #17191D;
+    --mtp: #7FA8C4;
+    --mtp-wash: rgba(127,168,196,0.13);
+    --pilg: #9DB185;
+    --pilg-wash: rgba(157,177,133,0.13);
+    --flag: #D4826E;
+    --flag-wash: rgba(212,130,110,0.12);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -10px rgba(0,0,0,0.5);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.62;
+    font-size: 16px;
+  }
+  .wrap{ max-width: 860px; margin: 0 auto; padding: 0 16px 5rem; }
+  h1,h2,h3,h4{ font-family: var(--font-display); font-weight: 600; line-height: 1.22; margin:0; }
+  p{ margin: 0 0 0.9rem; }
+  a{ color: var(--brass); }
+
+  header.masthead{ padding: 3.2rem 0 2rem; border-bottom: 1px solid var(--line); margin-bottom: 2.6rem; }
+  .eyebrow{
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  header.masthead h1{ font-size: 2.3rem; margin: 0.5rem 0 0.6rem; }
+  header.masthead .standfirst{ font-size: 1.02rem; color: var(--ink-soft); max-width: 60ch; margin:0; }
+  .sourceline{
+    margin-top: 1.4rem; font-size: 0.82rem; color: var(--ink-soft);
+    font-family: var(--font-mono); letter-spacing: 0.02em;
+  }
+
+  section{ margin-bottom: 3rem; scroll-margin-top: 1rem; }
+  .section-head{ display:flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.3rem; }
+  .section-head h2{ font-size: 1.5rem; }
+  .section-head .note{ font-size: 0.88rem; color: var(--ink-soft); max-width: 64ch; }
+
+  .callout{
+    border:1px solid var(--line); border-left:3px solid var(--brass);
+    background:var(--paper-raised); border-radius:0 12px 12px 0;
+    padding:0.95rem 1.15rem; margin-top:1.1rem; font-size:0.88rem; color:var(--ink-soft);
+  }
+  .callout b{ color:var(--ink); }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout.flag{ border-left-color: var(--flag); }
+  .callout.flag b{ color: var(--flag); }
+
+  blockquote.pull{
+    margin: 1.2rem 0; padding: 0.2rem 0 0.2rem 1.15rem;
+    border-left: 3px solid var(--line);
+    font-family: var(--font-display); font-size: 1.04rem; color: var(--ink);
+  }
+  blockquote.pull cite{
+    display:block; margin-top:0.5rem; font-family: var(--font-mono);
+    font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--ink-soft); font-style: normal;
+  }
+
+  .checks{ display:grid; gap:1rem; }
+  .check{
+    background: var(--paper-raised); border:1px solid var(--line);
+    border-radius: 10px; padding: 1.15rem 1.3rem; box-shadow: var(--shadow);
+  }
+  .check .num{
+    font-family: var(--font-mono); font-size:0.68rem; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--brass);
+  }
+  .check h3{ font-size:1.08rem; margin:0.3rem 0 0.5rem; }
+  .check p{ font-size:0.9rem; color: var(--ink-soft); margin-bottom:0.5rem; }
+  .check p:last-child{ margin-bottom:0; }
+  .check .ask{
+    margin-top:0.75rem; padding-top:0.7rem; border-top:1px solid var(--line);
+    font-size:0.86rem; color: var(--ink);
+  }
+  .check .ask b{ font-family: var(--font-mono); font-size:0.66rem; letter-spacing:0.08em;
+    text-transform:uppercase; color: var(--ink-soft); display:block; margin-bottom:0.2rem; }
+
+  .offers{ display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:1rem; }
+  .offer{
+    background: var(--paper-raised); border:1px solid var(--line);
+    border-top:3px solid var(--line); border-radius: 4px 4px 10px 10px;
+    padding: 1.1rem 1.2rem; box-shadow: var(--shadow);
+  }
+  .offer.mtp{ border-top-color: var(--mtp); }
+  .offer.pilg{ border-top-color: var(--pilg); }
+  .offer .brand{
+    font-family: var(--font-mono); font-size:0.64rem; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--ink-soft);
+  }
+  .offer.mtp .brand{ color: var(--mtp); }
+  .offer.pilg .brand{ color: var(--pilg); }
+  .offer h3{ font-size:1.02rem; margin:0.25rem 0 0.6rem; }
+  .offer dl{ margin:0; font-size:0.85rem; }
+  .offer dt{
+    font-family: var(--font-mono); font-size:0.62rem; letter-spacing:0.08em;
+    text-transform:uppercase; color: var(--ink-soft); margin-top:0.7rem;
+  }
+  .offer dt:first-child{ margin-top:0; }
+  .offer dd{ margin:0.15rem 0 0; color: var(--ink); }
+
+  .table-scroll{ overflow-x:auto; -webkit-overflow-scrolling: touch; }
+  table.ledger{ width:100%; border-collapse: collapse; font-size:0.9rem; }
+  table.ledger th{
+    font-family: var(--font-mono); font-size:0.66rem; letter-spacing:0.07em;
+    text-transform:uppercase; color: var(--ink-soft); text-align:left;
+    padding: 0 0.9rem 0.55rem 0; border-bottom:1px solid var(--line); white-space:nowrap;
+  }
+  table.ledger td{
+    padding: 0.7rem 0.9rem 0.7rem 0; border-bottom:1px solid var(--line); vertical-align: top;
+  }
+  table.ledger tr:last-child td{ border-bottom:none; }
+  table.ledger td.pg{ font-family: var(--font-mono); font-size:0.8rem; color: var(--brass); white-space:nowrap; }
+  .slot{
+    font-family: var(--font-mono); font-size:0.78rem;
+    background: var(--brass-wash); color: var(--brass-ink);
+    padding: 0.08rem 0.4rem; border-radius: 4px; white-space:nowrap;
+  }
+  :root[data-theme="dark"] .slot, :root:not([data-theme="light"]) .slot{ color: var(--brass); }
+  @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .slot{ color: var(--brass-ink); } }
+
+  .arc{ list-style:none; margin:0; padding:0; counter-reset: beat; }
+  .arc li{
+    position:relative; padding: 0 0 1.1rem 2.2rem; counter-increment: beat;
+    border-left: 1px solid var(--line); margin-left: 0.6rem;
+  }
+  .arc li:last-child{ border-left-color: transparent; padding-bottom:0; }
+  .arc li::before{
+    content: counter(beat); position:absolute; left:-0.72rem; top:0;
+    width:1.45rem; height:1.45rem; border-radius:50%;
+    background: var(--paper); border:1px solid var(--line); color: var(--ink-soft);
+    font-family: var(--font-mono); font-size:0.7rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .arc h4{ font-size:0.98rem; margin:0 0 0.25rem; }
+  .arc p{ font-size:0.88rem; color: var(--ink-soft); margin:0; }
+
+  .buildgrid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:1rem; }
+  .buildcard{
+    background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:12px; padding:1rem 1.1rem;
+  }
+  .buildcard h4{
+    display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem;
+    font-size:0.92rem; padding-bottom:0.5rem; margin-bottom:0.55rem; border-bottom:1px solid var(--line);
+  }
+  .buildcard h4 .when{
+    font-family: var(--font-mono);
+    font-size:0.62rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.07em; font-weight:400;
+  }
+  .buildcard ul{ list-style:none; margin:0; padding:0; }
+  .buildcard label{
+    display:flex; gap:0.55rem; align-items:flex-start; cursor:pointer;
+    padding:0.28rem 0.3rem; margin-left:-0.3rem; border-radius:5px; font-size:0.86rem;
+  }
+  .buildcard label:hover{ background: var(--brass-wash); }
+  .buildcard input{
+    margin:0.34rem 0 0; accent-color: var(--brass); flex-shrink:0; width:0.9rem; height:0.9rem;
+  }
+  .buildcard input:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+  .buildcard input:checked + span{ color: var(--ink-soft); text-decoration: line-through; }
+  .reset-row{ display:flex; justify-content:flex-end; margin-top:0.9rem; }
+  button.reset-checks{
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
+    background:transparent; color:var(--ink-soft); border:1px solid var(--line);
+    padding:0.45rem 0.85rem; border-radius:6px; cursor:pointer;
+  }
+  button.reset-checks:hover{ color: var(--ink); border-color: var(--ink-soft); }
+
+  footer{
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top:1px solid var(--line);
+    font-size:0.82rem; color: var(--ink-soft);
+  }
+  footer a{ color: var(--ink-soft); }
+
+  @media (max-width: 560px){
+    header.masthead h1{ font-size: 1.85rem; }
+    .wrap{ padding-bottom: 3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Research → Build Spec</div>
+    <h1>Investment Guides</h1>
+    <p class="standfirst">One podcast episode on why photography packages stop converting, turned
+      into a build spec for three guides — MTP branding, MTP family sessions, and Pilgrimage Media
+      branding and progress sessions.</p>
+    <div class="sourceline">
+      Source: Book More Clients Photography Podcast · Brooke Jefferson · Sept 17 · 14 min<br>
+      Full transcript: <a href="transcript.md">transcript.md</a>
+    </div>
+  </header>
+
+  <section id="diagnosis">
+    <div class="section-head">
+      <div class="eyebrow">01 — The diagnosis</div>
+      <h2>The problem isn't your price</h2>
+      <p class="note">Brooke has reviewed hundreds of photographers' pricing pages looking for why
+        leads don't become bookings, and says the same mistake shows up almost every time.</p>
+    </div>
+
+    <p>The mistake is under-communicated value: <em>build a package, slap a bulleted list on it,
+      attach a price, call it done.</em> A bulleted list doesn't sell anything on its own, because
+      the client isn't buying a number of images or a number of hours. They're making a financial
+      decision about an experience.</p>
+
+    <blockquote class="pull">
+      They open your message on their phone. They see two or three paragraphs, a list of bullet
+      points saying what they get, and a dollar amount underneath each one. That's all the
+      information you're giving them&hellip; You have handed them information, but you have not
+      given them a reason to say yes today.
+      <cite>Common Pricing Mistake</cite>
+    </blockquote>
+
+    <p>What follows is predictable. They don't feel anything pulling them toward a decision, so they
+      tell themselves they'll think about it. Then life gets busy, the decision moves to
+      <em>someday</em>, and someday rarely arrives on its own. It reads like being ghosted or
+      undercut on price. Usually it's neither.</p>
+
+    <div class="callout">
+      <p><b>The signal to watch.</b> Healthy lead volume, bookings not matching it, and you're
+        confident the photography itself isn't the problem — that combination is almost always
+        pricing and packaging waving a red flag.</p>
+      <p>It does <b>not</b> automatically mean lower your prices. The fix is often restructuring
+        what's inside each package, or simply clarifying who each one was built for, so the choice
+        feels obvious instead of overwhelming.</p>
+    </div>
+  </section>
+
+  <section id="checks">
+    <div class="section-head">
+      <div class="eyebrow">02 — The framework</div>
+      <h2>Three things to check</h2>
+      <p class="note">The same three she looks at first whenever a photographer sends pricing over
+        for review — independent of genre.</p>
+    </div>
+
+    <div class="checks">
+      <div class="check">
+        <div class="num">Check one</div>
+        <h3>Are you showing value, or only telling it?</h3>
+        <p>This is where an investment guide comes in. She's used one since 2018 and still uses the
+          method in 2026 — by her account it converts more leads than a conversation or a phone call
+          ever could, and she sends a Canva view link every single time someone asks about pricing.</p>
+        <p>A guide lets people see real images from real sessions, and start picturing their own
+          family, their own senior year, their own brand looking that way. It gives them something
+          to <em>feel</em>, not just read.</p>
+        <div class="ask"><b>Ask of each offer</b>
+          When someone asks what you charge, do they get a link to something built — or a price in
+          the body of an email?</div>
+      </div>
+
+      <div class="check">
+        <div class="num">Check two</div>
+        <h3>Do they understand what they're getting and why it matters?</h3>
+        <p>Listing location, outfits and image count is efficient, but it only says what's
+          technically included. It never says who the package is built for, or what the whole
+          experience looks like from first step to finished gallery.</p>
+        <p>Walk them through it like you're explaining it to a friend: what the session feels like
+          from arrival to wrap, what it's like when the gallery lands in their inbox, what kind of
+          client usually picks this one and why it fits their life.</p>
+        <div class="ask"><b>The test</b>
+          Reading your package description, can they picture their own kid, their own living room,
+          their own senior year somewhere in it? If not, it isn't finished.</div>
+      </div>
+
+      <div class="check">
+        <div class="num">Check three</div>
+        <h3>Does the pricing actually work?</h3>
+        <p>Less about presentation, more about the numbers underneath. Is each package genuinely
+          profitable once you account for your time and expenses? Is it genuinely valuable to the
+          person on the other end?</p>
+        <p>And is there real, noticeable separation between tiers, so that moving up feels like a
+          meaningful upgrade rather than a rounding error?</p>
+        <div class="ask"><b>This week</b>
+          Sit down and do a pricing check-in against real data, emotions set to one side.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><b>Her own worked example.</b> She didn't overhaul her senior packages — she added a third
+        option and adjusted the price of each. More seniors now book the second and third tiers,
+        which was the whole point, and she reports profiting an additional
+        <span class="slot">$100–200</span> per booking.</p>
+      <p>Worth noting the auto-generated transcript renders that figure as "$1 to $200," which is
+        almost certainly a transcription slip for "$100 to $200." The mechanism is the part to
+        borrow regardless: <b>a third tier changes which tier looks like the sensible middle.</b></p>
+    </div>
+  </section>
+
+  <section id="applied">
+    <div class="section-head">
+      <div class="eyebrow">03 — Applied</div>
+      <h2>Your four offers</h2>
+      <p class="note">Same framework, four different buyers. The distinction that matters most here:
+        two of these are bought with business money and two with household money, and that changes
+        what "value" has to prove.</p>
+    </div>
+
+    <div class="offers">
+      <div class="offer mtp">
+        <div class="brand">MTP</div>
+        <h3>Branding sessions</h3>
+        <dl>
+          <dt>Buying with</dt><dd>Business money — needs a return, not just a memory.</dd>
+          <dt>Real job</dt><dd>Replace a stale headshot and a thin library with images that carry a
+            whole year of marketing.</dd>
+          <dt>Value proof</dt><dd>Show the library, not the session. Where the images end up: site
+            header, socials, press, deck.</dd>
+          <dt>Tier logic</dt><dd>Scale by breadth of usable library — looks, locations, volume.</dd>
+        </dl>
+      </div>
+
+      <div class="offer mtp">
+        <div class="brand">MTP</div>
+        <h3>Family sessions</h3>
+        <dl>
+          <dt>Buying with</dt><dd>Household money — emotional, discretionary, easily deferred.</dd>
+          <dt>Real job</dt><dd>Mark a year of a family that won't look like this again.</dd>
+          <dt>Value proof</dt><dd>The felt arc: arrival with restless kids, through to opening the
+            gallery. This is the one where "someday" does the most damage.</dd>
+          <dt>Tier logic</dt><dd>Scale by session length and what ends up on the wall.</dd>
+        </dl>
+      </div>
+
+      <div class="offer pilg">
+        <div class="brand">Pilgrimage Media</div>
+        <h3>Branding sessions</h3>
+        <dl>
+          <dt>Buying with</dt><dd>Business money, likely a different tier of client than MTP.</dd>
+          <dt>Real job</dt><dd>Give an organisation a coherent visual identity, not a folder of
+            photos.</dd>
+          <dt>Value proof</dt><dd>Lean on the assets that already exist — the wordmark, the
+            Pilgrimage Studio Portraits and Portra presets, the mountains imagery.</dd>
+          <dt>Tier logic</dt><dd>Scale by scope: one subject, a team, or an ongoing relationship.</dd>
+        </dl>
+      </div>
+
+      <div class="offer pilg">
+        <div class="brand">Pilgrimage Media</div>
+        <h3>Progress sessions</h3>
+        <dl>
+          <dt>Buying with</dt><dd>Business money, recurring rather than one-off.</dd>
+          <dt>Real job</dt><dd>Document change over time — the one offer here with a built-in
+            reason to rebook.</dd>
+          <dt>Value proof</dt><dd>The only thing that sells this is a <em>then and now</em>. A
+            single session can't demonstrate it; a pair can.</dd>
+          <dt>Tier logic</dt><dd>Scale by cadence, not by session — this should be sold as a series.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="callout flag">
+      <p><b>Assumptions I made, so you can correct them.</b> I read "MTP" as Mike Thezier
+        Photography from your shoot-file prefix (<span class="slot">MTP_3459.JPG</span> …
+        <span class="slot">MTP_3504.jpg</span>), and Pilgrimage Media as the separate brand with its
+        own wordmark and Lightroom presets in Drive.</p>
+      <p>I do <b>not</b> know what a progress session actually is in your business — I've written it
+        as recurring documentation of change over time, which is the reading that fits the name. If
+        it's something else, that card is the one to rewrite first.</p>
+    </div>
+  </section>
+
+  <section id="arc">
+    <div class="section-head">
+      <div class="eyebrow">04 — The copy</div>
+      <h2>The five beats</h2>
+      <p class="note">Check two in practice. Every package description walks the same five beats;
+        only the specifics change per offer. Write them as if explaining to a friend.</p>
+    </div>
+
+    <ol class="arc">
+      <li>
+        <h4>Who this one is built for</h4>
+        <p>Name them out loud. "A family who wants a shorter, simpler session." "A founder who needs
+          a year of marketing images in one afternoon." If a reader can't self-identify in the first
+          two lines, the rest doesn't get read.</p>
+      </li>
+      <li>
+        <h4>What the lead-up feels like</h4>
+        <p>What happens between booking and the day: planning, what to wear, location choice, how
+          much you handle for them. This is where nervous buyers are reassured or lost.</p>
+      </li>
+      <li>
+        <h4>What the session itself feels like</h4>
+        <p>Arrival to wrap-up. Pace, how long, what you do when a toddler melts down or a
+          camera-shy founder freezes. Concrete beats adjectives every time.</p>
+      </li>
+      <li>
+        <h4>What delivery feels like</h4>
+        <p>The gallery landing in their inbox and what it's like to scroll it the first time. Brooke
+          singles this out specifically — it's the most-skipped beat and the most vivid one.</p>
+      </li>
+      <li>
+        <h4>Why this tier and not the one below</h4>
+        <p>Say plainly what the step up buys and who it's worth it for. This is the sentence that
+          moves people from tier one to tier two.</p>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <p><b>Per-offer prompts.</b> Branding: beat 4 isn't sentiment, it's <em>how fast can I start
+        using these and in what sizes</em>. Family: beat 3 carries the whole sale — a parent's real
+        fear is their kids behaving badly. Progress: beat 5 isn't about a tier, it's about the
+        <em>next</em> session, so write it as the case for the series.</p>
+    </div>
+  </section>
+
+  <section id="spec">
+    <div class="section-head">
+      <div class="eyebrow">05 — The artifact</div>
+      <h2>Guide build spec</h2>
+      <p class="note">What actually goes in the document you send. Amber slots are yours to fill —
+        I've deliberately left every number blank rather than invent one.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="ledger">
+        <thead>
+          <tr><th>Page</th><th>Holds</th><th>Doing what</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pg">01</td>
+            <td>Cover — one strong image, brand mark, the offer named</td>
+            <td>Signals this was built, not typed into an email</td>
+          </tr>
+          <tr>
+            <td class="pg">02</td>
+            <td>Welcome — two short paragraphs, your face</td>
+            <td>Makes it a person they're hiring, not a vendor</td>
+          </tr>
+          <tr>
+            <td class="pg">03</td>
+            <td>The experience — the five beats, prose not bullets</td>
+            <td>Check two, the heart of the guide</td>
+          </tr>
+          <tr>
+            <td class="pg">04–06</td>
+            <td>Real images from real sessions, full bleed</td>
+            <td>Check one — the seeing, not the telling</td>
+          </tr>
+          <tr>
+            <td class="pg">07</td>
+            <td>The packages — <span class="slot">3 tiers</span>, each with "built for" above the list</td>
+            <td>Makes the choice obvious instead of overwhelming</td>
+          </tr>
+          <tr>
+            <td class="pg">08</td>
+            <td>À la carte and add-ons — <span class="slot">your extras</span></td>
+            <td>Answers the question before they have to ask it</td>
+          </tr>
+          <tr>
+            <td class="pg">09</td>
+            <td>FAQ — the five questions you actually get asked</td>
+            <td>Removes the last stalls</td>
+          </tr>
+          <tr>
+            <td class="pg">10</td>
+            <td>Next step — one instruction, one link, <span class="slot">deposit terms</span></td>
+            <td>The reason to say yes today</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p><b>Delivery.</b> Brooke's mechanism is a Canva view link sent the moment anyone asks about
+        pricing — no phone call first. You could equally build these as pages on this site, which
+        would let you update pricing without re-sending anything and would put them behind your own
+        domain. Either way the rule is the same: <b>the answer to "what do you charge" is always a
+        link to something built.</b></p>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head">
+      <div class="eyebrow">06 — The math</div>
+      <h2>The pricing check-in</h2>
+      <p class="note">Check three. Run each tier of each offer through these four rows before the
+        guide gets designed — design makes a weak ladder look convincing, which is the trap.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="ledger">
+        <thead>
+          <tr><th>Row</th><th>What you're testing</th><th>Fails when</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time in</td>
+            <td>Shoot, travel, culling, editing, delivery, admin — the real hours</td>
+            <td>You've only counted the shoot</td>
+          </tr>
+          <tr>
+            <td>Cost out</td>
+            <td>Gear, presets, software, prints, second shooter, fuel</td>
+            <td>Per-session costs are buried in annual overhead</td>
+          </tr>
+          <tr>
+            <td>Profit per tier</td>
+            <td>What's actually left, per package, per hour</td>
+            <td>Your cheapest tier earns the least per hour — very common</td>
+          </tr>
+          <tr>
+            <td>Tier separation</td>
+            <td>Whether stepping up feels like a real upgrade</td>
+            <td>Tiers differ only by image count — that's a spreadsheet, not a decision</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout flag">
+      <p><b>The separation test.</b> Cover the prices and read only the "built for" lines. If you
+        can't tell which tier suits which client, neither can they — and no amount of design fixes
+        that. Fix the ladder first.</p>
+    </div>
+  </section>
+
+  <section id="build">
+    <div class="section-head">
+      <div class="eyebrow">07 — Execution</div>
+      <h2>Build order</h2>
+      <p class="note">Four guides is a lot to start cold. Build one end-to-end, prove it converts,
+        then clone the structure. Ticks are saved in this browser only.</p>
+    </div>
+
+    <div class="buildgrid">
+      <div class="buildcard">
+        <h4>First <span class="when">this week</span></h4>
+        <ul>
+          <li><label><input type="checkbox" data-k="b1"><span>Pick the one offer with the most inbound — build that guide first</span></label></li>
+          <li><label><input type="checkbox" data-k="b2"><span>Run its tiers through the four pricing rows</span></label></li>
+          <li><label><input type="checkbox" data-k="b3"><span>Write the "built for" line for each tier, before any design</span></label></li>
+          <li><label><input type="checkbox" data-k="b4"><span>Apply the separation test with prices covered</span></label></li>
+        </ul>
+      </div>
+
+      <div class="buildcard">
+        <h4>Then <span class="when">the guide</span></h4>
+        <ul>
+          <li><label><input type="checkbox" data-k="b5"><span>Write the five beats as prose</span></label></li>
+          <li><label><input type="checkbox" data-k="b6"><span>Pull real images from real sessions — no stock, no composites</span></label></li>
+          <li><label><input type="checkbox" data-k="b7"><span>Add a third tier if there are only two</span></label></li>
+          <li><label><input type="checkbox" data-k="b8"><span>Build pages 01–10 and get a shareable link</span></label></li>
+        </ul>
+      </div>
+
+      <div class="buildcard">
+        <h4>Then <span class="when">the habit</span></h4>
+        <ul>
+          <li><label><input type="checkbox" data-k="b9"><span>Every pricing enquiry gets the link — no exceptions</span></label></li>
+          <li><label><input type="checkbox" data-k="b10"><span>Log which tier each person books</span></label></li>
+          <li><label><input type="checkbox" data-k="b11"><span>Clone the structure for the remaining three offers</span></label></li>
+          <li><label><input type="checkbox" data-k="b12"><span>Re-check the ladder once you have ten bookings of data</span></label></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reset-row"><button class="reset-checks" type="button">Reset</button></div>
+  </section>
+
+  <section id="gaps">
+    <div class="section-head">
+      <div class="eyebrow">08 — Open</div>
+      <h2>What's still missing</h2>
+      <p class="note">Everything above is structure, which is the part the episode actually gives
+        you. These are the things only you can supply — and I'd rather leave them blank than fill
+        them with plausible fiction.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="ledger">
+        <thead>
+          <tr><th>Needed</th><th>Why it blocks</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>What a progress session <em>is</em></td>
+            <td>It's the one offer I had to infer. Cadence and subject change the whole pitch.</td>
+          </tr>
+          <tr>
+            <td>Current tiers and prices, per offer</td>
+            <td>The separation test and profit rows can't run without them</td>
+          </tr>
+          <tr>
+            <td>What's included today</td>
+            <td>Image counts, session length, print or product credits, turnaround</td>
+          </tr>
+          <tr>
+            <td>Where MTP ends and Pilgrimage begins</td>
+            <td>Two branding offers under two brands needs a stated dividing line, or they compete</td>
+          </tr>
+          <tr>
+            <td>Recent booking history</td>
+            <td>Which tier people actually pick is the only real evidence the ladder works</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Built from the Book More Clients Photography Podcast, Sept 17 — full text in
+    <a href="transcript.md">transcript.md</a>. The three checks, the five beats and the red-flag
+    signal are Brooke Jefferson's; the mapping onto MTP and Pilgrimage Media offers is mine.
+    Her coaching programme is the Fully Booked Method.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'investment-guide-build-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.buildcard input[type=checkbox]'));
+  var state = {};
+
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) state = JSON.parse(raw) || {};
+  } catch (e) { state = {}; }
+
+  boxes.forEach(function(b){
+    if (state[b.dataset.k]) b.checked = true;
+    b.addEventListener('change', function(){
+      state[b.dataset.k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    });
+  });
+
+  var btn = document.querySelector('.reset-checks');
+  if (btn) btn.addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    state = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
