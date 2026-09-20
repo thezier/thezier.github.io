@@ -1,30 +1,44 @@
-# -*- coding: utf-8 -*-
-"""Everything the family guide says. Design-independent.
-
-The tagline and the three sections are verbatim from the old Squarespace
-/families page -- the type Mike asked to have back. FAMILY carries one extra
-clause that only survived in the 2025 PDFs.
-"""
-
 TITLE = "Family Sessions"
 EYEBROW = "Portrait Photography &mdash; Southern California"
 TAGLINE = "Connection is beautiful"
+RAIL_LINE = "Family Sessions<br>Southern California"
+DESCRIPTION = ("Family photography sessions in Southern California. At home, on location, or "
+               "both, with a full-resolution online gallery.")
+HOST = "family-portraits.mikethezier.com"
+CREED_ID = "connection"
+SESSIONS_KICKER = "Sessions &amp; pricing"
 
-# The three sections, in his order.
+NAV = [
+    ("connection", "Connection"),
+    ("about", "About me"),
+    ("experience", "The experience"),
+    ("sessions", "Sessions &amp; pricing"),
+    ("questions", "Questions"),
+    ("next", "Next step"),
+]
+
+ABOUT_LEAD = "It&rsquo;s my goal to make photographs that tell your story."
+EXTRA_SECTIONS = []
+EXPERIENCE_FRAMES = [["g7"]]
+PLACEHOLDERS = {
+    "school": "Two of us and three kids, 6, 4 and 1",
+    "timing": "Before the holidays, or whenever works",
+}
 SECTIONS = [
-    ("Family",
+    ("family", "Family",
      "These are the most important people in our lives &mdash; our family (and also those who "
      "might as well be our family). I want to capture the story of who your family is, so my goal "
      "for these sessions is pretty simple: make everyone as comfortable as possible so that they "
      "can feel free to be themselves. That way, regardless whether you are all looking at the "
      "camera for a more traditional group portrait or candidly enjoying each other&rsquo;s "
-     "company, we get to see the genuineness of who your family is."),
+     "company, we get to see the genuineness of who your family is.",
+     [["heroA", "heroC", "g0", "allow-crop"]]),
 
     # Reworked at Mike's direction: home is the starting point, not the whole
     # answer. The job of this section is to get a family to volunteer the place
     # that already means something to them, because that is what makes the
     # photographs theirs rather than generic.
-    ("Locations That Matter",
+    ("locations", "Locations That Matter",
      "Home is my favorite place to photograph a family. It&rsquo;s where everyone lets their guard "
      "down &mdash; where the baby naps, where someone always sits on the same end of the couch, "
      "where you actually live. Photographs made there look like your life because they are your "
@@ -38,12 +52,14 @@ SECTIONS = [
      "So tell me where your family actually spends its time and we&rsquo;ll go there. Home, "
      "somewhere that matters, or both in one session. And if nothing obvious comes to mind, "
      "that&rsquo;s completely normal &mdash; I know this area well, and I&rsquo;ll bring you "
-     "options worth choosing between."),
+     "options worth choosing between.",
+     [["heroB", "g1", "g6"]]),
 
-    ("Legacy",
+    ("legacy", "Legacy",
      "I strive to create images that will serve as a permanent reminder of the emotions, "
      "experiences, and relationships shared between you and the people who matter most to you, "
-     "that can be enjoyed for years to come."),
+     "that can be enjoyed for years to come.",
+     [["g2", "g3", "g4"]]),
 ]
 
 ABOUT = [

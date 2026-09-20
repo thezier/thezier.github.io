@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Pieces every design needs, in the shape each design then styles."""
 import json, pathlib
-import content as C
 
-A = json.loads((pathlib.Path(__file__).parent / "assets.json").read_text())
+
+def load_assets(build_dir):
+    return json.loads((pathlib.Path(build_dir) / "assets.json").read_text())
 
 RESET = """
   * { box-sizing: border-box; }
@@ -55,7 +56,7 @@ RESET = """
   }
 """
 
-def details_block():
+def details_block(C):
     rows = []
     for nm, label, opt, req, ac in C.FIELDS:
         cls = ""
@@ -63,8 +64,7 @@ def details_block():
         t = ' type="email"' if nm == "email" else (' type="tel"' if nm == "phone" else "")
         r = " required" if req else ""
         em = ' <em>%s</em>' % opt if opt else ""
-        ph = ' placeholder="Two of us and three kids, 6, 4 and 1"' if nm == "school" else (
-             ' placeholder="Before the holidays, or whenever works"' if nm == "timing" else "")
+        ph = ' placeholder="%s"' % C.PLACEHOLDERS[nm] if nm in C.PLACEHOLDERS else ""
         rows.append('<label%s><span>%s%s</span><input name="%s"%s%s%s%s></label>' % (cls, label, em, nm, t, auto, ph, r))
     rows.append('<label class="wide"><span>Anything else <em>optional</em></span>'
                 '<textarea name="note" rows="3"></textarea></label>')
@@ -85,24 +85,20 @@ def pick(t):
             'data-price="$%s" required><span class="pick-face">Choose this one</span></label>'
             % (t["id"], t["name"], t["price"]))
 
-DESCRIPTION = ("Family photography sessions in Southern California. At home, on location, or "
-               "both, with a full-resolution online gallery.")
-
-def page(name, title_suffix, css, body, host="family-portraits.mikethezier.com"):
-    """title_suffix is a build label only -- the page itself is always titled
-    for the reader. sync-local.py rewrites `host` for the local card, so the
-    canonical here has to name the regional one."""
+def page(A, title, description, css, body, host):
+    """sync-local.py rewrites `host` for the local card, so the canonical here
+    names the regional one."""
     return """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Family Sessions &mdash; Mike Thezier Photography</title>
+<title>%(title)s &mdash; Mike Thezier Photography</title>
 <meta name="description" content="%(desc)s">
 <meta name="theme-color" content="#fcfbf8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191817" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Family Sessions &mdash; Mike Thezier Photography">
+<meta property="og:title" content="%(title)s &mdash; Mike Thezier Photography">
 <meta property="og:description" content="%(desc)s">
 <meta property="og:url" content="https://%(host)s/">
 <link rel="canonical" href="https://%(host)s/">
@@ -117,5 +113,5 @@ def page(name, title_suffix, css, body, host="family-portraits.mikethezier.com")
 %(script)s
 </body>
 </html>
-""" % {"desc": DESCRIPTION, "host": host, "fonts": A["fonts"], "tokens": A["tokens"],
+""" % {"title": title, "desc": description, "host": host, "fonts": A["fonts"], "tokens": A["tokens"],
        "reset": RESET, "css": css, "body": body, "script": A["script"]}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the family guide (regional card).
+"""Generate the seniors guide (regional card).
 
     python3 build/build.py
 

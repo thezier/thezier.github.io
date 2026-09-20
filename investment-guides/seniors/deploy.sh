@@ -24,6 +24,9 @@ esac
 
 # local.html is generated. Regenerate before deploying so a forgotten sync
 # can never ship a stale price.
+echo "==> building index.html from build/"
+python3 "$HERE/build/build.py"
+
 echo "==> syncing local.html from index.html"
 python3 "$HERE/sync-local.py"
 

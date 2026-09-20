@@ -19,6 +19,7 @@ DST = HERE / "local.html"
 # Regional price -> local price. Order matters: longest first is not an issue
 # here because each appears only inside a <span class="price"> tag.
 PRICES = {"$600": "$500", "$850": "$750", "$1,250": "$1,100"}
+FLAT = []
 
 REGIONAL_TRAVEL = (
     "Orange County, San Diego and the coast are all regular trips and "
@@ -38,16 +39,24 @@ def main():
     # data-price the choose control sends to Mike. Missing the second one would
     # show $500 on the page and email $600 -- the page and the inbox
     # disagreeing about what someone just agreed to buy.
-    FORMS = ['<span class="price">%s</span>', 'data-price="%s"']
+    # Matched without naming the element, so a design change cannot silently
+    # halve the number of replacements.
+    FORMS = ['class="price">%s<', 'data-price="%s"']
 
     n = 0
     for regional, local in PRICES.items():
         for form in FORMS:
-            if form % regional not in s:
+            hits = s.count(form % regional)
+            if hits != 1:
                 raise SystemExit(
-                    "price %s not found in index.html as %s" % (regional, form % "X"))
+                    "expected exactly one %s in index.html, found %d"
+                    % (form % regional, hits))
             s = s.replace(form % regional, form % local)
             n += 1
+
+    for flat in FLAT:
+        if ('class="price">%s<' % flat) not in s:
+            raise SystemExit("flat price %s missing from index.html" % flat)
 
     if REGIONAL_TRAVEL not in s:
         raise SystemExit("travel paragraph not found -- update REGIONAL_TRAVEL")

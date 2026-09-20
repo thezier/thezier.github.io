@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Design 8 — Rail.
+"""Rail — the shared layout for every investment guide.
 
 A sticky rail down the left carries the wordmark, contact and the section
 links; the wide right column does the reading. The link for whatever is on
@@ -12,8 +12,7 @@ wants a picture under it.
 Photographs run two and three up, so slots land at 540px and 350px, both
 inside the native size of every image here. Nothing is enlarged.
 """
-import content as C
-from common import A, details_block, pick, page
+from common import details_block, pick, page
 
 CSS = """
   .shell { max-width: 80rem; margin: 0 auto; padding: 0 2rem; display: grid; gap: 0; }
@@ -85,7 +84,7 @@ CSS = """
   .frames--3 { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 40rem) { .frames--3 { grid-template-columns: repeat(2, 1fr); } }
   .frames img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
-  .frames--full { grid-template-columns: 1fr; }
+  .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
   .frames--full img { aspect-ratio: auto; object-fit: contain; }
 
   .block { padding: 3.25rem 0 0; }
@@ -196,37 +195,57 @@ SPY = """
 </script>
 """
 
-def frames(items, cls="frames--3"):
-    return ('<div class="frames %s">%s</div>' % (cls, "".join(
+def frames(items, cls="frames--3", cap=None):
+    """`cap` holds a full-width row to the frame's own pixel width, so a small
+    landscape is never blown up to fill the column."""
+    style = ' style="max-width:%dpx"' % cap if cap else ""
+    return ('<div class="frames %s"%s>%s</div>' % (cls, style, "".join(
         '<img src="%s" alt="%s" width="%s" height="%s" loading="lazy">'
         % (i["src"], i["alt"], i["w"], i["h"]) for i in items)))
 
-def build():
-    g = A["gallery"]
-    hero_a = {"src": A["hero_a"], "alt": "A couple standing forehead to forehead in a eucalyptus grove, their two children running circles around them",
-              "w": A["hero_a_wh"][0], "h": A["hero_a_wh"][1]}
-    hero_b = {"src": A["hero_b"], "alt": "A mother sitting on the bed at home holding her newborn, her toddler leaning over her shoulder",
-              "w": A["hero_b_wh"][0], "h": A["hero_b_wh"][1]}
-    hero_c = {"src": A["hero_c"], "alt": "Parents forehead to forehead outdoors with their three children gathered around them",
-              "w": A["hero_c_wh"][0], "h": A["hero_c_wh"][1]}
 
-    # Each idea gets its own frames underneath it. Portraits stay in portrait
-    # rows; the two landscape frames get a full-width row of their own at their
-    # native ratio, which is where they actually look like something.
-    sets = [
-        frames([hero_a, hero_c, g[0]], "frames--3"),
-        frames([hero_b, g[1], g[6]], "frames--3"),
-        frames([g[2], g[3], g[4]], "frames--3"),
-    ]
-    ids = ["family", "locations", "legacy"]
+ALLOW_CROP = "allow-crop"
 
+
+def _row(A, keys):
+    """A row is all-portrait at 3:4, or one landscape at its own ratio.
+
+    Mixing them crops a frame to an orientation it was not shot in, which is
+    how a portrait ends up with its subject outside the box. A row that wants
+    that anyway says so by ending with ALLOW_CROP, so it is a decision in the
+    content rather than an accident in the layout.
+    """
+    allow = keys and keys[-1] == ALLOW_CROP
+    if allow:
+        keys = keys[:-1]
+    items = [A["photos"][k] for k in keys]
+    landscape = [i for i in items if int(i["w"]) > int(i["h"])]
+    if landscape and len(items) > 1 and not allow:
+        raise SystemExit(
+            "row %s mixes a landscape frame with portraits -- add \"%s\" to the row "
+            "if the crop is intended" % (keys, ALLOW_CROP))
+    wide = bool(landscape) and len(items) == 1
+    if wide:
+        return frames(items, "frames--full", cap=int(items[0]["w"]))
+    return frames(items, "frames--%d" % len(items) if len(items) < 3 else "frames--3")
+
+def build(C, A):
     creed = "\n".join(
         '    <section class="creed" id="%s">\n      <h2>%s</h2>\n%s\n      %s\n    </section>'
-        % (i, h, "\n".join("      <p>%s</p>" % para for para in p.split("\n\n")), f)
-        for (h, p), i, f in zip(C.SECTIONS, ids, sets))
+        % (sid, head,
+           "\n".join("      <p>%s</p>" % para for para in body.split("\n\n")),
+           "".join(_row(A, keys) for keys in rows))
+        for (sid, head, body, rows) in C.SECTIONS)
 
     beats = "\n".join('      <h3 class="beat">%s</h3>\n%s'
                       % (h, "\n".join("      <p>%s</p>" % x for x in ps)) for h, ps in C.BEATS)
+
+    extra = "\n".join(
+        '    <section class="block" id="%s">\n      <p class="kicker">%s</p>\n%s\n      %s\n    </section>'
+        % (sid, kicker, "\n".join("      <p>%s</p>" % x for x in paras),
+           "".join(_row(A, keys) for keys in rows))
+        for (sid, kicker, paras, rows) in C.EXTRA_SECTIONS)
+
     tiers = []
     for t in C.TIERS:
         why = ('<p class="why"><strong>%s</strong> %s</p>' % t["why"]) if t["why"] else ""
@@ -240,21 +259,17 @@ def build():
           </div>""" % (" tier--feature" if t["feature"] else "", t["name"], t["hint"], t["price"],
                        t["builtfor"], "".join("<li>%s</li>" % i for i in t["includes"]), why, pick(t)))
     faq = "\n".join('        <div><dt>%s</dt><dd>%s</dd></div>' % qa for qa in C.FAQ)
+    nav = "\n".join('      <a href="#%s">%s</a>' % (a, t) for a, t in C.NAV)
 
     body = """<div class="shell">
   <aside class="rail">
     <div>
       <img class="wm wm--dark" src="%(wmd)s" alt="Mike Thezier Photography" width="1000" height="208">
       <img class="wm wm--light" src="%(wml)s" alt="" aria-hidden="true" width="1000" height="208">
-      <p class="eyebrow">Family Sessions<br>Southern California</p>
+      <p class="eyebrow">%(railline)s</p>
     </div>
     <nav aria-label="Sections">
-      <a href="#connection">Connection</a>
-      <a href="#about">About</a>
-      <a href="#experience">The experience</a>
-      <a href="#sessions">Sessions &amp; pricing</a>
-      <a href="#questions">Questions</a>
-      <a href="#next">Next step</a>
+%(nav)s
     </nav>
     <div class="contact">
       <img class="badge bd--dark" src="%(bdd)s" alt="" aria-hidden="true" width="500" height="500">
@@ -269,7 +284,7 @@ def build():
     <h1>%(title)s</h1>
     <p class="tagline">%(tagline)s</p>
 
-    <div id="connection">
+    <div id="%(creedid)s">
 %(creed)s
     </div>
 
@@ -279,9 +294,8 @@ def build():
         <img src="%(portrait)s" alt="Mike Thezier outdoors with his camera" width="%(pw)s" height="%(ph)s" loading="lazy">
       </div>
       <div>
-        <h2 class="head">It&rsquo;s my goal to make photographs that tell your story.</h2>
-        <p>%(about1)s</p>
-        <p>%(about2)s</p>
+        <h2 class="head">%(aboutlead)s</h2>
+%(about)s
         <div class="links">
           <a href="tel:+19515871238">951.587.1238</a>
           <a href="mailto:mike@mikethezier.com">mike@mikethezier.com</a>
@@ -296,8 +310,10 @@ def build():
       %(expframes)s
     </section>
 
+%(extra)s
+
     <section class="block" id="sessions">
-      <p class="kicker">Sessions &amp; pricing</p>
+      <p class="kicker">%(sessionskicker)s</p>
       <form class="choose" method="post" action="/api/choose">
         <div class="tiers">
 %(tiers)s
@@ -319,19 +335,22 @@ def build():
 
     <section class="block" id="next">
       <p class="kicker">Next step</p>
-      <p>%(next1)s</p>
-      <p>%(next2)s</p>
+%(next)s
     </section>
   </main>
 </div>
 %(spy)s""" % {
       "wmd": A["wordmark_dark"], "wml": A["wordmark_light"],
       "bdd": A["badge_dark"], "bdl": A["badge_light"],
-      "title": C.TITLE, "tagline": C.TAGLINE, "creed": creed,
+      "title": C.TITLE, "tagline": C.TAGLINE, "railline": C.RAIL_LINE,
+      "creedid": C.CREED_ID, "creed": creed, "nav": nav,
       "portrait": A["portrait"], "pw": A["portrait_wh"][0], "ph": A["portrait_wh"][1],
-      "about1": C.ABOUT[0], "about2": C.ABOUT[1], "beats": beats,
-      "expframes": frames([g[7]], "frames--full"),
-      "tiers": "\n".join(tiers), "details": details_block(), "fine": C.FINENOTE, "faq": faq,
-      "next1": C.NEXT[0], "next2": C.NEXT[1], "spy": SPY,
+      "aboutlead": C.ABOUT_LEAD,
+      "about": "\n".join("        <p>%s</p>" % x for x in C.ABOUT),
+      "beats": beats, "expframes": "".join(_row(A, keys) for keys in C.EXPERIENCE_FRAMES),
+      "extra": extra,
+      "sessionskicker": C.SESSIONS_KICKER,
+      "tiers": "\n".join(tiers), "details": details_block(C), "fine": C.FINENOTE, "faq": faq,
+      "next": "\n".join("      <p>%s</p>" % x for x in C.NEXT), "spy": SPY,
     }
-    return page("rail", "Rail", CSS, body)
+    return page(A, C.TITLE, C.DESCRIPTION, CSS, body, C.HOST)
