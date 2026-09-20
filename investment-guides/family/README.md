@@ -5,8 +5,8 @@ Nothing in this folder is live until `./deploy.sh` has run.
 
 | File | Rates | Deploys to | Worker project |
 |---|---|---|---|
-| `index.html` | $700 / $1,000 / $1,500 | family-portraits.mikethezier.com | `mikethezier-family-portraits` |
-| `local.html` | $600 / $900 / $1,400 | families.mikethezier.com | `mikethezier-families` |
+| `index.html` | $400 / $700 / $1,500 | family-portraits.mikethezier.com | `mikethezier-family-portraits` |
+| `local.html` | $400 / $600 / $1,400 | families.mikethezier.com | `mikethezier-families` |
 
 `index.html` is the source of truth; `local.html` is generated from it. Edit
 the first, then `./deploy.sh` — which syncs before deploying, so a forgotten
@@ -32,18 +32,40 @@ originals, already chosen by Mike for exactly this purpose.
 
 ## The ladder
 
-| Tier | Built for | Regional |
-|---|---|---|
-| 1 Hour Session | Small children who won't last longer, and know it | $700 |
-| Home & Away | The house they live in now *and* somewhere open | $1,000 |
-| The Year | Marking something specific, with an album for grandparents | $1,500 |
+| Tier | Built for | Regional | Local |
+|---|---|---|---|
+| Mini Session | One strong set without making an event of it | $400 | $400 |
+| **1 Hour Session** | Room to breathe — more than one look | $700 | $600 |
+| The Year | Marking something specific, with an album | $1,500 | $1,400 |
 
-Ordered so **Home & Away** is the visual middle. That's the point, not an
-accident.
+The mini is **$400 on both cards** — it is the entry point everywhere, so
+`sync-local.py` lists it under `FLAT` rather than mapping it.
 
-The old site also carried a **Day-In-The-Life** offer — documentary, 6–8
-hours, starting at $1,500 — which is not in this ladder. Worth revisiting; it
-separates on kind rather than hours, and nobody local sells it.
+**The 1 Hour carries the gold outline, not the mini** — even though the mini
+is what gets booked most. That is the diagnosis this whole guide exists to fix:
+everyone defaults downward. Labelling the cheapest tier "most booked" would
+push them there harder. The argument lives in its *why this over the mini*
+line instead.
+
+Watch the $700 → $1,500 gap once there are a few bookings. If nobody takes
+The Year, the album tier probably wants to land nearer $1,200.
+
+## How the page is built
+
+`build/` holds the generator; `index.html` is its output, and `local.html` is
+derived from that by `sync-local.py`. `deploy.sh` runs both before deploying,
+so neither can go stale.
+
+| File | Holds |
+|---|---|
+| `build/content.py` | Every word on the page |
+| `build/d8_rail.py` | The layout and its CSS |
+| `build/common.py` | Head, reset, the choose-form markup |
+| `build/assets.json` | Fonts, wordmark and the twelve photographs, base64 |
+
+Edit the words in `content.py`, not in `index.html` — the built page is one
+self-contained 2MB document, and hand-editing it is how a stale price or a
+wrong caption survives.
 
 ## Choosing a session
 

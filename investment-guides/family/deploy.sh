@@ -16,6 +16,9 @@ case "$which" in
   *) echo "usage: deploy.sh [both|regional|local]" >&2; exit 2 ;;
 esac
 
+echo "==> building index.html from build/"
+python3 "$HERE/build/build.py"
+
 echo "==> syncing local.html from index.html"
 python3 "$HERE/sync-local.py"
 

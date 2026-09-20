@@ -13,7 +13,10 @@ HERE = pathlib.Path(__file__).parent
 SRC = HERE / "index.html"
 DST = HERE / "local.html"
 
-PRICES = {"$700": "$600", "$1,000": "$900", "$1,500": "$1,400"}
+# The mini is $400 on both cards -- it is the entry point everywhere, so it
+# is deliberately absent from this map rather than mapped to itself.
+PRICES = {"$700": "$600", "$1,500": "$1,400"}
+FLAT = ["$400"]
 
 REGIONAL_TRAVEL = (
     "Orange County, San Diego and the coast are all regular trips and carry no "
@@ -33,16 +36,25 @@ def main():
     # data-price the choose control sends to Mike. Missing the second one would
     # show $600 on the page and email $700 -- the page and the inbox
     # disagreeing about what someone just agreed to buy.
-    FORMS = ['<span class="price">%s</span>', 'data-price="%s"']
+    #
+    # Matched without naming the element, so a design change from <span> to <p>
+    # cannot silently halve the number of replacements.
+    FORMS = ['class="price">%s<', 'data-price="%s"']
 
     n = 0
     for regional, local in PRICES.items():
         for form in FORMS:
-            if form % regional not in s:
+            hits = s.count(form % regional)
+            if hits != 1:
                 raise SystemExit(
-                    "price %s not found in index.html as %s" % (regional, form % "X"))
+                    "expected exactly one %s in index.html, found %d"
+                    % (form % regional, hits))
             s = s.replace(form % regional, form % local)
             n += 1
+
+    for flat in FLAT:
+        if ('class="price">%s<' % flat) not in s:
+            raise SystemExit("flat price %s missing from index.html" % flat)
 
     if REGIONAL_TRAVEL not in s:
         raise SystemExit("travel paragraph not found -- update REGIONAL_TRAVEL")
