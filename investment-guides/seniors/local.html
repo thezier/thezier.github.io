@@ -499,6 +499,114 @@
     font-size: 0.9em;
     white-space: nowrap;
   }
+
+  /* ---------- Added: choosing a session ---------- */
+  .choose { display: contents; }
+
+  .pick { display: block; margin-top: 0.9rem; cursor: pointer; }
+  .pick input {
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pick-face {
+    display: block;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-align: center;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .pick:hover .pick-face { background: var(--gold); color: var(--ground); }
+  .pick input:focus-visible + .pick-face { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .pick input:checked + .pick-face { background: var(--gold); color: var(--ground); }
+  .pick input:checked + .pick-face::after { content: " \2014 chosen"; }
+  @media (prefers-reduced-motion: reduce) { .pick-face { transition: none; } }
+
+  .details { margin-top: 2rem; }
+  .details .grouphead { margin-top: 0; }
+
+  .chosen {
+    background: var(--panel);
+    border-left: 3px solid var(--gold);
+    padding: 0.85rem 1rem;
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .chosen b { font-weight: 400; color: var(--gold); }
+
+  .fields { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .fields label { display: flex; flex-direction: column; gap: 0.3rem; }
+  .fields span {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .fields em { font-style: normal; text-transform: none; letter-spacing: 0.02em; opacity: 0.75; }
+  .fields input,
+  .fields textarea {
+    font: inherit;
+    font-size: 0.9375rem;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 0.6rem 0.7rem;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  .fields textarea { resize: vertical; min-height: 4.5rem; }
+  .fields input:focus-visible,
+  .fields textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; border-color: var(--gold); }
+
+  /* Bots fill what they can see in the markup; people never see this. */
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .send {
+    font: inherit;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 1.25rem;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    background: var(--gold);
+    color: var(--ground);
+    border: 1px solid var(--gold);
+    cursor: pointer;
+  }
+  .send[disabled] { opacity: 0.55; cursor: default; }
+  .send:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .sendnote {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0.85rem 0 0;
+  }
+
+  .formnote {
+    margin: 0.85rem 0 0;
+    padding: 0.8rem 0.9rem;
+    background: var(--panel);
+    border-left: 3px solid var(--gold);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .formnote.is-error { border-left-color: #b4483c; }
+
+  @media (min-width: 37.5rem) {
+    .fields { grid-template-columns: 1fr 1fr; }
+    .fields .wide { grid-column: 1 / -1; }
+    .send { width: auto; padding-inline: 2.5rem; }
+  }
 </style>
 
 <div class="sheet">
@@ -635,7 +743,7 @@
 
     <h3 class="beat">Your gallery</h3>
     <p class="prose">
-      Your gallery lands in your inbox <span class="slot">[turnaround]</span> after the session,
+      Your gallery lands in your inbox two to three weeks after the session,
       and that first scroll through it is the part I actually do this for. Full resolution,
       downloadable, yours to keep and share &mdash; no watermarks, no per-image fees, and no
       waiting on prints to find out what you got.
@@ -652,6 +760,7 @@
       <span class="hint">On location</span>
     </div>
 
+    <form class="choose" method="post" action="/api/choose">
     <div class="packages">
       <div class="group">
         <div class="grouphead"><h2>Mini Session</h2><span class="hint">45 minutes</span></div>
@@ -671,6 +780,10 @@
             <span class="item">Investment</span>
             <span class="price">$500</span>
           </div>
+          <label class="pick">
+            <input type="radio" name="tier" value="mini" data-label="Mini Session" data-price="$500" required>
+            <span class="pick-face">Choose this one</span>
+          </label>
         </div>
       </div>
       <div class="group">
@@ -695,6 +808,10 @@
             <span class="item">Investment</span>
             <span class="price">$750</span>
           </div>
+          <label class="pick">
+            <input type="radio" name="tier" value="full" data-label="Full Session" data-price="$750" required>
+            <span class="pick-face">Choose this one</span>
+          </label>
         </div>
       </div>
       <div class="group">
@@ -718,10 +835,36 @@
             <span class="item">Investment</span>
             <span class="price">$1,100</span>
           </div>
+          <label class="pick">
+            <input type="radio" name="tier" value="keepsake" data-label="The Keepsake" data-price="$1,100" required>
+            <span class="pick-face">Choose this one</span>
+          </label>
         </div>
       </div>
     </div>
 
+    <div class="details" id="details">
+      <p class="chosen" hidden></p>
+      <div class="grouphead"><h2>Your details</h2><span class="hint">So I can write back</span></div>
+      <div class="fields">
+        <label><span>Your name</span><input name="name" autocomplete="name" required></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Phone <em>optional</em></span><input name="phone" type="tel" autocomplete="tel"></label>
+        <label><span>School &amp; graduating year <em>optional</em></span><input name="school"></label>
+        <label><span>When you&rsquo;re hoping to shoot <em>optional</em></span><input name="timing" placeholder="Late October, or whenever works"></label>
+        <label class="wide"><span>Anything else <em>optional</em></span><textarea name="note" rows="3"></textarea></label>
+      </div>
+      <p class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></p>
+      <input type="hidden" name="label" value="">
+      <input type="hidden" name="price" value="">
+      <button class="send" type="submit">Send to Mike</button>
+      <p class="sendnote">
+        Nothing is booked or charged here. I&rsquo;ll come back with dates, then send your contract
+        and invoice through HoneyBook.
+      </p>
+      <p class="formnote" role="status" hidden></p>
+    </div>
+    </form>
     <p class="finenote">
       <strong>Prints &amp; Products.</strong> Every session includes the full resolution downloads.
       Prints, books, albums and wall pieces are available from your gallery at any time &mdash; the
@@ -760,7 +903,7 @@
 
       <dt>How long until I see them?</dt>
       <dd>
-        Your gallery arrives <span class="slot">[turnaround]</span> after we shoot. If you have a
+        Your gallery arrives two to three weeks after we shoot. If you have a
         hard deadline, say so when you book and I&rsquo;ll tell you honestly whether I can make it.
       </dd>
 
@@ -783,9 +926,10 @@
       when you&rsquo;re hoping to shoot. I&rsquo;ll come back with dates that work.
     </p>
     <p class="prose">
-      A <span class="slot">[retainer]</span> holds your date and comes off the total; the balance
-      is due <span class="slot">[balance terms]</span>. Until the retainer is in, the date stays
-      open to whoever asks next.
+      A 50% retainer holds your date and comes off the total; the balance is due on the day of
+      your session. I&rsquo;ll send the contract and the invoice through HoneyBook, so it&rsquo;s
+      signed and paid in one place. Until the retainer is in, the date stays open to whoever
+      asks next.
     </p>
   </section>
 
@@ -801,5 +945,92 @@
   </footer>
 
 </div>
+
+<script>
+// Progressive enhancement only. With this script blocked the page is still a
+// real form: pick a session, fill your details, press send, and the Worker
+// answers with its own page. All this adds is the running "you've chosen X"
+// line and an answer in place instead of a navigation.
+(function () {
+  "use strict";
+
+  var form = document.querySelector(".choose");
+  if (!form) return;
+
+  var details = form.querySelector(".details");
+  var chosen = form.querySelector(".chosen");
+  var note = form.querySelector(".formnote");
+  var send = form.querySelector(".send");
+  var hiddenLabel = form.querySelector('input[name="label"]');
+  var hiddenPrice = form.querySelector('input[name="price"]');
+  var radios = form.querySelectorAll('input[name="tier"]');
+
+  // Collapse the details until a session is picked. Done here rather than with
+  // a hidden attribute in the markup so that no-JS readers see the whole form.
+  details.hidden = true;
+
+  function onPick(input) {
+    hiddenLabel.value = input.getAttribute("data-label") || "";
+    hiddenPrice.value = input.getAttribute("data-price") || "";
+    chosen.innerHTML =
+      "You&rsquo;ve chosen <b>" + hiddenLabel.value + "</b> at <b>" + hiddenPrice.value +
+      "</b>. Add your details below and I&rsquo;ll be in touch with dates \u2014 " +
+      "nothing is booked or charged yet.";
+    chosen.hidden = false;
+    details.hidden = false;
+    note.hidden = true;
+    details.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener("change", function () { onPick(this); });
+    if (radios[i].checked) onPick(radios[i]); // bfcache restore
+  }
+
+  function say(message, isError) {
+    note.textContent = message;
+    note.classList.toggle("is-error", !!isError);
+    note.hidden = false;
+    note.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  if (!window.fetch || !window.FormData) return; // let it navigate instead
+
+  form.addEventListener("submit", function (event) {
+    if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
+    event.preventDefault();
+    send.disabled = true;
+    send.textContent = "Sending\u2026";
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { accept: "application/json" }
+    })
+      .then(function (res) { return res.json().then(function (b) { return { ok: res.ok, body: b }; }); })
+      .then(function (r) {
+        if (r.ok && r.body && r.body.ok) {
+          form.querySelector(".fields").hidden = true;
+          send.hidden = true;
+          form.querySelector(".sendnote").hidden = true;
+          say(r.body.message || "Thank you \u2014 Mike has been told.", false);
+          return;
+        }
+        send.disabled = false;
+        send.textContent = "Send to Mike";
+        say((r.body && r.body.message) || "That didn\u2019t send. Please try again.", true);
+      })
+      .catch(function () {
+        send.disabled = false;
+        send.textContent = "Send to Mike";
+        say(
+          "That didn\u2019t send \u2014 the connection may have dropped. Please try again, " +
+          "or email mike@mikethezier.com directly.",
+          true
+        );
+      });
+  });
+})();
+</script>
 </body>
 </html>

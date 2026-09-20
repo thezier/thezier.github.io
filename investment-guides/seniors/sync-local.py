@@ -34,13 +34,20 @@ LOCAL_TRAVEL = (
 def main():
     s = SRC.read_text(encoding="utf-8")
 
+    # A price appears twice per tier: once as displayed type, once in the
+    # data-price the choose control sends to Mike. Missing the second one would
+    # show $500 on the page and email $600 -- the page and the inbox
+    # disagreeing about what someone just agreed to buy.
+    FORMS = ['<span class="price">%s</span>', 'data-price="%s"']
+
     n = 0
     for regional, local in PRICES.items():
-        tag = '<span class="price">%s</span>'
-        if tag % regional not in s:
-            raise SystemExit("price %s not found in index.html" % regional)
-        s = s.replace(tag % regional, tag % local)
-        n += 1
+        for form in FORMS:
+            if form % regional not in s:
+                raise SystemExit(
+                    "price %s not found in index.html as %s" % (regional, form % "X"))
+            s = s.replace(form % regional, form % local)
+            n += 1
 
     if REGIONAL_TRAVEL not in s:
         raise SystemExit("travel paragraph not found -- update REGIONAL_TRAVEL")
@@ -50,7 +57,7 @@ def main():
     s = s.replace("senior-portraits.mikethezier.com", "seniors.mikethezier.com")
 
     DST.write_text(s, encoding="utf-8")
-    print("local.html regenerated: %d prices swapped, %.2f MB" % (n, len(s) / 1e6))
+    print("local.html regenerated: %d price strings swapped, %.2f MB" % (n, len(s) / 1e6))
 
 
 if __name__ == "__main__":
