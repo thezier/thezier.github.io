@@ -6,12 +6,13 @@ One design, one layout module, four live pages.
 |---|---|---|
 | Senior | senior-portraits.mikethezier.com — $600 / $850 / $1,250 | seniors.mikethezier.com — $500 / $750 / $1,100 |
 | Family | family-portraits.mikethezier.com — $400 / $700 / $1,500 | families.mikethezier.com — $400 / $600 / $1,400 |
+| Branding | branding.mikethezier.com — $1,200 / $1,950 / $3,200 | one card only |
 
 ```
 _shared/
   rail.py      the layout and all of its CSS
   common.py    head, reset, the choose-a-session form
-seniors/  family/
+seniors/  family/  branding/
   build/content.py    every word on that guide
   build/assets.json   fonts, wordmark, photographs (base64)
   build/build.py      content + layout -> index.html
@@ -44,6 +45,16 @@ by hand.
 
 Senior: Mini $600 · **Full $850** · Keepsake $1,250
 Family: Mini $400 · **1 Hour $700** · The Year $1,500
+Branding: Essentials $1,200 · **Half Day $1,950** · Full Day $3,200
+
+Branding has no local card. Business buyers are quoted one rate, and the brand
+site already says Southern California. It also carries a Usage & licensing
+section the portrait guides don't need: twelve months on your own channels
+included, paid advertising and wider use quoted separately.
+
+Fitness, gyms and health brands are Pilgrimage Media's — the dividing line the
+brand site already draws, and the one the original analysis flagged as
+blocking. This guide is founders, makers and small teams.
 
 The middle tier carries the feature outline in both. On family that is
 deliberate against the data — the 30-minute mini is the most-booked session,
