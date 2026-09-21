@@ -54,7 +54,7 @@ SECTIONS = [
      "Same with where we go. Your field, your gym, the pier, the trail you run, downtown, the "
      "place you and your friends have been going since freshman year. If somewhere means something "
      "to you, that is a better location than anywhere I could pick for you.",
-     [["sr02", "sr10", "sr05"], ["sr03"]]),
+     [["sr02", "sr10", "sr05"]]),
 
     ("chapter", "The Next Chapter",
      "This is a huge milestone in your life and it deserves to be documented and remembered. These "
@@ -64,7 +64,7 @@ SECTIONS = [
      "grandparents&rsquo; house. The frame your mom keeps on her desk long after you&rsquo;ve "
      "moved out. This is the last time your family photographs you as someone who lives at home, "
      "and that turns out to matter to them more than anybody says out loud at the time.",
-     [["sr12", "sr09", "sr14"], ["sr08"]]),
+     [["sr12", "sr09", "sr14"], ["sr03", "sr08"]]),
 ]
 
 ABOUT_LEAD = "It&rsquo;s my goal to make photographs that tell your story."

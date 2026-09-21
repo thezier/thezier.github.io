@@ -85,6 +85,12 @@ CSS = """
   @media (max-width: 40rem) { .frames--3 { grid-template-columns: repeat(2, 1fr); } }
   .frames img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
+  /* Landscape frames sitting together keep a landscape box. 4:3 is the squarer
+     of the two ratios in the set, so the wider frame gives up a little width
+     rather than either losing its subject. */
+  .frames--2wide { grid-template-columns: repeat(2, 1fr); }
+  .frames--2wide img { aspect-ratio: 4/3; }
+  @media (max-width: 34rem) { .frames--2wide { grid-template-columns: 1fr; } }
   .frames--full img { aspect-ratio: auto; object-fit: contain; }
 
   .block { padding: 3.25rem 0 0; }
@@ -220,13 +226,19 @@ def _row(A, keys):
         keys = keys[:-1]
     items = [A["photos"][k] for k in keys]
     landscape = [i for i in items if int(i["w"]) > int(i["h"])]
-    if landscape and len(items) > 1 and not allow:
+
+    # One landscape: full width, held to its own pixel width.
+    if len(items) == 1 and landscape:
+        return frames(items, "frames--full", cap=int(items[0]["w"]))
+
+    # All landscape: side by side in landscape boxes, never squeezed upright.
+    if landscape and len(landscape) == len(items):
+        return frames(items, "frames--%dwide" % len(items))
+
+    if landscape and not allow:
         raise SystemExit(
             "row %s mixes a landscape frame with portraits -- add \"%s\" to the row "
             "if the crop is intended" % (keys, ALLOW_CROP))
-    wide = bool(landscape) and len(items) == 1
-    if wide:
-        return frames(items, "frames--full", cap=int(items[0]["w"]))
     return frames(items, "frames--%d" % len(items) if len(items) < 3 else "frames--3")
 
 def build(C, A):
