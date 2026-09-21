@@ -82,6 +82,8 @@ CSS = """
   .frames { display: grid; gap: 1rem; margin-top: 1.75rem; }
   .frames--2 { grid-template-columns: repeat(2, 1fr); }
   .frames--3 { grid-template-columns: repeat(3, 1fr); }
+  .frames--4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 46rem) { .frames--4 { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 40rem) { .frames--3 { grid-template-columns: repeat(2, 1fr); } }
   .frames img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
@@ -239,7 +241,7 @@ def _row(A, keys):
         raise SystemExit(
             "row %s mixes a landscape frame with portraits -- add \"%s\" to the row "
             "if the crop is intended" % (keys, ALLOW_CROP))
-    return frames(items, "frames--%d" % len(items) if len(items) < 3 else "frames--3")
+    return frames(items, "frames--%d" % min(len(items), 4))
 
 def _script_for(C, A):
     """The script's failure message names an address; it has to be this

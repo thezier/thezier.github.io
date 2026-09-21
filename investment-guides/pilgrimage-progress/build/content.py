@@ -44,7 +44,7 @@ SECTIONS = [
      "before-and-after. It&rsquo;s a during, and a during, and a during &mdash; which is what the "
      "work actually looks like.\n\n"
      "Simple movement. Real effort. The small milestones that make up a bigger story.",
-     [["overhead", "press", "coach"]]),
+     [["overhead", "lunge", "rack", "dogtrail"]]),
 
     ("real", "Real Effort, On Your Turf",
      "These are not posed gym portraits and they are not transformation shoots. We shoot where you "
@@ -56,7 +56,7 @@ SECTIONS = [
      "without asking you to break your form for it.\n\n"
      "Athleticism isn&rsquo;t reserved for a select few. It&rsquo;s something we all deserve to "
      "pursue, and it&rsquo;s worth photographing long before anybody would call you finished.",
-     [["steps", "breath", "ridge"]]),
+     [["bound", "pushup", "shadow", "run"]]),
 
     ("arc", "The Arc Is The Product",
      "One session gives you a month of content and a record of where you were. A series gives you "
@@ -67,7 +67,7 @@ SECTIONS = [
      "It is what turns a set of sessions into a complete product rather than a repeated purchase.\n\n"
      "Health is built in the now, in the quiet discipline of showing up. This is the record of "
      "having shown up.",
-     [["shore", "rockface", "rest"]]),
+     [["drive", "sprint", "shore", "board"]]),
 ]
 
 ABOUT_LEAD = "I know what months of consistent work actually look like."

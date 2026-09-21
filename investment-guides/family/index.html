@@ -215,6 +215,8 @@
   .frames { display: grid; gap: 1rem; margin-top: 1.75rem; }
   .frames--2 { grid-template-columns: repeat(2, 1fr); }
   .frames--3 { grid-template-columns: repeat(3, 1fr); }
+  .frames--4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 46rem) { .frames--4 { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 40rem) { .frames--3 { grid-template-columns: repeat(2, 1fr); } }
   .frames img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
