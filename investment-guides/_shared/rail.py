@@ -63,9 +63,9 @@ CSS = """
   .main { padding: 2rem 0 4rem; }
   @media (min-width: 60rem) { .main { padding: 2.5rem 0 5rem; } }
 
-  h1 { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; font-weight: 400;
+  h1 { font-family: var(--font-display); font-style: var(--display-style); font-weight: 400;
        font-size: clamp(2.4rem, 6.5vw, 4rem); line-height: 1.02; }
-  .tagline { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; color: var(--gold);
+  .tagline { font-family: var(--font-display); font-style: var(--display-style); color: var(--gold);
              font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.2; margin-top: 1rem;
              padding-bottom: 2rem; border-bottom: 1px solid var(--gold); }
 
@@ -96,11 +96,11 @@ CSS = """
   .block { padding: 3.25rem 0 0; }
   .kicker { font-size: .6875rem; letter-spacing: .24em; text-transform: uppercase;
             color: var(--gold); margin-bottom: 1rem; }
-  h2.head { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; font-weight: 400;
+  h2.head { font-family: var(--font-display); font-style: var(--display-style); font-weight: 400;
             font-size: clamp(1.8rem, 3vw, 2.35rem); line-height: 1.12; margin-bottom: 1rem; }
   .block p { line-height: 1.75; }
   .block p + p { margin-top: .9rem; }
-  h3.beat { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; font-size: 1.28rem;
+  h3.beat { font-family: var(--font-display); font-style: var(--display-style); font-size: 1.28rem;
             margin: 1.85rem 0 .6rem; }
 
   .two { display: grid; gap: 2rem 3rem; align-items: start; }
@@ -121,9 +121,9 @@ CSS = """
   .tier { background: var(--panel); padding: 1.5rem 1.25rem 1.25rem;
           display: flex; flex-direction: column; height: 100%; }
   .tier--feature { outline: 1px solid var(--gold); outline-offset: -1px; }
-  .tier .name { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; font-size: 1.45rem; }
+  .tier .name { font-family: var(--font-display); font-style: var(--display-style); font-size: 1.45rem; }
   .tier .hint { font-size: .72rem; color: var(--ink-soft); margin-top: .1rem; }
-  .tier .price { font-family: 'Marion', Didot, Georgia, serif; font-size: 2.1rem; color: var(--gold);
+  .tier .price { font-family: var(--font-display); font-size: 2.1rem; color: var(--gold);
                  margin: .6rem 0 .75rem; line-height: 1; font-variant-numeric: tabular-nums; }
   .tier .builtfor { font-size: .9rem; line-height: 1.5; padding-bottom: .85rem;
                     border-bottom: 1px solid var(--panel-line); }
@@ -135,12 +135,12 @@ CSS = """
   /* Pushes the button to the bottom of whichever card is tallest. */
   .tier .pick { margin-top: auto; padding-top: 1.05rem; }
 
-  .fine { font-size: .8125rem; font-style: italic; color: var(--ink-soft); line-height: 1.6;
+  .fine { font-size: .8125rem; font-style: var(--display-style); color: var(--ink-soft); line-height: 1.6;
           margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 
   .faq { display: grid; gap: 1.4rem 3rem; }
   @media (min-width: 52rem) { .faq { grid-template-columns: 1fr 1fr; } }
-  .faq dt { font-family: 'Marion', Didot, Georgia, serif; font-style: italic; font-size: 1.05rem; }
+  .faq dt { font-family: var(--font-display); font-style: var(--display-style); font-size: 1.05rem; }
   .faq dd { margin-top: .3rem; font-size: .9rem; color: var(--ink-soft); line-height: 1.65; }
 """
 
@@ -241,6 +241,13 @@ def _row(A, keys):
             "if the crop is intended" % (keys, ALLOW_CROP))
     return frames(items, "frames--%d" % len(items) if len(items) < 3 else "frames--3")
 
+def _script_for(C, A):
+    """The script's failure message names an address; it has to be this
+    brand's, not whichever brand the script was first written for."""
+    email = next((h[7:] for h, _ in C.CONTACT if h.startswith("mailto:")), None)
+    return A["script"].replace("mike@mikethezier.com", email) if email else A["script"]
+
+
 def build(C, A):
     creed = "\n".join(
         '    <section class="creed" id="%s">\n      <h2>%s</h2>\n%s\n      %s\n    </section>'
@@ -276,7 +283,7 @@ def build(C, A):
     body = """<div class="shell">
   <aside class="rail">
     <div>
-      <img class="wm wm--dark" src="%(wmd)s" alt="Mike Thezier Photography" width="1000" height="208">
+      <img class="wm wm--dark" src="%(wmd)s" alt="%(brandalt)s" width="1000" height="208">
       <img class="wm wm--light" src="%(wml)s" alt="" aria-hidden="true" width="1000" height="208">
       <p class="eyebrow">%(railline)s</p>
     </div>
@@ -286,9 +293,7 @@ def build(C, A):
     <div class="contact">
       <img class="badge bd--dark" src="%(bdd)s" alt="" aria-hidden="true" width="500" height="500">
       <img class="badge bd--light" src="%(bdl)s" alt="" aria-hidden="true" width="500" height="500">
-      <a href="tel:+19515871238">951.587.1238</a>
-      <a href="mailto:mike@mikethezier.com">mike@mikethezier.com</a>
-      <a href="https://mikethezier.com">mikethezier.com</a>
+%(contact)s
     </div>
   </aside>
 
@@ -309,9 +314,7 @@ def build(C, A):
         <h2 class="head">%(aboutlead)s</h2>
 %(about)s
         <div class="links">
-          <a href="tel:+19515871238">951.587.1238</a>
-          <a href="mailto:mike@mikethezier.com">mike@mikethezier.com</a>
-          <a href="https://mikethezier.com">mikethezier.com</a>
+%(contactlinks)s
         </div>
       </div>
     </section>
@@ -352,6 +355,9 @@ def build(C, A):
   </main>
 </div>
 %(spy)s""" % {
+      "brandalt": C.BRAND,
+      "contact": "\n".join('      <a href="%s">%s</a>' % (h, l) for h, l in C.CONTACT),
+      "contactlinks": "\n".join('          <a href="%s">%s</a>' % (h, l) for h, l in C.CONTACT),
       "wmd": A["wordmark_dark"], "wml": A["wordmark_light"],
       "bdd": A["badge_dark"], "bdl": A["badge_light"],
       "title": C.TITLE, "tagline": C.TAGLINE, "railline": C.RAIL_LINE,
@@ -365,4 +371,4 @@ def build(C, A):
       "tiers": "\n".join(tiers), "details": details_block(C), "fine": C.FINENOTE, "faq": faq,
       "next": "\n".join("      <p>%s</p>" % x for x in C.NEXT), "spy": SPY,
     }
-    return page(A, C.TITLE, C.DESCRIPTION, CSS, body, C.HOST)
+    return page(A, C.TITLE, C.DESCRIPTION, CSS, body, C.HOST, C.BRAND, _script_for(C, A))

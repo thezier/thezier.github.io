@@ -7,9 +7,17 @@ def load_assets(build_dir):
     return json.loads((pathlib.Path(build_dir) / "assets.json").read_text())
 
 RESET = """
+  /* Typography defaults. A guide's own tokens are emitted after this block,
+     so a different brand retheme is a matter of redefining these three. */
+  :root {
+    --font-display: 'Marion', Didot, Georgia, serif;
+    --font-body: 'CorporativeSans', 'Avenir Next', -apple-system, sans-serif;
+    --display-style: italic;
+  }
+
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--ground); color: var(--ink);
-         font-family: 'CorporativeSans','Avenir Next',-apple-system,sans-serif;
+         font-family: var(--font-body);
          font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   img { max-width: 100%; height: auto; display: block; }
   h1,h2,h3,h4,p,dl,dd,ul { margin: 0; }
@@ -85,7 +93,7 @@ def pick(t):
             'data-price="$%s" required><span class="pick-face">Choose this one</span></label>'
             % (t["id"], t["name"], t["price"]))
 
-def page(A, title, description, css, body, host):
+def page(A, title, description, css, body, host, brand="Mike Thezier Photography", script=None):
     """sync-local.py rewrites `host` for the local card, so the canonical here
     names the regional one."""
     return """<!DOCTYPE html>
@@ -93,12 +101,12 @@ def page(A, title, description, css, body, host):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>%(title)s &mdash; Mike Thezier Photography</title>
+<title>%(title)s &mdash; %(brand)s</title>
 <meta name="description" content="%(desc)s">
 <meta name="theme-color" content="#fcfbf8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191817" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="%(title)s &mdash; Mike Thezier Photography">
+<meta property="og:title" content="%(title)s &mdash; %(brand)s">
 <meta property="og:description" content="%(desc)s">
 <meta property="og:url" content="https://%(host)s/">
 <link rel="canonical" href="https://%(host)s/">
@@ -106,12 +114,12 @@ def page(A, title, description, css, body, host):
 </head>
 <body>
 <style>%(fonts)s
-%(tokens)s
 %(reset)s
+%(tokens)s
 %(css)s</style>
 %(body)s
 %(script)s
 </body>
 </html>
-""" % {"title": title, "desc": description, "host": host, "fonts": A["fonts"], "tokens": A["tokens"],
-       "reset": RESET, "css": css, "body": body, "script": A["script"]}
+""" % {"title": title, "desc": description, "host": host, "brand": brand, "fonts": A["fonts"], "tokens": A["tokens"],
+       "reset": RESET, "css": css, "body": body, "script": script or A["script"]}

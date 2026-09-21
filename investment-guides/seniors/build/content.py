@@ -16,6 +16,13 @@ HOST = "senior-portraits.mikethezier.com"
 CREED_ID = "about-you"
 SESSIONS_KICKER = "Sessions &amp; pricing"
 
+BRAND = "Mike Thezier Photography"
+CONTACT = [
+    ("tel:+19515871238", "951.587.1238"),
+    ("mailto:mike@mikethezier.com", "mike@mikethezier.com"),
+    ("https://mikethezier.com", "mikethezier.com"),
+]
+
 NAV = [
     ("about-you", "About you"),
     ("about", "About me"),
