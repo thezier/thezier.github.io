@@ -86,6 +86,26 @@ CSS = """
   @media (max-width: 46rem) { .frames--4 { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 40rem) { .frames--3 { grid-template-columns: repeat(2, 1fr); } }
   .frames img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+  /* A linked frame says so on hover and on keyboard focus, so it does not
+     look like decoration that happens to be clickable. */
+  .frame-link { display: block; position: relative; }
+  .frame-link img { transition: opacity .18s ease; }
+  .frame-link:hover img, .frame-link:focus-visible img { opacity: .78; }
+  .frame-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .frame-link::after {
+    content: "See the gallery";
+    position: absolute; inset: auto 0 0 0;
+    padding: .55rem .6rem;
+    font-family: var(--font-body);
+    font-size: .625rem; letter-spacing: .14em; text-transform: uppercase;
+    color: #fff; background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
+    opacity: 0; transition: opacity .18s ease;
+  }
+  .frame-link:hover::after, .frame-link:focus-visible::after { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .frame-link img, .frame-link::after { transition: none; }
+  }
+  @media (hover: none) { .frame-link::after { opacity: 1; } }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
   /* Landscape frames sitting together keep a landscape box. 4:3 is the squarer
      of the two ratios in the set, so the wider frame gives up a little width
@@ -207,9 +227,22 @@ def frames(items, cls="frames--3", cap=None):
     """`cap` holds a full-width row to the frame's own pixel width, so a small
     landscape is never blown up to fill the column."""
     style = ' style="max-width:%dpx"' % cap if cap else ""
-    return ('<div class="frames %s"%s>%s</div>' % (cls, style, "".join(
-        '<img src="%s" alt="%s" width="%s" height="%s" loading="lazy">'
-        % (i["src"], i["alt"], i["w"], i["h"]) for i in items)))
+
+    def one(i):
+        img = ('<img src="%s" alt="%s" width="%s" height="%s" loading="lazy">'
+               % (i["src"], i["alt"], i["w"], i["h"]))
+        href = i.get("href")
+        if not href:
+            return img
+        # A new tab, because the reader is mid-decision on this page and
+        # should not lose it to a portfolio. rel is set because target=_blank
+        # without it hands the opened page a handle back to this one.
+        return ('<a class="frame-link" href="%s" target="_blank" rel="noopener noreferrer" '
+                'aria-label="%s \u2014 see the full gallery">%s</a>'
+                % (href, i.get("gallery", "Gallery"), img))
+
+    return ('<div class="frames %s"%s>%s</div>'
+            % (cls, style, "".join(one(i) for i in items)))
 
 
 ALLOW_CROP = "allow-crop"
