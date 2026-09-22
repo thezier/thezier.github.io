@@ -192,6 +192,8 @@ NEXT = [
     "and paid in one place. Until the retainer is in, the date stays open to whoever asks next.",
 ]
 
+SENDNOTE = ("Nothing is booked or charged here. I&rsquo;ll come back with dates, then send your contract and invoice through HoneyBook.")
+
 FIELDS = [
     ("name", "Your name", "", True, "name"),
     ("email", "Email", "", True, "email"),

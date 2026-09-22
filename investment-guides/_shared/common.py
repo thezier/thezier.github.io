@@ -78,15 +78,17 @@ def details_block(C):
                 '<textarea name="note" rows="3"></textarea></label>')
     return """      <p class="chosen" hidden></p>
       <div class="fields">
-        %s
+        %(fields)s
       </div>
       <p class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></p>
       <input type="hidden" name="label" value="">
       <input type="hidden" name="price" value="">
       <button class="send" type="submit">Send to Mike</button>
-      <p class="sendnote">Nothing is booked or charged here. I&rsquo;ll come back with dates, then
-        send your contract and invoice through HoneyBook.</p>
-      <p class="formnote" role="status" hidden></p>""" % "\n        ".join(rows)
+      <p class="sendnote">%(sendnote)s</p>
+      <p class="formnote" role="status" hidden></p>""" % {
+        "fields": "\n        ".join(rows),
+        "sendnote": C.SENDNOTE,
+    }
 
 def pick(t):
     return ('<label class="pick"><input type="radio" name="tier" value="%s" data-label="%s" '

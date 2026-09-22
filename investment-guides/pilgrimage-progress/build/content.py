@@ -205,11 +205,13 @@ NEXT = [
     "Pick a session or a pack and send it over with where you train and what you&rsquo;re working "
     "toward. I&rsquo;ll come back with dates and, on a pack, a proposed cadence.",
     "A 50% retainer holds your date and comes off the total; the balance is due on the day of your "
-    "first session. I&rsquo;ll send the contract and the invoice through HoneyBook, so it&rsquo;s "
-    "signed and paid in one place.",
+    "first session. I&rsquo;ll send the contract and the invoice once dates are settled, so "
+    "it&rsquo;s signed and paid in one place.",
     "Not sure whether to start with one or commit to a series? Book the single. If you decide "
     "within thirty days to move up to a pack, I&rsquo;ll credit what you paid against it.",
 ]
+
+SENDNOTE = ("Nothing is booked or charged here. I&rsquo;ll come back with dates, then send your contract and invoice.")
 
 FIELDS = [
     ("name", "Your name", "", True, "name"),

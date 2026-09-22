@@ -237,6 +237,8 @@ NEXT = [
     "and I&rsquo;ll tell you which one I&rsquo;d book &mdash; including if that is the smaller one.",
 ]
 
+SENDNOTE = ("Nothing is booked or charged here. I&rsquo;ll come back with dates, then send your contract and invoice through HoneyBook.")
+
 FIELDS = [
     ("name", "Your name", "", True, "name"),
     ("email", "Email", "", True, "email"),

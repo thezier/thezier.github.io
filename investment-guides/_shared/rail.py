@@ -369,7 +369,7 @@ def build(C, A):
 %(tiers)s
         </div>
         <p class="fine">%(fine)s</p>
-        <div class="details" id="details" style="margin-top:2.75rem;max-width:44rem">
+        <div class="details" id="details" style="margin-top:2.75rem">
           <h2 class="head" style="font-size:1.45rem">Your details</h2>
 %(details)s
         </div>
