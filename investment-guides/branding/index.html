@@ -240,6 +240,12 @@
   }
   @media (hover: none) { .frame-link::after { opacity: 1; } }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
+
+  .videoband { margin: 1.75rem 0 0; }
+  .videoband video { width: 100%; display: block; background: #000; aspect-ratio: 16/9;
+                     object-fit: cover; }
+  .videoband figcaption { font-family: var(--font-body); font-size: .8125rem;
+                          color: var(--ink-soft); margin-top: .6rem; line-height: 1.5; }
   /* Landscape frames sitting together keep a landscape box. 4:3 is the squarer
      of the two ratios in the set, so the wider frame gives up a little width
      rather than either losing its subject. */
@@ -292,6 +298,31 @@
 
   .fine { font-size: .8125rem; font-style: var(--display-style); color: var(--ink-soft); line-height: 1.6;
           margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+
+  .rates { width: 100%; border-collapse: collapse; margin: 1.5rem 0 .5rem; }
+  .rates th, .rates td { text-align: left; vertical-align: top; padding: .8rem .9rem .8rem 0;
+                         border-bottom: 1px solid var(--rule); font-size: .9rem; line-height: 1.5; }
+  .rates thead th { border-bottom: 1px solid var(--gold); font-weight: 400;
+                    font-family: var(--font-body); font-size: .6875rem; letter-spacing: .18em;
+                    text-transform: uppercase; color: var(--ink-soft); }
+  .rates .tier-name { font-family: var(--font-display); font-style: var(--display-style);
+                      font-size: 1.2rem; color: var(--ink); white-space: nowrap; }
+  .rates .rate { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold);
+                 white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 46rem) {
+    .rates, .rates tbody, .rates tr, .rates td { display: block; width: 100%; }
+    .rates thead { display: none; }
+    .rates tr { border-bottom: 1px solid var(--gold); padding-bottom: .6rem; margin-bottom: 1.3rem; }
+    .rates td { border-bottom: 1px solid var(--rule); padding: .55rem 0; }
+    .rates td::before { content: attr(data-lab); display: block; font-size: .625rem;
+                        letter-spacing: .18em; text-transform: uppercase;
+                        color: var(--ink-soft); margin-bottom: .25rem; }
+  }
+
+  .callout-box { border-left: 3px solid var(--gold); background: var(--panel);
+                 padding: 1.1rem 1.25rem; margin: 1.6rem 0; }
+  .callout-box p { margin: 0; line-height: 1.7; }
+  .callout-box p + p { margin-top: .7rem; }
 
   .faq { display: grid; gap: 1.4rem 3rem; }
   @media (min-width: 52rem) { .faq { grid-template-columns: 1fr 1fr; } }

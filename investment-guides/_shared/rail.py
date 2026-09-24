@@ -166,6 +166,31 @@ CSS = """
   .fine { font-size: .8125rem; font-style: var(--display-style); color: var(--ink-soft); line-height: 1.6;
           margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 
+  .rates { width: 100%; border-collapse: collapse; margin: 1.5rem 0 .5rem; }
+  .rates th, .rates td { text-align: left; vertical-align: top; padding: .8rem .9rem .8rem 0;
+                         border-bottom: 1px solid var(--rule); font-size: .9rem; line-height: 1.5; }
+  .rates thead th { border-bottom: 1px solid var(--gold); font-weight: 400;
+                    font-family: var(--font-body); font-size: .6875rem; letter-spacing: .18em;
+                    text-transform: uppercase; color: var(--ink-soft); }
+  .rates .tier-name { font-family: var(--font-display); font-style: var(--display-style);
+                      font-size: 1.2rem; color: var(--ink); white-space: nowrap; }
+  .rates .rate { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold);
+                 white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 46rem) {
+    .rates, .rates tbody, .rates tr, .rates td { display: block; width: 100%; }
+    .rates thead { display: none; }
+    .rates tr { border-bottom: 1px solid var(--gold); padding-bottom: .6rem; margin-bottom: 1.3rem; }
+    .rates td { border-bottom: 1px solid var(--rule); padding: .55rem 0; }
+    .rates td::before { content: attr(data-lab); display: block; font-size: .625rem;
+                        letter-spacing: .18em; text-transform: uppercase;
+                        color: var(--ink-soft); margin-bottom: .25rem; }
+  }
+
+  .callout-box { border-left: 3px solid var(--gold); background: var(--panel);
+                 padding: 1.1rem 1.25rem; margin: 1.6rem 0; }
+  .callout-box p { margin: 0; line-height: 1.7; }
+  .callout-box p + p { margin-top: .7rem; }
+
   .faq { display: grid; gap: 1.4rem 3rem; }
   @media (min-width: 52rem) { .faq { grid-template-columns: 1fr 1fr; } }
   .faq dt { font-family: var(--font-display); font-style: var(--display-style); font-size: 1.05rem; }
@@ -313,9 +338,12 @@ def build(C, A):
     beats = "\n".join('      <h3 class="beat">%s</h3>\n%s'
                       % (h, "\n".join("      <p>%s</p>" % x for x in ps)) for h, ps in C.BEATS)
 
+    def _para(x):
+        return "      %s" % x if x.lstrip().startswith("<") else "      <p>%s</p>" % x
+
     extra = "\n".join(
         '    <section class="block" id="%s">\n      <p class="kicker">%s</p>\n%s\n      %s\n    </section>'
-        % (sid, kicker, "\n".join("      <p>%s</p>" % x for x in paras),
+        % (sid, kicker, "\n".join(_para(x) for x in paras),
            "".join(_row(A, keys) for keys in rows))
         for (sid, kicker, paras, rows) in C.EXTRA_SECTIONS)
 

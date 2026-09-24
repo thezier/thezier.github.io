@@ -133,19 +133,83 @@ EXPERIENCE_FRAMES = []
 
 EXTRA_SECTIONS = [
     ("gyms", "If you run a gym", [
-        "A one-off session fixes your feed for about a month. What a gym actually needs is a "
-        "steady supply, which is what the <strong>monthly content retainer</strong> is for: "
-        "planned shoots, consistent deliverables, and a library that never runs dry.",
-        "<strong>Starter &mdash; $650/month.</strong> One visit, two hours. 20&ndash;25 edited "
-        "photographs and 3&ndash;4 short vertical clips.<br>"
-        "<strong>Standard &mdash; $1,000/month.</strong> One or two visits, three hours. "
-        "30&ndash;35 photographs, 5&ndash;6 clips and a 60-second highlight reel.<br>"
-        "<strong>Premium &mdash; $1,400/month.</strong> Two visits, four to five hours. 40+ "
-        "photographs, 8&ndash;10 clips, a highlight reel and a monthly strategy call.",
+        "A one-off session fixes your feed for about a month. What a gym needs is a supply &mdash; "
+        "which is what the <strong>monthly content retainer</strong> is for: planned shoots, the "
+        "same deliverables every month, and a library that never runs dry.",
+
+        "<h3 class=\"beat\">What a month actually looks like</h3>",
+        "Deliverables are easy to list and hard to picture, so here is the translation. "
+        "<strong>Starter</strong> is roughly three posts a week for a month, with stills left over "
+        "for stories. <strong>Standard</strong> is four a week plus a highlight reel good enough "
+        "to run as an ad. <strong>Premium</strong> is enough to post every day if you want to, and "
+        "enough left over that you are choosing rather than scraping.",
+        "None of it is filler. Every frame is one I would put in my own portfolio, and every clip "
+        "arrives cut and sized for where it is going rather than handed over as raw footage you "
+        "have to do something with.",
+
+        """<table class="rates">
+        <thead><tr><th>Tier</th><th>Each month</th><th>Photographs</th><th>Video</th><th>Monthly</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="tier-name" data-lab="Tier">Starter</td>
+            <td data-lab="Each month">1 visit &middot; 2 hours</td>
+            <td data-lab="Photographs">20&ndash;25 edited</td>
+            <td data-lab="Video">3&ndash;4 short vertical clips</td>
+            <td class="rate" data-lab="Monthly">$650</td>
+          </tr>
+          <tr>
+            <td class="tier-name" data-lab="Tier">Standard</td>
+            <td data-lab="Each month">1&ndash;2 visits &middot; 3 hours</td>
+            <td data-lab="Photographs">30&ndash;35 edited</td>
+            <td data-lab="Video">5&ndash;6 clips + a 60-second highlight reel</td>
+            <td class="rate" data-lab="Monthly">$1,000</td>
+          </tr>
+          <tr>
+            <td class="tier-name" data-lab="Tier">Premium</td>
+            <td data-lab="Each month">2 visits &middot; 4&ndash;5 hours</td>
+            <td data-lab="Photographs">40+ edited</td>
+            <td data-lab="Video">8&ndash;10 clips + highlight reel + strategy call</td>
+            <td class="rate" data-lab="Monthly">$1,400</td>
+          </tr>
+        </tbody></table>""",
         "Three-month minimum, and it works out around 15% below booking the same work as "
-        "individual sessions. Here is the arithmetic that actually matters: <strong>two new "
-        "memberships a month more than covers the retainer at any tier.</strong> If better content "
-        "brings you two people, it has paid for itself and everything after that is margin.",
+        "individual sessions.",
+
+        "<h3 class=\"beat\">Your coaches, photographed properly</h3>",
+        "Every tier includes coach and trainer profiles &mdash; a clean headshot and a working "
+        "frame for each of them, refreshed as your team changes. That alone tends to justify the "
+        "Starter tier: your website, your Google listing and your door stop showing three "
+        "different eras of the gym, and a coach with a real photograph gets taken more seriously "
+        "by the member deciding whose class to try.",
+        "It is also the cheapest retention tool you have. Coaches who are visibly part of how the "
+        "gym presents itself tend to stay, and they share the work, which puts you in front of "
+        "their networks at no cost to you.",
+
+        "<h3 class=\"beat\">Video is what makes you look different</h3>",
+        "Every gym has equipment, a logo and a class schedule. On a screen those look "
+        "interchangeable, which is why so much fitness marketing is indistinguishable &mdash; and "
+        "why price becomes the only thing left to compete on.",
+        "What no two gyms share is the room. The 5:45am regulars. The coach who knows everyone by "
+        "name. The wall someone wrote on. Photographs tell a stranger you exist; thirty seconds of "
+        "the actual room tells them whether they would belong in it, and belonging is what people "
+        "are really shopping for when they pick a gym.",
+        "That is what The Forge above is, and it is why video is in every tier rather than sold as "
+        "an upgrade. A gym that only ever posts stills is asking people to take the atmosphere on "
+        "trust.",
+
+        "<h3 class=\"beat\">What gets shot</h3>",
+        "Classes in action &mdash; members working, coaching moments, the atmosphere of a full "
+        "room. Individual member and athlete spotlights. Coach and trainer profiles. Equipment and "
+        "facility details. Seasonal promotions and announcements. Member transformations, with "
+        "their permission and never without it.",
+
+        """<div class="callout-box">
+          <p><strong>The arithmetic.</strong> Two new memberships a month more than covers the
+          retainer at any tier. If better content brings you two people, it has paid for itself and
+          everything after that is margin &mdash; and unlike an ad spend, the library does not stop
+          working when you stop paying. Last month&rsquo;s frames are still yours next year.</p>
+        </div>""",
+
         "Tell me roughly how many members you have and what you are trying to grow, and I&rsquo;ll "
         "come back with which tier I&rsquo;d actually recommend &mdash; including if that is the "
         "smallest one.",
