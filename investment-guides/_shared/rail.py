@@ -107,6 +107,12 @@ CSS = """
   }
   @media (hover: none) { .frame-link::after { opacity: 1; } }
   .frames--full { grid-template-columns: 1fr; margin-inline: auto; }
+
+  .videoband { margin: 1.75rem 0 0; }
+  .videoband video { width: 100%; display: block; background: #000; aspect-ratio: 16/9;
+                     object-fit: cover; }
+  .videoband figcaption { font-family: var(--font-body); font-size: .8125rem;
+                          color: var(--ink-soft); margin-top: .6rem; line-height: 1.5; }
   /* Landscape frames sitting together keep a landscape box. 4:3 is the squarer
      of the two ratios in the set, so the wider frame gives up a little width
      rather than either losing its subject. */
@@ -284,11 +290,24 @@ def _script_for(C, A):
 
 
 def build(C, A):
+    video = getattr(C, "VIDEO", None)
+
+    def _video_band():
+        # Muted, looping, no controls -- it is a texture on the page, not
+        # something anyone has to decide to play. preload="none" means it
+        # costs nothing until it is scrolled to; the poster carries the slot
+        # until then, and stays put if the file ever moves.
+        return ("""      <figure class="videoband">
+        <video autoplay muted loop playsinline preload="none" poster="%(poster)s" aria-label="%(alt)s"></video>
+        <figcaption>%(caption)s</figcaption>
+      </figure>""" % video).replace("<video ", '<video src="%s" ' % video["src"])
+
     creed = "\n".join(
-        '    <section class="creed" id="%s">\n      <h2>%s</h2>\n%s\n      %s\n    </section>'
+        '    <section class="creed" id="%s">\n      <h2>%s</h2>\n%s\n      %s\n    </section>%s'
         % (sid, head,
            "\n".join("      <p>%s</p>" % para for para in body.split("\n\n")),
-           "".join(_row(A, keys) for keys in rows))
+           "".join(_row(A, keys) for keys in rows),
+           "\n" + _video_band() if video and video.get("after") == sid else "")
         for (sid, head, body, rows) in C.SECTIONS)
 
     beats = "\n".join('      <h3 class="beat">%s</h3>\n%s'
